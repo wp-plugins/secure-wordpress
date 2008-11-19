@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.3
+ * @version 0.3.1
  */
  
 /*
@@ -10,10 +10,10 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation: Remove Error-Information on Login-Page; add index.html to plugin-directory; remove the wp-version, without in admin-area.
 Author: Frank B&uuml;ltge
-Version: 0.3
+Version: 0.3.1
 License: GPL
 Author URI: http://bueltge.de/
-Last Change: 18.11.2008 17:34:17
+Last Change: 19.11.2008 20:02:48
 */
 
 
@@ -94,8 +94,6 @@ if ( !class_exists('SecureWP') ) {
 			
 			if ( is_admin() ) {
 				
-				add_action( 'init', array(&$this,'textdomain') );
-				
 				if ( function_exists('register_uninstall_hook') )
 					register_uninstall_hook(__FILE__, array(&$this,'deactivate') );
 				if ( function_exists('register_deactivation_hook') )
@@ -154,10 +152,14 @@ if ( !class_exists('SecureWP') ) {
 		}
 		
 		
-		// active for multilanguage
+		/**
+		 * active for multilanguage
+		 *
+		 * @package Secure WordPress
+		 */
 		function textdomain() {
 		
-			if (function_exists('load_plugin_textdomain')) {
+			if ( function_exists('load_plugin_textdomain') ) {
 				if ( !defined('WP_PLUGIN_DIR') ) {
 					load_plugin_textdomain('secure_wp', str_replace( ABSPATH, '', dirname(__FILE__) ) . '/languages');
 				} else {
@@ -251,8 +253,9 @@ if ( !class_exists('SecureWP') ) {
 				
 				if ( version_compare( $wp_version, '2.6.999', '>' ) ) {
 					$hook = add_submenu_page( 'options-general.php', __('Secure WordPress', 'secure_wp'), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
-					add_contextual_help( $hook, __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/">Documentation</a>', 'secure_wp') );
-					//add_filter( 'contextual_help', array(&$this, 'contextual_help') );
+					if ( function_exists('add_contextual_help') )
+						add_contextual_help( $hook, __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/">Documentation</a>', 'secure_wp') );
+						//add_filter( 'contextual_help', array(&$this, 'contextual_help') );
 				} else {
 					add_submenu_page( 'options-general.php', __('Secure WP', 'secure_wp'), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
 				}

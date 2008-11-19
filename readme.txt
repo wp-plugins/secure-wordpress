@@ -31,12 +31,14 @@ See on [the official website](http://bueltge.de/wordpress-login-sicherheit-plugi
 
 
 == Other Notes ==
+= Acknowledgements =
+Italien translation by [Gianni Diurno](http://gidibao.net/ "Gianni Diurno"), Thanks
+
 = Licence =
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
 
-
-= Acknowledgements =
-Italien translation by [Gianni Diurno](http://gidibao.net/ "Gianni Diurno"), Thanks
+= Translations =
+The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the .pot file which contains all defintions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Windows).
 
 
 == Frequently Asked Questions ==

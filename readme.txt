@@ -35,6 +35,10 @@ See on [the official website](http://bueltge.de/wordpress-login-sicherheit-plugi
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
 
 
+= Acknowledgements =
+Italien translation by [Gianni Diurno](http://gidibao.net/ "Gianni Diurno"), Thanks
+
+
 == Frequently Asked Questions ==
 = History? =
 Please see the changes on version on the [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress")!

@@ -3,7 +3,8 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 1.5
-
+Tested up to: 2.7
+Stable tag: 0.1
 
 Secure your WordPress Installation with small functions.
 
@@ -23,6 +24,10 @@ Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit
 1. Ready
 
 See on [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress").
+
+
+== Screenshots ==
+1. options-area (WordPress 2.7)
 
 
 == Other Notes ==

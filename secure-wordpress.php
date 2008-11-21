@@ -135,7 +135,11 @@ if ( !class_exists('SecureWP') ) {
 			 */
 			if ( !function_exists('plugins_url') ) {
 				function plugins_url($path = '') {
-					$scheme = ( is_ssl() ? 'https' : 'http' );
+					if ( function_exists( 'is_ssl' ) ) {
+						$scheme = ( is_ssl() ? 'https' : 'http' );
+					} else {
+						$scheme = ( 'http' );
+					}
 					$url = WP_PLUGIN_URL;
 					if ( 0 === strpos($url, 'http') ) {
 						if ( is_ssl() )
@@ -251,11 +255,10 @@ if ( !class_exists('SecureWP') ) {
 				}
 				$menutitle .= __('Secure WP', 'secure_wp');
 				
-				if ( version_compare( $wp_version, '2.6.999', '>' ) ) {
+				if ( version_compare( $wp_version, '2.6.999', '>' ) && function_exists('add_contextual_help') ) {
 					$hook = add_submenu_page( 'options-general.php', __('Secure WordPress', 'secure_wp'), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
-					if ( function_exists('add_contextual_help') )
-						add_contextual_help( $hook, __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/">Documentation</a>', 'secure_wp') );
-						//add_filter( 'contextual_help', array(&$this, 'contextual_help') );
+					add_contextual_help( $hook, __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/">Documentation</a>', 'secure_wp') );
+					//add_filter( 'contextual_help', array(&$this, 'contextual_help') );
 				} else {
 					add_submenu_page( 'options-general.php', __('Secure WP', 'secure_wp'), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
 				}

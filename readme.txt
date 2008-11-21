@@ -2,7 +2,7 @@
 Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: secure, notice, hack, hacked, protection, version, security
-Requires at least: 1.5
+Requires at least: 2.2
 Tested up to: 2.7
 Stable tag: 0.1
 

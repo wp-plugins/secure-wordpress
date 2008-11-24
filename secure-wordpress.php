@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.3.1
+ * @version 0.3.2
  */
  
 /*
@@ -10,10 +10,10 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation: Remove Error-Information on Login-Page; add index.html to plugin-directory; remove the wp-version, without in admin-area.
 Author: Frank B&uuml;ltge
-Version: 0.3.1
+Version: 0.3.2
 License: GPL
 Author URI: http://bueltge.de/
-Last Change: 19.11.2008 20:02:48
+Last Change: 24.11.2008 13:02:32
 */
 
 
@@ -83,7 +83,9 @@ if ( !class_exists('SecureWP') ) {
 			// set default options
 			$this->options_array = array('secure_wp_error' => '1',
 																	 'secure_wp_version' => '1',
-																	 'secure_wp_index' => '1'
+																	 'secure_wp_index' => '1',
+																	 'secure_wp_rsd' => '',
+																	 'secure_wp_wlw' => ''
 																	);
 			
 			// add class WPlize for options in WP
@@ -123,6 +125,21 @@ if ( !class_exists('SecureWP') ) {
 			
 			if ( $GLOBALS['WPlize']->get_option('secure_wp_index') == '1' )
 				$this->add_indexhtml( WP_PLUGIN_DIR, true );
+			
+			
+			/**
+			 * remove rdf
+			 */
+			if ( function_exists('rsd_link') && !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_rsd') == '1') )
+				remove_action('wp_head', 'rsd_link');
+			
+			
+			/**
+			 * remove wlf
+			 */
+			if ( function_exists('wlwmanifest_link') && !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_wlf') == '1') )
+				remove_action('wp_head', 'wlwmanifest_link');
+			
 			
 			/**
 			 * Retrieve the url to the plugins directory.
@@ -389,6 +406,8 @@ if ( !class_exists('SecureWP') ) {
 			$secure_wp_error   = $GLOBALS['WPlize']->get_option('secure_wp_error');
 			$secure_wp_version = $GLOBALS['WPlize']->get_option('secure_wp_version');
 			$secure_wp_index   = $GLOBALS['WPlize']->get_option('secure_wp_index');
+			$secure_wp_rsd     = $GLOBALS['WPlize']->get_option('secure_wp_rsd');
+			$secure_wp_wlw     = $GLOBALS['WPlize']->get_option('secure_wp_wlw');
 			
 			$secure_wp_win_settings = $GLOBALS['WPlize']->get_option('secure_wp_win_settings');
 			$secure_wp_win_about    = $GLOBALS['WPlize']->get_option('secure_wp_win_about');
@@ -427,6 +446,7 @@ if ( !class_exists('SecureWP') ) {
 										<input type="checkbox" name="secure_wp_version" id="secure_wp_version" value="1" <?php if ( $secure_wp_version == '1') { echo "checked='checked'"; } ?> />
 										<?php _e('Removes version of WordPress in all areas, including feed; not in admin', 'secure_wp'); ?>
 									</td>
+								</tr>
 								
 								<tr valign="top">
 									<th scope="row">
@@ -436,6 +456,27 @@ if ( !class_exists('SecureWP') ) {
 										<input type="checkbox" name="secure_wp_index" id="secure_wp_index" value="1" <?php if ( $secure_wp_index == '1') { echo "checked='checked'"; } ?> />
 										<?php _e('creates an index.html file in /plugins/ to keep it from showing your directory listing', 'secure_wp'); ?>
 									</td>
+								</tr>
+								
+								<tr valign="top">
+									<th scope="row">
+										<label for="secure_wp_rsd"><?php _e('Really Simple Discovery', 'secure_wp'); ?></label>
+									</th>
+									<td>
+										<input type="checkbox" name="secure_wp_rsd" id="secure_wp_rsd" value="1" <?php if ( $secure_wp_rsd == '1') { echo "checked='checked'"; } ?> />
+										<?php _e('Remove Really Simple Discovery link in <code>wp_head</code> of the frontend', 'secure_wp'); ?>
+									</td>
+								</tr>
+								
+								<tr valign="top">
+									<th scope="row">
+										<label for="secure_wp_wlw"><?php _e('Windows Live Writer', 'secure_wp'); ?></label>
+									</th>
+									<td>
+										<input type="checkbox" name="secure_wp_wlw" id="secure_wp_wlw" value="1" <?php if ( $secure_wp_wlw == '1') { echo "checked='checked'"; } ?> />
+										<?php _e('Remove Windows Live Writer link in <code>wp_head</code> of the frontend', 'secure_wp'); ?>
+									</td>
+								</tr>
 								
 							</table>
 							

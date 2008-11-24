@@ -9,11 +9,13 @@ Stable tag: 0.1
 Secure your WordPress Installation with small functions.
 
 == Description ==
-Little basics for secure your WordPress-installation: Remove Error-Information on Login-Page; add index.html to plugin-directory; remove the wp-version, without in admin-area.
+Little help to secure your WordPress installation: Remove Error information on login page; adds index.html to plugin directory; removes the wp-version, except in admin area.
 
-1. remove error-information an login-page
-1. add index.html to plugin-directory (virtual)
-1. remove the wp-version, without in admin-area
+1. removes error-information on login-page
+1. adds index.html to plugin-directory (virtual)
+1. removes the wp-version, except in admin-area
+1. removes Really Simple Discovery
+1. removes Windows Live Writer
 
 Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress") for further details and the latest information on this plugin.
 

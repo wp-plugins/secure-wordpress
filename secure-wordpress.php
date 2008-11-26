@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.3.2
+ * @version 0.3.3
  */
  
 /*
@@ -10,10 +10,10 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation: Remove Error-Information on Login-Page; add index.html to plugin-directory; remove the wp-version, without in admin-area.
 Author: Frank B&uuml;ltge
-Version: 0.3.2
+Version: 0.3.3
 License: GPL
 Author URI: http://bueltge.de/
-Last Change: 24.11.2008 13:02:32
+Last Change: 26.11.2008 12:53:14
 */
 
 
@@ -84,8 +84,8 @@ if ( !class_exists('SecureWP') ) {
 			$this->options_array = array('secure_wp_error' => '1',
 																	 'secure_wp_version' => '1',
 																	 'secure_wp_index' => '1',
-																	 'secure_wp_rsd' => '',
-																	 'secure_wp_wlw' => ''
+																	 'secure_wp_rsd' => '1',
+																	 'secure_wp_wlw' => '1'
 																	);
 			
 			// add class WPlize for options in WP
@@ -112,16 +112,20 @@ if ( !class_exists('SecureWP') ) {
 				add_action( 'wp_ajax_set_toggle_status', array($this, 'set_toggle_status') );
 			}
 			
+			
 			/**
 			 * remove Error-information
 			 */
-			if ( function_exists('add_filter') && !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_error') == '1') ) {
+			if ( function_exists('add_filter') && !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_error') == '1') )
 				add_filter( 'login_errors', create_function( '$a', "return null;" ) );
-			}
 			
-			if ( function_exists('add_action') && !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_version') == '1') ) {
-				add_action( 'init', array(&$this,'replace_wp_version'), 1 );
-			}
+			
+			/**
+			 * remove WP version
+			 */
+			if ( function_exists('add_action') && !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_version') == '1') )
+				add_action( 'init', array(&$this, 'replace_wp_version'), 1 );
+			
 			
 			if ( $GLOBALS['WPlize']->get_option('secure_wp_index') == '1' )
 				$this->add_indexhtml( WP_PLUGIN_DIR, true );
@@ -137,7 +141,7 @@ if ( !class_exists('SecureWP') ) {
 			/**
 			 * remove wlf
 			 */
-			if ( function_exists('wlwmanifest_link') && !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_wlf') == '1') )
+			if ( function_exists('wlwmanifest_link') && !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_wlw') == '1') )
 				remove_action('wp_head', 'wlwmanifest_link');
 			
 			
@@ -378,7 +382,6 @@ if ( !class_exists('SecureWP') ) {
 					if ($update_options) {
 						$GLOBALS['WPlize']->update_option($update_options);
 					}
-					
 					?>
 					<div id="message" class="updated fade"><p><?php _e('Options update.', 'secure_wp'); ?></p></div>
 					<?php
@@ -412,7 +415,6 @@ if ( !class_exists('SecureWP') ) {
 			$secure_wp_win_settings = $GLOBALS['WPlize']->get_option('secure_wp_win_settings');
 			$secure_wp_win_about    = $GLOBALS['WPlize']->get_option('secure_wp_win_about');
 			$secure_wp_win_opt      = $GLOBALS['WPlize']->get_option('secure_wp_win_opt');
-			
 		?>
 		<div class="wrap">
 			<h2><?php _e('Secure WordPress', 'secure_wp'); ?></h2>
@@ -531,7 +533,6 @@ if ( !class_exists('SecureWP') ) {
 if ( !class_exists('WPlize') ) {
 	require_once('inc/WPlize.php');
 }
-
 
 if ( class_exists('SecureWP') && class_exists('WPlize') && function_exists('is_admin') ) {
 	$swp_injector = new SecureWP();

@@ -2,8 +2,8 @@
 Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: secure, notice, hack, hacked, protection, version, security
-Requires at least: 2.2
-Tested up to: 2.7
+Requires at least: 2.6
+Tested up to: 2.8-bleeding-edge
 Stable tag: 0.1
 
 Secure your WordPress Installation with small functions.
@@ -16,6 +16,8 @@ Little help to secure your WordPress installation: Remove Error information on l
 1. removes the wp-version, except in admin-area
 1. removes Really Simple Discovery
 1. removes Windows Live Writer
+1. remove core update information for non-admins
+1. remove plugin-update information for non-admins
 
 Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress") for further details and the latest information on this plugin.
 

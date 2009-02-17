@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Secure WordPress\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-03 16:27+0100\n"
-"PO-Revision-Date: 2009-02-03 16:33+0100\n"
+"PO-Revision-Date: 2009-02-17 13:20+0100\n"
 "Last-Translator: Frank Bueltge <frank@bueltge.de>\n"
 "Language-Team: Frank Bültge <frank@bueltge.de>\n"
 "MIME-Version: 1.0\n"
@@ -147,7 +147,7 @@ msgstr "Nutze diese Möglichkeit um alle Einstellungen des Plugins in der Datenb
 
 #: secure-wordpress.php:658
 msgid "Delete Options"
-msgstr "Einetellungen löschen"
+msgstr "Einstellungen löschen"
 
 #: secure-wordpress.php:669
 msgid "About the plugin"

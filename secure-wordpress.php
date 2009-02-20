@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.3.4
+ * @version 0.3.5
  */
  
 /*
@@ -10,10 +10,10 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.3.4
+Version: 0.3.5
 License: GPL
 Author URI: http://bueltge.de/
-Last Change: 03.02.2009 16:34:25
+Last Change: 20.02.2009 10:36:03
 */
 
 
@@ -333,7 +333,7 @@ if ( !class_exists('SecureWP') ) {
 			if ( function_exists('add_management_page') && current_user_can('manage_options') ) {
 			
 				// update, uninstall message
-				if ( $_GET['update'] == 'true' ) {
+				if ( strpos($_SERVER['REQUEST_URI'], 'secure-wordpress.php') && $_GET['update'] == 'true' ) {
 					$return_message = __('Options update.', 'secure_wp');
 				} elseif ( $_GET['uninstall'] == 'true' ) {
 					$return_message = __('All entries in the database was cleared. Now deactivate this plugin.', 'secure_wp');

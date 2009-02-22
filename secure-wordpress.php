@@ -10,9 +10,9 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
+Author URI: http://bueltge.de/
 Version: 0.3.5
 License: GPL
-Author URI: http://bueltge.de/
 Last Change: 20.02.2009 10:36:03
 */
 

@@ -20,7 +20,7 @@ Little help to secure your WordPress installation: Remove Error information on l
 1. remove plugin-update information for non-admins
 1. Add string for use [WP Scanner](http://blogsecurity.net/wpscan "WP Scanner")
 
-Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress") for further details and the latest information on this plugin.
+Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/#historie "Secure WordPress") for further details and the latest information on this plugin.
 
 == Installation ==
 1. Unpack the download-package

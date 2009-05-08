@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.3.5
+ * @version 0.3.6
  */
  
 /*
@@ -10,10 +10,9 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
+Version: 0.3.6
 Author URI: http://bueltge.de/
-Version: 0.3.5
-License: GPL
-Last Change: 20.02.2009 10:36:03
+Last Change: 08.05.2009 12:34:47
 */
 
 
@@ -23,15 +22,19 @@ if ( !function_exists ('add_action') ) {
 	exit();
 }
 
-
-// Pre-2.6 compatibility
-if ( !defined( 'WP_CONTENT_URL' ) )
-	define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
-if ( !defined( 'WP_PLUGIN_URL' ) )
-	define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
-if ( !defined( 'WP_PLUGIN_DIR' ) )
-	define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
-
+if ( function_exists ('add_action') ) {
+	// Pre-2.6 compatibility
+	if ( !defined( 'WP_CONTENT_URL' ) )
+		define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
+	if ( !defined( 'WP_PLUGIN_URL' ) )
+		define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
+	if ( !defined( 'WP_PLUGIN_DIR' ) )
+		define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
+	
+	// plugin definitions
+	define( 'FB_SWP_BASENAME', plugin_basename(__FILE__) );
+	define( 'FB_SWP_TEXTDOMAIN', 'secure_wp' );
+}
 
 /**
  * Images/ Icons in base64-encoding
@@ -88,6 +91,8 @@ if ( !class_exists('SecureWP') ) {
 			
 			$this->activate();
 			
+			add_action( 'init', array(&$this, 'textdomain') );
+			
 			/**
 			 * remove WP version
 			 */
@@ -123,9 +128,9 @@ if ( !class_exists('SecureWP') ) {
 			
 			if ( function_exists('load_plugin_textdomain') ) {
 				if ( !defined('WP_PLUGIN_DIR') ) {
-					load_plugin_textdomain('secure_wp', str_replace( ABSPATH, '', dirname(__FILE__) ) . '/languages');
+					load_plugin_textdomain(FB_SWP_TEXTDOMAIN, str_replace( ABSPATH, '', dirname(__FILE__) ) . '/languages');
 				} else {
-					load_plugin_textdomain('secure_wp', false, dirname( plugin_basename(__FILE__) ) . '/languages');
+					load_plugin_textdomain(FB_SWP_TEXTDOMAIN, false, dirname( plugin_basename(__FILE__) ) . '/languages');
 				}
 			}
 		}
@@ -140,10 +145,6 @@ if ( !class_exists('SecureWP') ) {
 			global $wp_version;
 			
 			if ( is_admin() ) {
-				
-				if ( basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php' )
-					add_action( 'admin_init', array(&$this, 'textdomain') );
-				
 				// update options
 				add_action('admin_post_swp_update', array(&$this, 'swp_update') );
 				// deinstall options
@@ -203,6 +204,13 @@ if ( !class_exists('SecureWP') ) {
 			if ( function_exists('wlwmanifest_link') && !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_wlw') == '1') )
 				remove_action('wp_head', 'wlwmanifest_link');
 			
+			/**
+			 * add wp-scanner
+			 * @link http://blogsecurity.net/wordpress/tools/wp-scanner
+			 */
+			if ( !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_wps') == '1') )
+				add_action( 'wp_head', array(&$this, 'wp_scanner') );
+			
 		}
 		
 		
@@ -219,7 +227,8 @@ if ( !class_exists('SecureWP') ) {
 																	 'secure_wp_rsd' => '',
 																	 'secure_wp_wlw' => '',
 																	 'secure_wp_rcu' => '1',
-																	 'secure_wp_rpu' => '1'
+																	 'secure_wp_rpu' => '1',
+																	 'secure_wp_wps' => '1'
 																	);
 			
 			// add class WPlize for options in WP
@@ -317,7 +326,7 @@ if ( !class_exists('SecureWP') ) {
 		 */
 		function contextual_help() {
 			
-			$content = __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/">Documentation</a>', 'secure_wp');
+			$content = __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/">Documentation</a>', FB_SWP_TEXTDOMAIN);
 			return $content;
 		}
 		
@@ -334,9 +343,9 @@ if ( !class_exists('SecureWP') ) {
 			
 				// update, uninstall message
 				if ( strpos($_SERVER['REQUEST_URI'], 'secure-wordpress.php') && $_GET['update'] == 'true' ) {
-					$return_message = __('Options update.', 'secure_wp');
+					$return_message = __('Options update.', FB_SWP_TEXTDOMAIN);
 				} elseif ( $_GET['uninstall'] == 'true' ) {
-					$return_message = __('All entries in the database was cleared. Now deactivate this plugin.', 'secure_wp');
+					$return_message = __('All entries in the database was cleared. Now deactivate this plugin.', FB_SWP_TEXTDOMAIN);
 				} else {
 					$return_message = '';
 				}
@@ -350,14 +359,14 @@ if ( !class_exists('SecureWP') ) {
 					
 					$menutitle = '<img src="' . $this->get_resource_url('secure_wp.gif') . '" alt="" />' . ' ';
 				}
-				$menutitle .= __('Secure WP', 'secure_wp');
+				$menutitle .= __('Secure WP', FB_SWP_TEXTDOMAIN);
 				
-				if ( version_compare( $wp_version, '2.6.999', '>' ) && function_exists('add_contextual_help') ) {
-					$hook = add_submenu_page( 'options-general.php', __('Secure WordPress', 'secure_wp'), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
-					add_contextual_help( $hook, __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/">Documentation</a>', 'secure_wp') );
+				if ( version_compare( $wp_version, '2.7dev', '>' ) && function_exists('add_contextual_help') ) {
+					$hook = add_submenu_page( 'options-general.php', __('Secure WordPress', FB_SWP_TEXTDOMAIN), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
+					add_contextual_help( $hook, __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/">Documentation</a>', FB_SWP_TEXTDOMAIN) );
 					//add_filter( 'contextual_help', array(&$this, 'contextual_help') );
 				} else {
-					add_submenu_page( 'options-general.php', __('Secure WP', 'secure_wp'), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
+					add_submenu_page( 'options-general.php', __('Secure WP', FB_SWP_TEXTDOMAIN), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
 				}
 				
 				$plugin = plugin_basename(__FILE__); 
@@ -375,7 +384,7 @@ if ( !class_exists('SecureWP') ) {
 			
 			if( basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') {
 				$plugin_data = get_plugin_data( __FILE__ );
-				printf('%1$s plugin | ' . __('Version') . ' <a href="http://bueltge.de/wordpress-login-sicherheit-plugin/652/#historie" title="' . __('History', 'secure_wp') . '">%2$s</a> | ' . __('Author') . ' %3$s<br />', $plugin_data['Title'], $plugin_data['Version'], $plugin_data['Author']);
+				printf('%1$s plugin | ' . __('Version') . ' <a href="http://bueltge.de/wordpress-login-sicherheit-plugin/652/#historie" title="' . __('History', FB_SWP_TEXTDOMAIN) . '">%2$s</a> | ' . __('Author') . ' %3$s<br />', $plugin_data['Title'], $plugin_data['Version'], $plugin_data['Author']);
 			}
 		}
 		
@@ -473,6 +482,15 @@ if ( !class_exists('SecureWP') ) {
 		
 		
 		/**
+		 * add string in blog for WP scanner
+		 *
+		 * @package Secure WordPress
+		 */
+		function wp_scanner() {
+			echo '<!-- wpscanner -->';
+		}
+		
+		/**
 		 * update options
 		 *
 		 * @package Secure WordPress
@@ -480,7 +498,7 @@ if ( !class_exists('SecureWP') ) {
 		function swp_update() {
 		
 			if ( !current_user_can('manage_options') )
-				wp_die( __('Options not update - you don&lsquo;t have the privilidges to do this!', 'secure_wp') );
+				wp_die( __('Options not update - you don&lsquo;t have the privilidges to do this!', FB_SWP_TEXTDOMAIN) );
 		
 			//cross check the given referer
 			check_admin_referer('secure_wp_settings_form');
@@ -500,7 +518,7 @@ if ( !class_exists('SecureWP') ) {
 		function swp_uninstall() {
 		
 			if ( !current_user_can('manage_options') )
-				wp_die( __('Entries was not delleted - you don&lsquo;t have the privilidges to do this!', 'secure_wp') );
+				wp_die( __('Entries was not delleted - you don&lsquo;t have the privilidges to do this!', FB_SWP_TEXTDOMAIN) );
 		
 			//cross check the given referer
 			check_admin_referer('secure_wp_uninstall_form');
@@ -508,7 +526,7 @@ if ( !class_exists('SecureWP') ) {
 			if ( isset($_POST['deinstall_yes']) ) {
 				$this->deactivate();
 			} else {
-				wp_die( __('Entries was not delleted - check the checkbox!', 'secure_wp') ); 
+				wp_die( __('Entries was not delleted - check the checkbox!', FB_SWP_TEXTDOMAIN) ); 
 			}
 			
 			wp_redirect( 'plugins.php' );
@@ -528,11 +546,11 @@ if ( !class_exists('SecureWP') ) {
 				if ( current_user_can('manage_options') && isset($_POST['deinstall_yes']) ) {
 					$this->deactivate();
 					?>
-					<div id="message" class="updated fade"><p><?php _e('All entries in the database was cleared.', 'secure_wp'); ?></p></div>
+					<div id="message" class="updated fade"><p><?php _e('All entries in the database was cleared.', FB_SWP_TEXTDOMAIN); ?></p></div>
 					<?php
 				} else {
 					?>
-					<div id="message" class="error"><p><?php _e('Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!', 'secure_wp'); ?></p></div>
+					<div id="message" class="error"><p><?php _e('Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!', FB_SWP_TEXTDOMAIN); ?></p></div>
 					<?php
 				}
 			}
@@ -544,18 +562,20 @@ if ( !class_exists('SecureWP') ) {
 			$secure_wp_wlw     = $GLOBALS['WPlize']->get_option('secure_wp_wlw');
 			$secure_wp_rcu     = $GLOBALS['WPlize']->get_option('secure_wp_rcu');
 			$secure_wp_rpu     = $GLOBALS['WPlize']->get_option('secure_wp_rpu');
+			$secure_wp_wps     = $GLOBALS['WPlize']->get_option('secure_wp_wps');
 			
 			$secure_wp_win_settings = $GLOBALS['WPlize']->get_option('secure_wp_win_settings');
 			$secure_wp_win_about    = $GLOBALS['WPlize']->get_option('secure_wp_win_about');
 			$secure_wp_win_opt      = $GLOBALS['WPlize']->get_option('secure_wp_win_opt');
 		?>
 		<div class="wrap">
-			<h2><?php _e('Secure WordPress', 'secure_wp'); ?></h2>
+			<h2><?php _e('Secure WordPress', FB_SWP_TEXTDOMAIN); ?></h2>
 			<br class="clear" />
 			
-			<div id="poststuff" class="ui-sortable">
+			<div id="poststuff" class="ui-sortable meta-box-sortables">
 				<div id="secure_wp_win_settings" class="postbox <?php echo $secure_wp_win_settings ?>" >
-					<h3><?php _e('Configuration', 'secure_wp'); ?></h3>
+					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
+					<h3><?php _e('Configuration', FB_SWP_TEXTDOMAIN); ?></h3>
 					<div class="inside">
 			
 						<form name="secure_wp_config-update" method="post" action="admin-post.php">
@@ -565,71 +585,81 @@ if ( !class_exists('SecureWP') ) {
 								
 								<tr valign="top">
 									<th scope="row">
-										<label for="secure_wp_error"><?php _e('Error-Messages', 'secure_wp'); ?></label>
+										<label for="secure_wp_error"><?php _e('Error-Messages', FB_SWP_TEXTDOMAIN); ?></label>
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_error" id="secure_wp_error" value="1" <?php if ( $secure_wp_error == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('deactivates tooltip and error message at login of WordPress', 'secure_wp'); ?>
+										<?php _e('deactivates tooltip and error message at login of WordPress', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								
 								<tr valign="top">
 									<th scope="row">
-										<label for="secure_wp_version"><?php _e('WordPress Version', 'secure_wp'); ?></label>
+										<label for="secure_wp_version"><?php _e('WordPress Version', FB_SWP_TEXTDOMAIN); ?></label>
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_version" id="secure_wp_version" value="1" <?php if ( $secure_wp_version == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('Removes version of WordPress in all areas, including feed, not in admin', 'secure_wp'); ?>
+										<?php _e('Removes version of WordPress in all areas, including feed, not in admin', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								
 								<tr valign="top">
 									<th scope="row">
-										<label for="secure_wp_index"><?php _e('index.html', 'secure_wp'); ?></label>
+										<label for="secure_wp_index"><?php _e('index.html', FB_SWP_TEXTDOMAIN); ?></label>
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_index" id="secure_wp_index" value="1" <?php if ( $secure_wp_index == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('creates an <code>index.html</code> file in <code>/plugins/</code> to keep it from showing your directory listing', 'secure_wp'); ?>
+										<?php _e('creates an <code>index.html</code> file in <code>/plugins/</code> to keep it from showing your directory listing', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								
 								<tr valign="top">
 									<th scope="row">
-										<label for="secure_wp_rsd"><?php _e('Really Simple Discovery', 'secure_wp'); ?></label>
+										<label for="secure_wp_rsd"><?php _e('Really Simple Discovery', FB_SWP_TEXTDOMAIN); ?></label>
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_rsd" id="secure_wp_rsd" value="1" <?php if ( $secure_wp_rsd == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('Remove Really Simple Discovery link in <code>wp_head</code> of the frontend', 'secure_wp'); ?>
+										<?php _e('Remove Really Simple Discovery link in <code>wp_head</code> of the frontend', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								
 								<tr valign="top">
 									<th scope="row">
-										<label for="secure_wp_wlw"><?php _e('Windows Live Writer', 'secure_wp'); ?></label>
+										<label for="secure_wp_wlw"><?php _e('Windows Live Writer', FB_SWP_TEXTDOMAIN); ?></label>
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_wlw" id="secure_wp_wlw" value="1" <?php if ( $secure_wp_wlw == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('Remove Windows Live Writer link in <code>wp_head</code> of the frontend', 'secure_wp'); ?>
+										<?php _e('Remove Windows Live Writer link in <code>wp_head</code> of the frontend', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								
 								<tr valign="top">
 									<th scope="row">
-										<label for="secure_wp_rcu"><?php _e('Core Update', 'secure_wp'); ?></label>
+										<label for="secure_wp_rcu"><?php _e('Core Update', FB_SWP_TEXTDOMAIN); ?></label>
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_rcu" id="secure_wp_rcu" value="1" <?php if ( $secure_wp_rcu == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('Remove WordPress Core update for non-admins. Show message of a new WordPress version only to users with the right to update.', 'secure_wp'); ?>
+										<?php _e('Remove WordPress Core update for non-admins. Show message of a new WordPress version only to users with the right to update.', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								
 								<tr valign="top">
 									<th scope="row">
-										<label for="secure_wp_rpu"><?php _e('Plugin Update', 'secure_wp'); ?></label>
+										<label for="secure_wp_rpu"><?php _e('Plugin Update', FB_SWP_TEXTDOMAIN); ?></label>
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_rpu" id="secure_wp_rpu" value="1" <?php if ( $secure_wp_rpu == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('Remove the plugin update for non-admins. Show message for a new version of a plugin in the install of your blog only to users with the rights to edit plugins.', 'secure_wp'); ?>
+										<?php _e('Remove the plugin update for non-admins. Show message for a new version of a plugin in the install of your blog only to users with the rights to edit plugins.', FB_SWP_TEXTDOMAIN); ?>
+									</td>
+								</tr>
+								
+								<tr valign="top">
+									<th scope="row">
+										<label for="secure_wp_wps"><?php _e('WP Scanner', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<input type="checkbox" name="secure_wp_wps" id="secure_wp_wps" value="1" <?php if ( $secure_wp_wps == '1') { echo "checked='checked'"; } ?> />
+										<?php _e('WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and is add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href="http://blogsecurity.net/wpscan">http://blogsecurity.net/wpscan</a> and scan your site.', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								
@@ -637,7 +667,7 @@ if ( !class_exists('SecureWP') ) {
 							
 							<p class="submit">
 								<input type="hidden" name="action" value="swp_update" />
-								<input type="submit" name="Submit" value="<?php _e('Save Changes', 'secure_wp'); ?> &raquo;" />
+								<input type="submit" name="Submit" value="<?php _e('Save Changes', FB_SWP_TEXTDOMAIN); ?> &raquo;" />
 							</p>
 						</form>
 
@@ -645,17 +675,18 @@ if ( !class_exists('SecureWP') ) {
 				</div>
 			</div>
 			
-			<div id="poststuff" class="ui-sortable">
+			<div id="poststuff" class="ui-sortable meta-box-sortables">
 				<div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
-					<h3 id="uninstall"><?php _e('Clear Options', 'secure_wp') ?></h3>
+					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
+					<h3 id="uninstall"><?php _e('Clear Options', FB_SWP_TEXTDOMAIN) ?></h3>
 					<div class="inside">
 						
-						<p><?php _e('Click this button to delete settings of this plugin. Deactivating Secure WordPress plugin remove any data that may have been created.', 'secure_wp'); ?></p>
+						<p><?php _e('Click this button to delete settings of this plugin. Deactivating Secure WordPress plugin remove any data that may have been created.', FB_SWP_TEXTDOMAIN); ?></p>
 						<form name="deinstall_options" method="post" action="admin-post.php">
 							<?php if (function_exists('wp_nonce_field') === true) wp_nonce_field('secure_wp_uninstall_form'); ?>
 							<p id="submitbutton">
 								<input type="hidden" name="action" value="swp_uninstall" />
-								<input type="submit" value="<?php _e('Delete Options', 'secure_wp'); ?> &raquo;" class="button-secondary" /> 
+								<input type="submit" value="<?php _e('Delete Options', FB_SWP_TEXTDOMAIN); ?> &raquo;" class="button-secondary" /> 
 								<input type="checkbox" name="deinstall_yes" />
 							</p>
 						</form>
@@ -664,13 +695,23 @@ if ( !class_exists('SecureWP') ) {
 				</div>
 			</div>
 			
-			<div id="poststuff" class="ui-sortable">
+			<div id="poststuff" class="ui-sortable meta-box-sortables">
 				<div id="secure_wp_win_about" class="postbox <?php echo $secure_wp_win_about ?>" >
-					<h3><?php _e('About the plugin', 'secure_wp') ?></h3>
+					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
+					<h3><?php _e('About the plugin', FB_SWP_TEXTDOMAIN) ?></h3>
 					<div class="inside">
 					
-						<p><?php _e('Further information: Visit the <a href="http://bueltge.de/wordpress-login-sicherheit-plugin/652/">plugin homepage</a> for further information or to grab the latest version of this plugin.', 'secure_wp'); ?><br />&copy; Copyright 2007 - <?php echo date("Y"); ?> <a href="http://bueltge.de">Frank B&uuml;ltge</a> | <?php _e('You want to thank me? Visit my <a href="http://bueltge.de/wunschliste/">wishlist</a>.', 'secure_wp'); ?></p>
-						
+						<p>
+							<span style="float: left;">
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+									<input type="hidden" name="cmd" value="_s-xclick">
+									<input type="hidden" name="hosted_button_id" value="5295435">
+									<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+									<img alt="" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+								</form>
+							</span>
+						</p>
+						<p><?php _e('Further information: Visit the <a href="http://bueltge.de/wordpress-login-sicherheit-plugin/652/">plugin homepage</a> for further information or to grab the latest version of this plugin.', FB_SWP_TEXTDOMAIN); ?><br />&copy; Copyright 2007 - <?php echo date("Y"); ?> <a href="http://bueltge.de">Frank B&uuml;ltge</a> | <?php _e('You want to thank me? Visit my <a href="http://bueltge.de/wunschliste/">wishlist</a>.', FB_SWP_TEXTDOMAIN); ?></p>
 					</div>
 				</div>
 			</div>

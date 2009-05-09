@@ -5,7 +5,7 @@ msgstr ""
 "POT-Creation-Date: 2009-05-08 12:17+0100\n"
 "PO-Revision-Date: 2009-05-08 12:20+0100\n"
 "Last-Translator: Frank Bueltge <frank@bueltge.de>\n"
-"Language-Team: Frank Bültge <frank@bueltge.de>\n"
+"Language-Team: Frank BÃ¼ltge <frank@bueltge.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,7 @@ msgstr "Einstellungen aktualisiert."
 
 #: secure-wordpress.php:349
 msgid "All entries in the database was cleared. Now deactivate this plugin."
-msgstr "Alle Einträge in der Datenbank wurden entfernt. Jetzt deaktiviere das Plugin."
+msgstr "Alle EintrÃ¤ge in der Datenbank wurden entfernt. Jetzt deaktiviere das Plugin."
 
 #: secure-wordpress.php:363
 #: secure-wordpress.php:370
@@ -55,23 +55,23 @@ msgstr "Autor"
 
 #: secure-wordpress.php:502
 msgid "Options not update - you don&lsquo;t have the privilidges to do this!"
-msgstr "Einstellungen wurden nicht aktualisiert - du hast nicht genügend Rechte dazu!"
+msgstr "Einstellungen wurden nicht aktualisiert - du hast nicht genÃ¼gend Rechte dazu!"
 
 #: secure-wordpress.php:522
 msgid "Entries was not delleted - you don&lsquo;t have the privilidges to do this!"
-msgstr "Einstellungen wurden nicht entfernt - du hast nicht genügend Rechte dazu! "
+msgstr "Einstellungen wurden nicht entfernt - du hast nicht genÃ¼gend Rechte dazu! "
 
 #: secure-wordpress.php:530
 msgid "Entries was not delleted - check the checkbox!"
-msgstr "Einstellungen wurden nicht entfernt - prüfe dich Checkbox! "
+msgstr "Einstellungen wurden nicht entfernt - prÃ¼fe dich Checkbox! "
 
 #: secure-wordpress.php:550
 msgid "All entries in the database was cleared."
-msgstr "Alle Einträge in der Datenbank wurden entfernt."
+msgstr "Alle EintrÃ¤ge in der Datenbank wurden entfernt."
 
 #: secure-wordpress.php:554
 msgid "Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!"
-msgstr "Einstellungen wurden nicht entfernt - prüfe dich Checkbox oder du hast nicht genügend Rechte dazu! "
+msgstr "Einstellungen wurden nicht entfernt - prÃ¼fe dich Checkbox oder du hast nicht genÃ¼gend Rechte dazu! "
 
 #: secure-wordpress.php:578
 #: secure-wordpress.php:681
@@ -113,7 +113,7 @@ msgstr "Really Simple Discovery"
 
 #: secure-wordpress.php:623
 msgid "Remove Really Simple Discovery link in <code>wp_head</code> of the frontend"
-msgstr "Entfernt den link für Really Simple Discovery im head des Frontend"
+msgstr "Entfernt den link fÃ¼r Really Simple Discovery im head des Frontend"
 
 #: secure-wordpress.php:629
 msgid "Windows Live Writer"
@@ -121,7 +121,7 @@ msgstr "Windows Live Writer"
 
 #: secure-wordpress.php:633
 msgid "Remove Windows Live Writer link in <code>wp_head</code> of the frontend"
-msgstr "Entfernt den link für Windows Live Writer im head des Frontend"
+msgstr "Entfernt den link fÃ¼r Windows Live Writer im head des Frontend"
 
 #: secure-wordpress.php:639
 msgid "Core Update"
@@ -129,7 +129,7 @@ msgstr "Core Update"
 
 #: secure-wordpress.php:643
 msgid "Remove WordPress Core update for non-admins. Show message of a new WordPress version only to users with the right to update."
-msgstr "Deaktiviert das Core-Update für Nicht-Admin's. Die Mitteilung einer neuen Version von Plugins wird ausschließlich Nutzern gezeigt, die die Rechte zum Editieren von Plugins haben."
+msgstr "Deaktiviert das Core-Update fÃ¼r Nicht-Admin's. Die Mitteilung einer neuen Version von Plugins wird ausschlieÃŸlich Nutzern gezeigt, die die Rechte zum Editieren von Plugins haben."
 
 #: secure-wordpress.php:649
 msgid "Plugin Update"
@@ -137,7 +137,7 @@ msgstr "Plugin Update"
 
 #: secure-wordpress.php:653
 msgid "Remove the plugin update for non-admins. Show message for a new version of a plugin in the install of your blog only to users with the rights to edit plugins."
-msgstr "Deaktiviert das Plugin-Update für Nicht-Admin's. Die Mitteilung einer neuen Version von WordPress wird ausschließlich Nutzern gezeigt, die die Rechte zum Editieren von Plugins haben."
+msgstr "Deaktiviert das Plugin-Update fÃ¼r Nicht-Admin's. Die Mitteilung einer neuen Version von WordPress wird ausschlieÃŸlich Nutzern gezeigt, die die Rechte zum Editieren von Plugins haben."
 
 #: secure-wordpress.php:659
 msgid "WP Scanner"
@@ -145,7 +145,7 @@ msgstr "WP Scanner"
 
 #: secure-wordpress.php:663
 msgid "WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and is add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> and scan your site."
-msgstr "Der WordPress Scanner ist eine freie online Resource für Blog-Administratoren um die Sicherheit der WordPress Installation über das Frontend zu prüfen. Um den Scanner zu nutzen, aktivere die Checkbox und es wird der String <code>&lt;!-- wpscanner --&gt;</code> im aktuell verwendeten Theme eingefügt. Danach besuche den Online-Scanner unter <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> und prüfe deine Site."
+msgstr "Der WordPress Scanner ist eine freie online Resource fÃ¼r Blog-Administratoren um die Sicherheit der WordPress Installation Ã¼ber das Frontend zu prÃ¼fen. Um den Scanner zu nutzen, aktivere die Checkbox und es wird der String <code>&lt;!-- wpscanner --&gt;</code> im aktuell verwendeten Theme eingefÃ¼gt. Danach besuche den Online-Scanner unter <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> und prÃ¼fe deine Site."
 
 #: secure-wordpress.php:671
 msgid "Save Changes"
@@ -153,23 +153,23 @@ msgstr "Einstellungen aktualisieren"
 
 #: secure-wordpress.php:682
 msgid "Clear Options"
-msgstr "Einstellungen löschen"
+msgstr "Einstellungen lÃ¶schen"
 
 #: secure-wordpress.php:685
 msgid "Click this button to delete settings of this plugin. Deactivating Secure WordPress plugin remove any data that may have been created."
-msgstr "Nutze diese Möglichkeit um alle Einstellungen des Plugins in der Datenbank zu löschen. Das Plugin löscht ebenfalls alle Einstellungen wenn du es deaktivierst oder aus dem Backend heraus entfernst."
+msgstr "Nutze diese MÃ¶glichkeit um alle Einstellungen des Plugins in der Datenbank zu lÃ¶schen. Das Plugin lÃ¶scht ebenfalls alle Einstellungen wenn du es deaktivierst oder aus dem Backend heraus entfernst."
 
 #: secure-wordpress.php:690
 msgid "Delete Options"
-msgstr "Einstellungen löschen"
+msgstr "Einstellungen lÃ¶schen"
 
 #: secure-wordpress.php:702
 msgid "About the plugin"
-msgstr "Über das Plugin"
+msgstr "Ãœber das Plugin"
 
 #: secure-wordpress.php:715
 msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
-msgstr "Weitere Information: Besuche die <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">Plugin homepage</a> für mehr Information oder um die aktuelle Version des Plugins herunter zu laden."
+msgstr "Weitere Information: Besuche die <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">Plugin homepage</a> fÃ¼r mehr Information oder um die aktuelle Version des Plugins herunter zu laden."
 
 #: secure-wordpress.php:715
 msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."

@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.3.6
+ * @version 0.3.7
  */
  
 /*
@@ -10,16 +10,20 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.3.6
+Version: 0.3.7
 Author URI: http://bueltge.de/
-Last Change: 08.05.2009 12:34:47
+Last Change: 11.06.2009 11:12:46
 */
 
-
-if ( !function_exists ('add_action') ) {
+global $wp_version;
+if ( !function_exists ('add_action') || version_compare($wp_version, "2.6alpha", "<") ) {
+	if (function_exists ('add_action'))
+		$exit_msg = 'The plugin <em><a href="http://bueltge.de/wordpress-login-sicherheit-plugin/652/">Secure WordPress</a></em> requires WordPress 2.6 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please update WordPress</a> or delete the plugin.';
+	else
+		$exit_msg = '';
 	header('Status: 403 Forbidden');
 	header('HTTP/1.1 403 Forbidden');
-	exit();
+	exit($exit_msg);
 }
 
 if ( function_exists ('add_action') ) {
@@ -33,6 +37,8 @@ if ( function_exists ('add_action') ) {
 	
 	// plugin definitions
 	define( 'FB_SWP_BASENAME', plugin_basename(__FILE__) );
+	define( 'FB_SWP_BASEFOLDER', plugin_basename( dirname( __FILE__ ) ) );
+	define( 'FB_SWP_FILENAME', str_replace( FB_SWP_BASEFOLDER.'/', '', plugin_basename(__FILE__) ) );
 	define( 'FB_SWP_TEXTDOMAIN', 'secure_wp' );
 }
 
@@ -166,9 +172,9 @@ if ( !class_exists('SecureWP') ) {
 				add_action( 'in_admin_footer', array(&$this, 'admin_footer') );
 				
 				// add javascript for metaboxes
-				if ( version_compare( $wp_version, '2.6.999', '>' ) && file_exists(ABSPATH . '/wp-admin/admin-ajax.php') && (basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') ) {
+				if ( version_compare( $wp_version, '2.7alpha', '>' ) && file_exists(ABSPATH . '/wp-admin/admin-ajax.php') && (basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') ) {
 					wp_enqueue_script( 'secure_wp_plugin_win_page',  plugins_url( $path = 'secure-wordpress/js/page.php' ), array('jquery') );
-				} elseif ( version_compare( $wp_version, '2.6.999', '<' ) && file_exists(ABSPATH . '/wp-admin/admin-ajax.php') && (basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') ) {
+				} elseif ( version_compare( $wp_version, '2.7alpha', '<' ) && file_exists(ABSPATH . '/wp-admin/admin-ajax.php') && (basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') ) {
 					wp_enqueue_script( 'secure_wp_plugin_win_page', plugins_url( $path = 'secure-wordpress/js/page_s27.php' ), array('jquery') );
 				}
 				add_action( 'wp_ajax_set_toggle_status', array($this, 'set_toggle_status') );
@@ -288,18 +294,23 @@ if ( !class_exists('SecureWP') ) {
 		
 		
 		/**
-		 * @version WP 2.7
+		 * @version WP 2.8
 		 * Add action link(s) to plugins page
 		 *
 		 * @package Secure WordPress
 		 *
-		 * @param $links
+		 * @param $links, $file
 		 * @return $links
 		 */
-		function filter_plugin_actions_new($links) {
-		
-			$settings_link = '<a href="options-general.php?page=secure-wordpress.php">' . __('Settings') . '</a>';
-			array_unshift( $links, $settings_link );
+		function filter_plugin_meta($links, $file) {
+			
+			/* create link */
+			if ( $file == FB_SWP_BASENAME ) {
+				array_unshift(
+					$links,
+					sprintf( '<a href="options-general.php?page=%s">%s</a>', FB_SWP_FILENAME, __('Settings') )
+				);
+			}
 			
 			return $links;
 		}
@@ -352,7 +363,7 @@ if ( !class_exists('SecureWP') ) {
 				$message = '<div class="updated fade"><p>' . $return_message . '</p></div>';
 			
 				$menutitle = '';
-				if ( version_compare( $wp_version, '2.6.999', '>' ) ) {
+				if ( version_compare( $wp_version, '2.7alpha', '>' ) ) {
 					
 					if ( $return_message !== '' )
 						add_action('admin_notices', create_function( '', "echo '$message';" ) );
@@ -361,7 +372,7 @@ if ( !class_exists('SecureWP') ) {
 				}
 				$menutitle .= __('Secure WP', FB_SWP_TEXTDOMAIN);
 				
-				if ( version_compare( $wp_version, '2.7dev', '>' ) && function_exists('add_contextual_help') ) {
+				if ( version_compare( $wp_version, '2.7alpha', '>' ) && function_exists('add_contextual_help') ) {
 					$hook = add_submenu_page( 'options-general.php', __('Secure WordPress', FB_SWP_TEXTDOMAIN), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
 					add_contextual_help( $hook, __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/">Documentation</a>', FB_SWP_TEXTDOMAIN) );
 					//add_filter( 'contextual_help', array(&$this, 'contextual_help') );
@@ -369,8 +380,10 @@ if ( !class_exists('SecureWP') ) {
 					add_submenu_page( 'options-general.php', __('Secure WP', FB_SWP_TEXTDOMAIN), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
 				}
 				
-				$plugin = plugin_basename(__FILE__); 
-				add_filter( 'plugin_action_links_' . $plugin, array(&$this, 'filter_plugin_actions_new') );
+				$plugin = plugin_basename(__FILE__);
+				add_filter( 'plugin_action_links_' . $plugin, array(&$this, 'filter_plugin_meta'), 10, 2 );
+				if ( version_compare( $wp_version, '2.8alpha', '>' ) )
+					add_filter( 'plugin_row_meta', array(&$this, 'filter_plugin_meta'), 10, 2 );
 			}
 		}
 		

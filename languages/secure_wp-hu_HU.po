@@ -1,0 +1,188 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Secure WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-22 12:29+0100\n"
+"PO-Revision-Date: 2009-06-22 14:29+0100\n"
+"Last-Translator: Körmendi Péter <peter@seo-hungary.com>\n"
+"Language-Team: Körmendi Péter <peter@seo-hungary.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: secure-wordpress.php:321
+msgid "Settings"
+msgstr "Beállítások"
+
+#: secure-wordpress.php:350
+#: secure-wordpress.php:387
+msgid "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Documentation</a>"
+msgstr "<a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">Dokumentációk</a>"
+
+#: secure-wordpress.php:367
+msgid "Options update."
+msgstr "Beállítások aktualizálva."
+
+#: secure-wordpress.php:369
+msgid "All entries in the database was cleared. Now deactivate this plugin."
+msgstr "Az adatbankban minden bejegyzés törölve. Most deaktiválom a Plugint."
+
+#: secure-wordpress.php:383
+#: secure-wordpress.php:390
+msgid "Secure WP"
+msgstr "Secure WP"
+
+#: secure-wordpress.php:386
+#: secure-wordpress.php:612
+msgid "Secure WordPress"
+msgstr "Secure WordPress"
+
+#: secure-wordpress.php:410
+msgid "Version"
+msgstr "Verzió"
+
+#: secure-wordpress.php:410
+msgid "History"
+msgstr "Előzmények"
+
+#: secure-wordpress.php:410
+msgid "Author"
+msgstr "Szerző"
+
+#: secure-wordpress.php:540
+msgid "Options not update - you don&lsquo;t have the privilidges to do this!"
+msgstr "A beállítások nem aktualizálódtak. Nem rendelkezel a megfelelő jogokkal!"
+
+#: secure-wordpress.php:560
+msgid "Entries was not delleted - you don&lsquo;t have the privilidges to do this!"
+msgstr "A beállítások nem törlődtek. Nem rendelkezel a megfelelő jogokkal!"
+
+#: secure-wordpress.php:568
+msgid "Entries was not delleted - check the checkbox!"
+msgstr "A beállítások nem törlődtek - ellenőrizd a Checkbox-ot! "
+
+#: secure-wordpress.php:588
+msgid "All entries in the database was cleared."
+msgstr "Az adatbankban minden bejegyzés törölve."
+
+#: secure-wordpress.php:592
+msgid "Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!"
+msgstr "A beállítások nem törlődtek - ellenőrizd a Checkbox-ot vagy nem rendelkezel a megfelelő jogosultságokkal! "
+
+#: secure-wordpress.php:617
+#: secure-wordpress.php:732
+#: secure-wordpress.php:752
+msgid "Click to toggle"
+msgstr "Kattints az átváltáshoz"
+
+#: secure-wordpress.php:618
+msgid "Configuration"
+msgstr "Beállítások"
+
+#: secure-wordpress.php:628
+msgid "Error-Messages"
+msgstr "Hibaüzenetek"
+
+#: secure-wordpress.php:632
+msgid "deactivates tooltip and error message at login of WordPress"
+msgstr "Deaktiválja az utalásokat és hibaüzeneteket a WordPress bejelentkezés során"
+
+#: secure-wordpress.php:638
+msgid "WordPress Version"
+msgstr "WordPress verzió"
+
+#: secure-wordpress.php:642
+msgid "Removes version of WordPress in all areas, including feed, not in admin"
+msgstr "WordPress verzió eltávolítása minden területről, beleértve a Feed-et és a nem admin felületet."
+
+#: secure-wordpress.php:648
+msgid "index.html"
+msgstr "index.html"
+
+#: secure-wordpress.php:652
+msgid "creates an <code>index.html</code> file in <code>/plugins/</code> to keep it from showing your directory listing"
+msgstr "Eltárol egy <code>index.html</code>-t a <code>/plugins/</code> könyvtárban, hogy ezzel elkerüljük a könyvtár kiolvashatóságát"
+
+#: secure-wordpress.php:658
+msgid "Really Simple Discovery"
+msgstr "Really Simple Discovery"
+
+#: secure-wordpress.php:662
+msgid "Remove Really Simple Discovery link in <code>wp_head</code> of the frontend"
+msgstr "Eltávolítja a Really Simple Discovery linket a Frontend fejlécéből"
+
+#: secure-wordpress.php:668
+msgid "Windows Live Writer"
+msgstr "Windows Live Writer"
+
+#: secure-wordpress.php:672
+msgid "Remove Windows Live Writer link in <code>wp_head</code> of the frontend"
+msgstr "Eltávolítja a Windows Live Writer linket a Frontend fejlécéből"
+
+#: secure-wordpress.php:678
+msgid "Core Update"
+msgstr "Core Update"
+
+#: secure-wordpress.php:682
+msgid "Remove WordPress Core update for non-admins. Show message of a new WordPress version only to users with the right to update."
+msgstr "Deaktiválja a Core-Update-et a nem adminisztrátorok számára. A WordPress új verziójáról csak azok a felhasználók értesülnek, akik rendelkeznek Plugin szerkesztői jogokkal."
+
+#: secure-wordpress.php:688
+msgid "Plugin Update"
+msgstr "Plugin Update"
+
+#: secure-wordpress.php:692
+msgid "Remove the plugin update for non-admins. Show message for a new version of a plugin in the install of your blog only to users with the rights to edit plugins."
+msgstr "Deaktiválja a  Plugin-Update-et a nem adminisztrátorok számára. A pluginok új verziójáról csak azok a felhasználók értesülnek, akik rendelkeznek Plugin szerkesztői jogokkal."
+
+#: secure-wordpress.php:699
+msgid "Theme Update"
+msgstr "Theme Update"
+
+#: secure-wordpress.php:703
+msgid "Remove the theme update for non-admins. Show message for a new version of a theme in the install of your blog only to users with the rights to edit themes."
+msgstr "Deaktiválja a Theme-Update-et a nem adminisztrátorok számára. A WordPress sablon új verziójáról csak azok a felhasználók értesülnek, akik rendelkeznek sablon szerkesztői jogokkal."
+
+#: secure-wordpress.php:710
+msgid "WP Scanner"
+msgstr "WP Scanner"
+
+#: secure-wordpress.php:714
+msgid "WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and is add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> and scan your site."
+msgstr "A WordPress Scanner egy szabadon alkalmazható online eszköz blog adminisztrátorok számára, a WordPress telepítés Frontend biztonságának ellenőrzéséhez. Ha használni szeretnéd, aktiváld a Checkbox-ot amivel a <code>&lt;!-- wpscanner --&gt;</code> stringet beilleszted az aktuálisan használt sablonba. Ezután keresd fel az online scannert a <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> címen és ellenőrizd le az oldaladat."
+
+#: secure-wordpress.php:722
+msgid "Save Changes"
+msgstr "Beállítások aktualizálása"
+
+#: secure-wordpress.php:733
+msgid "Clear Options"
+msgstr "Beállítások törlése"
+
+#: secure-wordpress.php:736
+msgid "Click this button to delete settings of this plugin. Deactivating Secure WordPress plugin remove any data that may have been created."
+msgstr "Ezt a lehetőséget akkor használd, ha a plugin összes beállítását törölni szeretnéd az adatbankból. A plugin akkor is törli az összes beállítást, ha deaktiválod, vagy ha azt a Backend-ből távolítod el."
+
+#: secure-wordpress.php:741
+msgid "Delete Options"
+msgstr "Beállítások törlése"
+
+#: secure-wordpress.php:753
+msgid "About the plugin"
+msgstr "A pluginról"
+
+#: secure-wordpress.php:766
+msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
+msgstr "További információk: Több információkért, illetve a plugin aktuális verziójának letöltéséért látogass el a <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">Plugin weboldalára</a>."
+
+#: secure-wordpress.php:766
+msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
+msgstr "Köszönetet szeretnél mondani? Látogasd meg a <a href=\"http://bueltge.de/wunschliste/\">kívánságlistámat</a>."
+
+#~ msgid "Warning: %s is currently editing this post"
+#~ msgstr "Warning: %s is currently editing this post"
+

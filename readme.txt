@@ -27,6 +27,7 @@ Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit
 1. Unpack the download-package
 1. Upload fthe file to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Configure the options
 1. Ready
 
 See on [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress").

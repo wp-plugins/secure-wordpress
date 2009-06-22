@@ -3,7 +3,7 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
-Tested up to: 2.8
+Tested up to: 2.9-rare
 Stable tag: 0.1
 
 Secure your WordPress Installation with small functions.
@@ -18,6 +18,7 @@ Little help to secure your WordPress installation: Remove Error information on l
 1. removes Windows Live Writer
 1. remove core update information for non-admins
 1. remove plugin-update information for non-admins
+1. remove theme-update informationfor non-admins (only WP 2.8 and higher)
 1. Add string for use [WP Scanner](http://blogsecurity.net/wpscan "WP Scanner")
 
 Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/#historie "Secure WordPress") for further details and the latest information on this plugin.
@@ -32,7 +33,7 @@ See on [the official website](http://bueltge.de/wordpress-login-sicherheit-plugi
 
 
 == Screenshots ==
-1. options-area (WordPress 2.7)
+1. options-area (WordPress 2.9-rare)
 
 
 == Other Notes ==
@@ -46,10 +47,15 @@ Good news, this plugin is free for everyone! Since it's released under the GPL, 
 The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the .pot file which contains all defintions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Windows).
 
 
-== Frequently Asked Questions ==
-= History? =
-Please see the changes on version on the [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress")!
+== Changelog ==
+= v0.3.8 (22/06/2009) =
+* add function to remove theme-update information for non-admins
+* rescan language file; edit de_DE
 
+Please see the older changes on version on the [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress")!
+
+
+== Frequently Asked Questions ==
 = Where can I get more information? =
 Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress") for the latest information on this plugin.
 

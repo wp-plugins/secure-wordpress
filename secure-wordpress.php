@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.3.7
+ * @version 0.3.8
  */
  
 /*
@@ -10,9 +10,10 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.3.7
+Version: 0.3.8
 Author URI: http://bueltge.de/
-Last Change: 11.06.2009 11:12:46
+Last Change: 22.06.2009 12:19:10
+License: GNU
 */
 
 global $wp_version;
@@ -94,6 +95,7 @@ if ( !class_exists('SecureWP') ) {
 		
 		// constructor
 		function SecureWP() {
+			global $wp_version;
 			
 			$this->activate();
 			
@@ -119,6 +121,13 @@ if ( !class_exists('SecureWP') ) {
 			 */
 			if ( is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_rpu') == '1') )
 				add_action( 'init', array(&$this, 'remove_plugin_update'), 1 );
+			
+			/**
+			 * remove theme update for non admins
+			 * @link: rights: http://codex.wordpress.org/Roles_and_Capabilities
+			 */
+			if ( is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_rtu') == '1') && ( version_compare($wp_version, "2.8alpha", ">") ) )
+				add_action( 'init', array(&$this, 'remove_theme_update'), 1 );
 			
 			add_action( 'init', array(&$this, 'on_init'), 1 );
 			
@@ -234,6 +243,7 @@ if ( !class_exists('SecureWP') ) {
 																	 'secure_wp_wlw' => '',
 																	 'secure_wp_rcu' => '1',
 																	 'secure_wp_rpu' => '1',
+																	 'secure_wp_rtu' => '',
 																	 'secure_wp_wps' => '1'
 																	);
 			
@@ -480,7 +490,23 @@ if ( !class_exists('SecureWP') ) {
 				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_init', 'wp_update_plugins' );" ), 2 );
 				add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_update_plugins' );" ), 2 );
 				add_filter( 'pre_option_update_plugins', create_function( '$a', "return null;" ) );
+			}
 		}
+		
+		
+		/**
+		 * remove theme-Update-Information
+		 *
+		 * @package Secure WordPress
+		 */
+		function remove_theme_update() {
+			if ( !current_user_can('edit_themes') ) {
+				remove_action( 'load-themes.php', 'wp_update_themes' );
+				remove_action( 'load-update.php', 'wp_update_themes' );
+				remove_action( 'admin_init', '_maybe_update_themes' );
+				remove_action( 'wp_update_themes', 'wp_update_themes' );
+				add_filter( 'pre_transient_update_themes', create_function( '$a', "return null;" ) );
+			}
 		}
 		
 		
@@ -575,6 +601,7 @@ if ( !class_exists('SecureWP') ) {
 			$secure_wp_wlw     = $GLOBALS['WPlize']->get_option('secure_wp_wlw');
 			$secure_wp_rcu     = $GLOBALS['WPlize']->get_option('secure_wp_rcu');
 			$secure_wp_rpu     = $GLOBALS['WPlize']->get_option('secure_wp_rpu');
+			$secure_wp_rtu     = $GLOBALS['WPlize']->get_option('secure_wp_rtu');
 			$secure_wp_wps     = $GLOBALS['WPlize']->get_option('secure_wp_wps');
 			
 			$secure_wp_win_settings = $GLOBALS['WPlize']->get_option('secure_wp_win_settings');
@@ -665,6 +692,18 @@ if ( !class_exists('SecureWP') ) {
 										<?php _e('Remove the plugin update for non-admins. Show message for a new version of a plugin in the install of your blog only to users with the rights to edit plugins.', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
+								
+								<?php if ( version_compare($wp_version, "2.8alpha", ">=") ) { ?>
+								<tr valign="top">
+									<th scope="row">
+										<label for="secure_wp_rtu"><?php _e('Theme Update', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<input type="checkbox" name="secure_wp_rtu" id="secure_wp_rtu" value="1" <?php if ( $secure_wp_rtu == '1') { echo "checked='checked'"; } ?> />
+										<?php _e('Remove the theme update for non-admins. Show message for a new version of a theme in the install of your blog only to users with the rights to edit themes.', FB_SWP_TEXTDOMAIN); ?>
+									</td>
+								</tr>
+							<?php } ?>
 								
 								<tr valign="top">
 									<th scope="row">

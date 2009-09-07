@@ -49,6 +49,9 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.3.9 (07/09/2009) =
+* change index.html in index.php for better works
+
 = v0.3.8 (22/06/2009) =
 * add function to remove theme-update information for non-admins
 * rescan language file; edit de_DE

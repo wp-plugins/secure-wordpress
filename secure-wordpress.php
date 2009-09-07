@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.3.8
+ * @version 0.3.9
  */
  
 /*
@@ -10,10 +10,10 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.3.8
+Version: 0.3.9
 Author URI: http://bueltge.de/
-Last Change: 22.06.2009 12:19:10
-License: GNU
+Last Change: 07.09.2009 10:11:55
+License: GPL
 */
 
 global $wp_version;
@@ -202,8 +202,10 @@ if ( !class_exists('SecureWP') ) {
 			/**
 			 * add index.html in plugin-folder
 			 */
-			if ( $GLOBALS['WPlize']->get_option('secure_wp_index') == '1' )
-				$this->add_indexhtml( WP_PLUGIN_DIR, true );
+			if ( $GLOBALS['WPlize']->get_option('secure_wp_index') == '1' ) {
+				$this->add_index( WP_PLUGIN_DIR, true );
+				$this->add_index( WP_CONTENT_URL . '/themes', true );
+			}
 			
 			
 			/**
@@ -413,11 +415,11 @@ if ( !class_exists('SecureWP') ) {
 		
 		
 		/**
-		 * add index.html to plugin-derectory
+		 * add index.php to plugin-derectory
 		 */
-		function add_indexhtml($path, $enable) {
+		function add_index($path, $enable) {
 		
-			$file = trailingslashit($path) . 'index.html';
+			$file = trailingslashit($path) . 'index.php';
 		
 			if ($enable) {
 				if (!file_exists($file)) {
@@ -649,7 +651,7 @@ if ( !class_exists('SecureWP') ) {
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_index" id="secure_wp_index" value="1" <?php if ( $secure_wp_index == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('creates an <code>index.html</code> file in <code>/plugins/</code> to keep it from showing your directory listing', FB_SWP_TEXTDOMAIN); ?>
+										<?php _e('creates an <code>index.php</code> file in <code>/plugins/</code> and <code>/themes/</code> to keep it from showing your directory listing', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								

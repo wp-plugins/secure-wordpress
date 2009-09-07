@@ -23,6 +23,9 @@ Little help to secure your WordPress installation: Remove Error information on l
 
 Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/#historie "Secure WordPress") for further details and the latest information on this plugin.
 
+= Localizations =
+Italien translation by [Gianni Diurno](http://gidibao.net/ "Gianni Diurno"), polish translation by Michal Maciejewski, belorussion file by [Fat Cow](http://www.fatcow.com/ "Fat Cow") and hungarian language files by [K&ouml;rmendi P&eacute;ter](http://www.seo-hungary.com/ "K&ouml;rmendi P&eacute;ter") Thanks a lot.
+
 == Installation ==
 1. Unpack the download-package
 1. Upload fthe file to the `/wp-content/plugins/` directory
@@ -39,7 +42,7 @@ See on [the official website](http://bueltge.de/wordpress-login-sicherheit-plugi
 
 == Other Notes ==
 = Acknowledgements =
-Italien translation by [Gianni Diurno](http://gidibao.net/ "Gianni Diurno"), polish translation by Michal Maciejewski and hungarian language files by [Körmendi Péter](http://www.seo-hungary.com/ "Körmendi Péter") Thanks a lot
+Italien translation by [Gianni Diurno](http://gidibao.net/ "Gianni Diurno"), polish translation by Michal Maciejewski, belorussion file by [Fat Cow](http://www.fatcow.com/ "Fat Cow") and hungarian language files by [K&ouml;rmendi P&eacute;ter](http://www.seo-hungary.com/ "K&ouml;rmendi P&eacute;ter") Thanks a lot.
 
 = Licence =
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)

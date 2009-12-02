@@ -13,214 +13,225 @@ msgstr ""
 "X-Poedit-Language: Belarusian\n"
 "X-Poedit-Country: BELARUS\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
-"X-Textdomain-Support: yes\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
 "X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: \n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
 
-#: secure-wordpress.php:323
+#: secure-wordpress.php:330
 msgid "Settings"
 msgstr "Настройки"
 
+#: secure-wordpress.php:359
+#: secure-wordpress.php:402
 #@ secure_wp
-#: secure-wordpress.php:352
-#: secure-wordpress.php:389
 msgid "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Documentation</a>"
 msgstr "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Документация</a>"
 
+#: secure-wordpress.php:382
 #@ secure_wp
-#: secure-wordpress.php:369
 msgid "Options update."
 msgstr "Опции обновлены."
 
+#: secure-wordpress.php:384
 #@ secure_wp
-#: secure-wordpress.php:371
 msgid "All entries in the database was cleared. Now deactivate this plugin."
 msgstr "Все элементы в базе данных были очищены. Сейчас деактивируйте плагин."
 
+#: secure-wordpress.php:398
+#: secure-wordpress.php:405
 #@ secure_wp
-#: secure-wordpress.php:385
-#: secure-wordpress.php:392
 msgid "Secure WP"
 msgstr "Secure WP"
 
+#: secure-wordpress.php:401
+#: secure-wordpress.php:641
 #@ secure_wp
-#: secure-wordpress.php:388
-#: secure-wordpress.php:614
 msgid "Secure WordPress"
 msgstr "Безопасность WordPress"
 
-#: secure-wordpress.php:412
+#: secure-wordpress.php:425
 msgid "Version"
 msgstr "Версия"
 
+#: secure-wordpress.php:425
 #@ secure_wp
-#: secure-wordpress.php:412
 msgid "History"
 msgstr "История"
 
-#: secure-wordpress.php:412
+#: secure-wordpress.php:425
 msgid "Author"
 msgstr "Автор"
 
+#: secure-wordpress.php:568
 #@ secure_wp
-#: secure-wordpress.php:542
 msgid "Options not update - you don&lsquo;t have the privilidges to do this!"
 msgstr "Опции не обновлены - у вас нет привилегий для этого!"
 
+#: secure-wordpress.php:588
 #@ secure_wp
-#: secure-wordpress.php:562
 msgid "Entries was not delleted - you don&lsquo;t have the privilidges to do this!"
 msgstr "Элементы не удалены - у вас нет привилегий для этого!"
 
+#: secure-wordpress.php:596
 #@ secure_wp
-#: secure-wordpress.php:570
 msgid "Entries was not delleted - check the checkbox!"
 msgstr "Элементы не удалены - отметьте поля!"
 
+#: secure-wordpress.php:616
 #@ secure_wp
-#: secure-wordpress.php:590
 msgid "All entries in the database was cleared."
 msgstr "Все элементы удалены из базы!"
 
+#: secure-wordpress.php:620
 #@ secure_wp
-#: secure-wordpress.php:594
 msgid "Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!"
 msgstr "Элементы не удалены - отметьте поля или же у вас нет прав для этого!"
 
-#: secure-wordpress.php:619
-#: secure-wordpress.php:734
-#: secure-wordpress.php:754
+#: secure-wordpress.php:646
+#: secure-wordpress.php:771
+#: secure-wordpress.php:791
 msgid "Click to toggle"
 msgstr "Нажмите для разворачивания"
 
+#: secure-wordpress.php:647
 #@ secure_wp
-#: secure-wordpress.php:620
 msgid "Configuration"
 msgstr "Конфигурация"
 
+#: secure-wordpress.php:657
 #@ secure_wp
-#: secure-wordpress.php:630
 msgid "Error-Messages"
 msgstr "Сообщения об ошибках"
 
+#: secure-wordpress.php:661
 #@ secure_wp
-#: secure-wordpress.php:634
 msgid "deactivates tooltip and error message at login of WordPress"
 msgstr "деактивирует подсказки и сообщения об ошибке при выходе из WordPress"
 
+#: secure-wordpress.php:667
 #@ secure_wp
-#: secure-wordpress.php:640
 msgid "WordPress Version"
 msgstr "версия WordPress"
 
+#: secure-wordpress.php:671
 #@ secure_wp
-#: secure-wordpress.php:644
 msgid "Removes version of WordPress in all areas, including feed, not in admin"
 msgstr "Удаление версии WordPress во всех областях, в том числе и в ленте, не в Admin режиме"
 
+#: secure-wordpress.php:697
 #@ secure_wp
-#: secure-wordpress.php:650
-msgid "index.html"
-msgstr "index.html"
-
-#@ secure_wp
-#: secure-wordpress.php:660
 msgid "Really Simple Discovery"
 msgstr "Really Simple Discovery"
 
+#: secure-wordpress.php:701
 #@ secure_wp
-#: secure-wordpress.php:664
 msgid "Remove Really Simple Discovery link in <code>wp_head</code> of the frontend"
 msgstr "Удалите ссылку Really Simple Discovery с <code>wp_head</code> панели."
 
+#: secure-wordpress.php:707
 #@ secure_wp
-#: secure-wordpress.php:670
 msgid "Windows Live Writer"
 msgstr "Windows Live Writer"
 
+#: secure-wordpress.php:711
 #@ secure_wp
-#: secure-wordpress.php:674
 msgid "Remove Windows Live Writer link in <code>wp_head</code> of the frontend"
 msgstr "Удалите Windows Live Writer из <code>wp_head</code> панели."
 
+#: secure-wordpress.php:717
 #@ secure_wp
-#: secure-wordpress.php:680
 msgid "Core Update"
 msgstr "Обновления ядра"
 
+#: secure-wordpress.php:721
 #@ secure_wp
-#: secure-wordpress.php:684
 msgid "Remove WordPress Core update for non-admins. Show message of a new WordPress version only to users with the right to update."
 msgstr "Деактивировать обновление ядра для не-администраторов. Показать сообщение о новой версии WordPress только пользователям с правом обновления."
 
+#: secure-wordpress.php:727
 #@ secure_wp
-#: secure-wordpress.php:690
 msgid "Plugin Update"
 msgstr "Обновление плагина"
 
+#: secure-wordpress.php:731
 #@ secure_wp
-#: secure-wordpress.php:694
 msgid "Remove the plugin update for non-admins. Show message for a new version of a plugin in the install of your blog only to users with the rights to edit plugins."
 msgstr "Деактивировать обновление плагина для не-администраторов. Показать сообщение о новой версии WordPress только пользователям с правом редактирования плагинов."
 
+#: secure-wordpress.php:749
 #@ secure_wp
-#: secure-wordpress.php:712
 msgid "WP Scanner"
 msgstr "WP Scanner"
 
+#: secure-wordpress.php:753
 #@ secure_wp
-#: secure-wordpress.php:716
 msgid "WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and is add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> and scan your site."
 msgstr "WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and is add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> and scan your site."
 
+#: secure-wordpress.php:761
 #@ secure_wp
-#: secure-wordpress.php:724
 msgid "Save Changes"
 msgstr "Сохранить настройки"
 
+#: secure-wordpress.php:772
 #@ secure_wp
-#: secure-wordpress.php:735
 msgid "Clear Options"
 msgstr "Очистить опции"
 
+#: secure-wordpress.php:775
 #@ secure_wp
-#: secure-wordpress.php:738
 msgid "Click this button to delete settings of this plugin. Deactivating Secure WordPress plugin remove any data that may have been created."
 msgstr "Нажмите на эту кнопку, чтобы удалить настройки этого плагина. Отключение Secure WordPress удалит все данные, которые могли быть созданы."
 
+#: secure-wordpress.php:780
 #@ secure_wp
-#: secure-wordpress.php:743
 msgid "Delete Options"
 msgstr "Удалить опции"
 
+#: secure-wordpress.php:792
 #@ secure_wp
-#: secure-wordpress.php:755
 msgid "About the plugin"
 msgstr "Об этом плагине"
 
+#: secure-wordpress.php:805
 #@ secure_wp
-#: secure-wordpress.php:768
 msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
 msgstr "Дополнительная информация: посетите <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">домашнюю страницу плагина</a> для дополнительной информации и получения последней версии плагина."
 
+#: secure-wordpress.php:805
 #@ secure_wp
-#: secure-wordpress.php:768
 msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
 msgstr "Хотите поблагодарить меня? Посетите мой <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
 
+#: secure-wordpress.php:691
 #@ secure_wp
-#: secure-wordpress.php:654
 msgid "creates an <code>index.php</code> file in <code>/plugins/</code> and <code>/themes/</code> to keep it from showing your directory listing"
 msgstr "tworzy <code>index.php</code> w pliku <code>/plugins/</code> i <code>/themes/</code>, aby zachować jej wyświetlaniu listy katalogów"
 
+#: secure-wordpress.php:738
 #@ secure_wp
-#: secure-wordpress.php:701
 msgid "Theme Update"
 msgstr "Theme Update"
 
+#: secure-wordpress.php:742
 #@ secure_wp
-#: secure-wordpress.php:705
 msgid "Remove the theme update for non-admins. Show message for a new version of a theme in the install of your blog only to users with the rights to edit themes."
 msgstr "Usuń aktualizację tematem niż administratorzy. Pokaż wiadomość do nowej wersji tematem zainstalować bloga tylko dla użytkowników z prawami do edycji tematów."
+
+#: secure-wordpress.php:677
+#@ secure_wp
+msgid "WordPress Version in Backend"
+msgstr ""
+
+#: secure-wordpress.php:687
+#@ secure_wp
+msgid "index.php"
+msgstr ""
+
+#: secure-wordpress.php:681
+#@ secure_wp
+msgid "Removes version of WordPress on admin-area for non-admins. Show WordPress version of your blog only to users with the rights to edit plugins."
+msgstr ""
 

@@ -12,13 +12,14 @@ Secure your WordPress Installation with small functions.
 Little help to secure your WordPress installation: Remove Error information on login page; adds index.html to plugin directory; removes the wp-version, except in admin area.
 
 1. removes error-information on login-page
-1. adds index.html to plugin-directory (virtual)
+1. adds index.php plugin-directory (virtual)
 1. removes the wp-version, except in admin-area
 1. removes Really Simple Discovery
 1. removes Windows Live Writer
 1. remove core update information for non-admins
 1. remove plugin-update information for non-admins
 1. remove theme-update informationfor non-admins (only WP 2.8 and higher)
+1. hide wp-version in backend-dashboard for non-admins
 1. Add string for use [WP Scanner](http://blogsecurity.net/wpscan "WP Scanner")
 
 Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/#historie "Secure WordPress") for further details and the latest information on this plugin.
@@ -52,6 +53,9 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.4 (02/12/2009) =
+* add new feature: hide version for smaller right as admin
+
 = v0.3.9 (07/09/2009) =
 * change index.html in index.php for better works
 

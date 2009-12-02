@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.3.9
+ * @version 0.4
  */
  
 /*
@@ -10,9 +10,9 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.3.9
+Version: 0.4
 Author URI: http://bueltge.de/
-Last Change: 07.09.2009 10:11:55
+Last Change: 02.12.2009 14:16:53
 License: GPL
 */
 
@@ -129,6 +129,12 @@ if ( !class_exists('SecureWP') ) {
 			if ( is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_rtu') == '1') && ( version_compare($wp_version, "2.8alpha", ">") ) )
 				add_action( 'init', array(&$this, 'remove_theme_update'), 1 );
 			
+			/**
+			 * remove WP version on backend
+			 */
+			if ( $GLOBALS['WPlize']->get_option('secure_wp_admin_version') == '1' )
+				add_action( 'init', array(&$this, 'remove_wp_version_on_admin'), 1 );
+				
 			add_action( 'init', array(&$this, 'on_init'), 1 );
 			
 		}
@@ -246,7 +252,8 @@ if ( !class_exists('SecureWP') ) {
 																	 'secure_wp_rcu' => '1',
 																	 'secure_wp_rpu' => '1',
 																	 'secure_wp_rtu' => '',
-																	 'secure_wp_wps' => '1'
+																	 'secure_wp_wps' => '1',
+																	 'secure_wp_admin_version' => '1'
 																	);
 			
 			// add class WPlize for options in WP
@@ -363,7 +370,13 @@ if ( !class_exists('SecureWP') ) {
 			global $wp_version;
 			
 			if ( function_exists('add_management_page') && current_user_can('manage_options') ) {
-			
+				
+				if ( !isset($_GET['update']) )
+					$_GET['update'] = 'false';
+				
+				if ( !isset($_GET['uninstall']) )
+					$_GET['uninstall'] = 'false';
+				
 				// update, uninstall message
 				if ( strpos($_SERVER['REQUEST_URI'], 'secure-wordpress.php') && $_GET['update'] == 'true' ) {
 					$return_message = __('Options update.', FB_SWP_TEXTDOMAIN);
@@ -513,6 +526,19 @@ if ( !class_exists('SecureWP') ) {
 		
 		
 		/**
+		 * remove WP Version-Information on Dashboard
+		 *
+		 * @package Secure WordPress
+		 */
+		function remove_wp_version_on_admin() {
+			if ( !current_user_can('edit_plugins') && is_admin() ) {
+				wp_enqueue_style( 'remove-wp-version', WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/css/remove_wp_version.css' );
+				remove_action( 'update_footer', 'core_update_footer' );
+			}
+		}
+		
+		
+		/**
 		 * remove error-div
 		 *
 		 * @package Secure WordPress
@@ -528,7 +554,7 @@ if ( !class_exists('SecureWP') ) {
 		 * @package Secure WordPress
 		 */
 		function wp_scanner() {
-			echo '<!-- wpscanner -->';
+			echo '<!-- wpscanner -->' . "\n";
 		}
 		
 		/**
@@ -596,19 +622,20 @@ if ( !class_exists('SecureWP') ) {
 				}
 			}
 			
-			$secure_wp_error   = $GLOBALS['WPlize']->get_option('secure_wp_error');
-			$secure_wp_version = $GLOBALS['WPlize']->get_option('secure_wp_version');
-			$secure_wp_index   = $GLOBALS['WPlize']->get_option('secure_wp_index');
-			$secure_wp_rsd     = $GLOBALS['WPlize']->get_option('secure_wp_rsd');
-			$secure_wp_wlw     = $GLOBALS['WPlize']->get_option('secure_wp_wlw');
-			$secure_wp_rcu     = $GLOBALS['WPlize']->get_option('secure_wp_rcu');
-			$secure_wp_rpu     = $GLOBALS['WPlize']->get_option('secure_wp_rpu');
-			$secure_wp_rtu     = $GLOBALS['WPlize']->get_option('secure_wp_rtu');
-			$secure_wp_wps     = $GLOBALS['WPlize']->get_option('secure_wp_wps');
+			$secure_wp_error         = $GLOBALS['WPlize']->get_option('secure_wp_error');
+			$secure_wp_version       = $GLOBALS['WPlize']->get_option('secure_wp_version');
+			$secure_wp_index         = $GLOBALS['WPlize']->get_option('secure_wp_index');
+			$secure_wp_rsd           = $GLOBALS['WPlize']->get_option('secure_wp_rsd');
+			$secure_wp_wlw           = $GLOBALS['WPlize']->get_option('secure_wp_wlw');
+			$secure_wp_rcu           = $GLOBALS['WPlize']->get_option('secure_wp_rcu');
+			$secure_wp_rpu           = $GLOBALS['WPlize']->get_option('secure_wp_rpu');
+			$secure_wp_rtu           = $GLOBALS['WPlize']->get_option('secure_wp_rtu');
+			$secure_wp_wps           = $GLOBALS['WPlize']->get_option('secure_wp_wps');
+			$secure_wp_admin_version = $GLOBALS['WPlize']->get_option('secure_wp_admin_version');
 			
-			$secure_wp_win_settings = $GLOBALS['WPlize']->get_option('secure_wp_win_settings');
-			$secure_wp_win_about    = $GLOBALS['WPlize']->get_option('secure_wp_win_about');
-			$secure_wp_win_opt      = $GLOBALS['WPlize']->get_option('secure_wp_win_opt');
+			$secure_wp_win_settings  = $GLOBALS['WPlize']->get_option('secure_wp_win_settings');
+			$secure_wp_win_about     = $GLOBALS['WPlize']->get_option('secure_wp_win_about');
+			$secure_wp_win_opt       = $GLOBALS['WPlize']->get_option('secure_wp_win_opt');
 		?>
 		<div class="wrap">
 			<h2><?php _e('Secure WordPress', FB_SWP_TEXTDOMAIN); ?></h2>
@@ -631,7 +658,7 @@ if ( !class_exists('SecureWP') ) {
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_error" id="secure_wp_error" value="1" <?php if ( $secure_wp_error == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('deactivates tooltip and error message at login of WordPress', FB_SWP_TEXTDOMAIN); ?>
+										<?php _e('Deactivates tooltip and error message at login of WordPress', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								
@@ -647,7 +674,17 @@ if ( !class_exists('SecureWP') ) {
 								
 								<tr valign="top">
 									<th scope="row">
-										<label for="secure_wp_index"><?php _e('index.html', FB_SWP_TEXTDOMAIN); ?></label>
+										<label for="secure_wp_admin_version"><?php _e('WordPress Version in Backend', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<input type="checkbox" name="secure_wp_admin_version" id="secure_wp_admin_version" value="1" <?php if ( $secure_wp_admin_version == '1') { echo "checked='checked'"; } ?> />
+										<?php _e('Removes version of WordPress on admin-area for non-admins. Show WordPress version of your blog only to users with the rights to edit plugins.', FB_SWP_TEXTDOMAIN); ?>
+									</td>
+								</tr>
+								
+								<tr valign="top">
+									<th scope="row">
+										<label for="secure_wp_index"><?php _e('index.php', FB_SWP_TEXTDOMAIN); ?></label>
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_index" id="secure_wp_index" value="1" <?php if ( $secure_wp_index == '1') { echo "checked='checked'"; } ?> />

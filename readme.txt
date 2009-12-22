@@ -3,7 +3,7 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
-Tested up to: 2.9-rare
+Tested up to: 2.9
 Stable tag: 0.1
 
 Secure your WordPress Installation with small functions.
@@ -53,13 +53,16 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
-= v0.4 (02/12/2009) =
+= v0.5 (12/22/2009) =
+* small fix for use WP and the plugin with SSL `https`
+
+= v0.4 (12/02/2009) =
 * add new feature: hide version for smaller right as admin
 
-= v0.3.9 (07/09/2009) =
+= v0.3.9 (09/07/2009) =
 * change index.html in index.php for better works
 
-= v0.3.8 (22/06/2009) =
+= v0.3.8 (06/22/2009) =
 * add function to remove theme-update information for non-admins
 * rescan language file; edit de_DE
 

@@ -3,7 +3,7 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
-Tested up to: 2.9
+Tested up to: 3.0-alpha
 Stable tag: 0.1
 
 Secure your WordPress Installation with small functions.
@@ -53,6 +53,10 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.6 (01/11/2009) =
+* fix for core update under WP 2.9
+* fix language file de_DE
+
 = v0.5 (12/22/2009) =
 * small fix for use WP and the plugin with SSL `https`
 

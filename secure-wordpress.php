@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.5
+ * @version 0.6
  */
  
 /*
@@ -10,9 +10,9 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.5
+Version: 0.6
 Author URI: http://bueltge.de/
-Last Change: 22.12.2009 13:36:08
+Last Change: 11.01.2010 12:18:29
 License: GPL
 */
 
@@ -402,7 +402,7 @@ if ( !class_exists('SecureWP') ) {
 					$menutitle = str_replace( 'http://', 'https://', $menutitle );
 				
 				if ( version_compare( $wp_version, '2.7alpha', '>' ) && function_exists('add_contextual_help') ) {
-					$hook = add_submenu_page( 'options-general.php', __('Secure WordPress', FB_SWP_TEXTDOMAIN), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') );
+					$hook = add_submenu_page( 'options-general.php', __('Secure WordPress', FB_SWP_TEXTDOMAIN), $menutitle, 'manage_options', basename(__FILE__), array(&$this, 'display_page') );
 					add_contextual_help( $hook, __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/">Documentation</a>', FB_SWP_TEXTDOMAIN) );
 					//add_filter( 'contextual_help', array(&$this, 'contextual_help') );
 				} else {
@@ -461,7 +461,7 @@ if ( !class_exists('SecureWP') ) {
 		function replace_wp_version() {
 		
 			if ( !is_admin() ) {
-				global $wp_version;
+				global $wp_version, $ver;
 				
 				// random value
 				$v = intval( rand(0, 9999) );
@@ -492,6 +492,9 @@ if ( !class_exists('SecureWP') ) {
 		 */
 		function remove_core_update() {
 			if ( !current_user_can('edit_plugins') ) {
+				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_notices', 'maintenance_nag' );" ) );
+				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_notices', 'update_nag', 3 );" ) );
+				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_init', '_maybe_update_core' );" ) );
 				add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ) );
 				add_filter( 'pre_option_update_core', create_function( '$a', "return null;" ) );
 			}
@@ -504,7 +507,10 @@ if ( !class_exists('SecureWP') ) {
 		 * @package Secure WordPress
 		 */
 		function remove_plugin_update() {
-			if ( !current_user_can('edit_plugins') ) {
+			if ( !current_user_can('update_plugins') ) {
+				wp_enqueue_style( 'remove-update-plugins', WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/css/remove_update_plugins.css' );
+				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_init', 'wp_plugin_update_rows' );" ), 2 );
+				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_init', '_maybe_update_plugins' );" ), 2 );
 				add_action( 'admin_menu', create_function( '$a', "remove_action( 'load-plugins.php', 'wp_update_plugins' );" ) );
 				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_init', 'wp_update_plugins' );" ), 2 );
 				add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_update_plugins' );" ), 2 );
@@ -560,6 +566,7 @@ if ( !class_exists('SecureWP') ) {
 		function wp_scanner() {
 			echo '<!-- wpscanner -->' . "\n";
 		}
+		
 		
 		/**
 		 * update options

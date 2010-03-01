@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.6
+ * @version 0.7
  */
  
 /*
@@ -10,9 +10,9 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.6
+Version: 0.7
 Author URI: http://bueltge.de/
-Last Change: 11.01.2010 12:18:29
+Last Change: 01.03.2010 21:00:52
 License: GPL
 */
 
@@ -497,6 +497,12 @@ if ( !class_exists('SecureWP') ) {
 				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_init', '_maybe_update_core' );" ) );
 				add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_version_check' );" ) );
 				add_filter( 'pre_option_update_core', create_function( '$a', "return null;" ) );
+				remove_action( 'wp_version_check', 'wp_version_check' );
+				remove_action( 'admin_init', '_maybe_update_core' );
+				add_filter( 'pre_transient_update_core', create_function( '$a', "return null;" ) );
+				// 3.0
+				add_filter( 'pre_site_transient_update_core', create_function( '$a', "return null;" ) );
+				wp_clear_scheduled_hook( 'wp_version_check' );
 			}
 		}
 		
@@ -515,6 +521,14 @@ if ( !class_exists('SecureWP') ) {
 				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_init', 'wp_update_plugins' );" ), 2 );
 				add_action( 'init', create_function( '$a', "remove_action( 'init', 'wp_update_plugins' );" ), 2 );
 				add_filter( 'pre_option_update_plugins', create_function( '$a', "return null;" ) );
+				remove_action( 'load-plugins.php', 'wp_update_plugins' );
+				remove_action( 'load-update.php', 'wp_update_plugins' );
+				remove_action( 'admin_init', '_maybe_update_plugins' );
+				remove_action( 'wp_update_plugins', 'wp_update_plugins' );
+				// 3.0
+				remove_action( 'load-update-core.php', 'wp_update_plugins' );
+				add_filter( 'pre_transient_update_plugins', create_function( '$a', "return null;" ) );
+				wp_clear_scheduled_hook( 'wp_update_plugins' );
 			}
 		}
 		
@@ -530,6 +544,9 @@ if ( !class_exists('SecureWP') ) {
 				remove_action( 'load-update.php', 'wp_update_themes' );
 				remove_action( 'admin_init', '_maybe_update_themes' );
 				remove_action( 'wp_update_themes', 'wp_update_themes' );
+				// 3.0
+				remove_action( 'load-update-core.php', 'wp_update_themes' );
+				wp_clear_scheduled_hook( 'wp_update_themes' );
 				add_filter( 'pre_transient_update_themes', create_function( '$a', "return null;" ) );
 			}
 		}

@@ -57,6 +57,9 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.7 (03/01/2010) =
+* add updates for WP 3.0
+
 = v0.6 (01/11/2010) =
 * fix for core update under WP 2.9
 * fix language file de_DE

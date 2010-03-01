@@ -502,7 +502,7 @@ if ( !class_exists('SecureWP') ) {
 				add_filter( 'pre_transient_update_core', create_function( '$a', "return null;" ) );
 				// 3.0
 				add_filter( 'pre_site_transient_update_core', create_function( '$a', "return null;" ) );
-				wp_clear_scheduled_hook( 'wp_version_check' );
+				//wp_clear_scheduled_hook( 'wp_version_check' );
 			}
 		}
 		
@@ -528,7 +528,7 @@ if ( !class_exists('SecureWP') ) {
 				// 3.0
 				remove_action( 'load-update-core.php', 'wp_update_plugins' );
 				add_filter( 'pre_transient_update_plugins', create_function( '$a', "return null;" ) );
-				wp_clear_scheduled_hook( 'wp_update_plugins' );
+				//wp_clear_scheduled_hook( 'wp_update_plugins' );
 			}
 		}
 		
@@ -546,7 +546,7 @@ if ( !class_exists('SecureWP') ) {
 				remove_action( 'wp_update_themes', 'wp_update_themes' );
 				// 3.0
 				remove_action( 'load-update-core.php', 'wp_update_themes' );
-				wp_clear_scheduled_hook( 'wp_update_themes' );
+				//wp_clear_scheduled_hook( 'wp_update_themes' );
 				add_filter( 'pre_transient_update_themes', create_function( '$a', "return null;" ) );
 			}
 		}

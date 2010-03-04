@@ -21,6 +21,7 @@ Little help to secure your WordPress installation: Remove Error information on l
 1. remove theme-update informationfor non-admins (only WP 2.8 and higher)
 1. hide wp-version in backend-dashboard for non-admins
 1. Add string for use [WP Scanner](http://blogsecurity.net/wpscan "WP Scanner")
+1. Block bad queries
 
 Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/#historie "Secure WordPress") for further details and the latest information on this plugin.
 
@@ -57,6 +58,9 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.8 (03/04/2010) =
+* Protect WordPress against malicious URL requests, use the idea and script from Jeff Star, [see post](http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/ "Protect WordPress Against Malicious URL Requests")
+
 = v0.7 (03/01/2010) =
 * add updates for WP 3.0
 

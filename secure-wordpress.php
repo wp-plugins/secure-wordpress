@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.7
+ * @version 0.8
  */
  
 /*
@@ -10,9 +10,9 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.7
+Version: 0.8
 Author URI: http://bueltge.de/
-Last Change: 01.03.2010 21:00:52
+Last Change: 04.03.2010 14:27:13
 License: GPL
 */
 
@@ -234,6 +234,12 @@ if ( !class_exists('SecureWP') ) {
 			if ( !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_wps') == '1') )
 				add_action( 'wp_head', array(&$this, 'wp_scanner') );
 			
+			/**
+			 * block bad queries
+			 * @link http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/
+			 */
+			if ( !is_admin() && $GLOBALS['WPlize']->get_option('secure_wp_amurlr') == '1' )
+				add_action( 'init', array(&$this, 'wp_against_malicious_url_request') );
 		}
 		
 		
@@ -253,6 +259,7 @@ if ( !class_exists('SecureWP') ) {
 																	 'secure_wp_rpu' => '1',
 																	 'secure_wp_rtu' => '',
 																	 'secure_wp_wps' => '1',
+																	 'secure_wp_amurlr' => '1',
 																	 'secure_wp_admin_version' => '1'
 																	);
 			
@@ -584,6 +591,32 @@ if ( !class_exists('SecureWP') ) {
 			echo '<!-- wpscanner -->' . "\n";
 		}
 		
+		/**
+		 *
+		 *
+		 * @package Secure WordPress
+		 * @see http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/
+		 * @author Jeff Starr
+		 */
+		function wp_against_malicious_url_request() {
+			global $user_ID;
+			
+			if ($user_ID) {
+				if ( !current_user_can('mangage_options') ) {
+					if (strlen($_SERVER['REQUEST_URI']) > 255 || 
+						strpos($_SERVER['REQUEST_URI'], "eval(") || 
+						strpos($_SERVER['REQUEST_URI'], "CONCAT") || 
+						strpos($_SERVER['REQUEST_URI'], "UNION+SELECT") || 
+						strpos($_SERVER['REQUEST_URI'], "base64")) {
+							@header("HTTP/1.1 414 Request-URI Too Long");
+							@header("Status: 414 Request-URI Too Long");
+							@header("Connection: Close");
+							@exit;
+					}
+				}
+			}
+		}
+		
 		
 		/**
 		 * update options
@@ -659,6 +692,7 @@ if ( !class_exists('SecureWP') ) {
 			$secure_wp_rpu           = $GLOBALS['WPlize']->get_option('secure_wp_rpu');
 			$secure_wp_rtu           = $GLOBALS['WPlize']->get_option('secure_wp_rtu');
 			$secure_wp_wps           = $GLOBALS['WPlize']->get_option('secure_wp_wps');
+			$secure_wp_amurlr        = $GLOBALS['WPlize']->get_option('secure_wp_amurlr');
 			$secure_wp_admin_version = $GLOBALS['WPlize']->get_option('secure_wp_admin_version');
 			
 			$secure_wp_win_settings  = $GLOBALS['WPlize']->get_option('secure_wp_win_settings');
@@ -779,6 +813,16 @@ if ( !class_exists('SecureWP') ) {
 									<td>
 										<input type="checkbox" name="secure_wp_wps" id="secure_wp_wps" value="1" <?php if ( $secure_wp_wps == '1') { echo "checked='checked'"; } ?> />
 										<?php _e('WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and is add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href="http://blogsecurity.net/wpscan">http://blogsecurity.net/wpscan</a> and scan your site.', FB_SWP_TEXTDOMAIN); ?>
+									</td>
+								</tr>
+								
+								<tr valign="top">
+									<th scope="row">
+										<label for="secure_wp_amurlr"><?php _e('Block bad queries', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<input type="checkbox" name="secure_wp_amurlr" id="secure_wp_amurlr" value="1" <?php if ( $secure_wp_amurlr == '1') { echo "checked='checked'"; } ?> />
+										<?php _e('Protect WordPress against malicious URL requests, see more informations on the <a href="http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/" title="read this post" >post from Jeff Starr</a>', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								

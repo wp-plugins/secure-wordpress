@@ -28,7 +28,7 @@ Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit
 Italien translation by [Gianni Diurno](http://gidibao.net/ "Gianni Diurno"), polish translation by Michal Maciejewski, belorussian file by [Fat Cow](http://www.fatcow.com/ "Fat Cow"), ukrainian translation by [AzzePis](http://wordpress.co.ua/plugins/ "AzzePis"), russian language by [Dmitriy Donchenko](http://blogproblog.com/), hungarian language files by [K&ouml;rmendi P&eacute;ter](http://www.seo-hungary.com/ "K&ouml;rmendi P&eacute;ter") and chinese language (zh_CN) by [tanghaiwei](http://dd54.net). Thanks a lot.
 
 = Interested in WordPress tips and tricks =
-You may also be interested in WordPress tips and tricks at [WP Enginner](http://wpengineer.com/) or for german people [bueltge.de](http://bueltge.de/) 
+You may also be interested in WordPress tips and tricks at [WP Engineer](http://wpengineer.com/) or for german people [bueltge.de](http://bueltge.de/) 
 
 
 == Installation ==

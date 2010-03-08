@@ -1,0 +1,206 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Secure WordPres 0.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-03-05 09:23+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Team Blogos <wordpress@blogos.dk>\n"
+"Language-Team: Team Blogos <wordpress@blogos.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2;plural=n != 1;\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;__ngettext:1,2;__ngettext_noop:1,2;_nc:1,2;_nx:1,2;_n_noop:1,2;_nx_noop;_x;_c;esc_html__;esc_html_e;esc_html_x;esc_attr__;esc_attr_e;esc_attr_x\n"
+"X-Poedit-Basepath: d:\\wordpress\\plugins\\secure-wordpress\n"
+"X-Poedit-SearchPath-0: d:\\wordpress\\plugins\\secure-wordpress\n"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:337
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:366
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:413
+msgid "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Documentation</a>"
+msgstr "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Dokumentation</a>"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:389
+msgid "Options update."
+msgstr "Update om indstillinger"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:391
+msgid "All entries in the database was cleared. Now deactivate this plugin."
+msgstr "Alle pluginnets poster i databasen blev ryddet. Deaktivér dette plugin nu."
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:405
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:416
+msgid "Secure WP"
+msgstr "Secure WP"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:412
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:703
+msgid "Secure WordPress"
+msgstr "Secure WordPress"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:436
+msgid "Version"
+msgstr "version"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:436
+msgid "History"
+msgstr "Historik"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:436
+msgid "Author"
+msgstr "Forfatter"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:629
+msgid "Options not update - you don&lsquo;t have the privilidges to do this!"
+msgstr "Indstillingerne blev ikke opdateret &ndash; du har ikke rettigheder til at gøre dette!"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:649
+msgid "Entries was not delleted - you don&lsquo;t have the privilidges to do this!"
+msgstr "Posterne var ikke slettet &ndash; du har ikke rettigheder til at gøre dette!"
+
+# type: deleted
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:657
+msgid "Entries was not delleted - check the checkbox!"
+msgstr "Posterne blev ikke slettet &ndash; tjek afkrydsningsfeltet!"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:677
+msgid "All entries in the database was cleared."
+msgstr "Alle poster i databasen blev tømt."
+
+# typo: deleted
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:681
+msgid "Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!"
+msgstr "Posterne blev ikke slettet &ndash; tjek afkrydsningsfeltet. Eller også har du ikke rettigheder til at gøre dette!"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:708
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:843
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:863
+msgid "Click to toggle"
+msgstr "Klik for slå til/fra"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:709
+msgid "Configuration"
+msgstr "Opsætning"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:719
+msgid "Error-Messages"
+msgstr "Fejlmeddelelser"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:723
+msgid "Deactivates tooltip and error message at login of WordPress"
+msgstr "Deaktiverer tooltip og fejlmeddelelse ved login til WordPress"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:729
+msgid "WordPress Version"
+msgstr "WordPress-version"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:733
+msgid "Removes version of WordPress in all areas, including feed, not in admin"
+msgstr "Fjerner WordPress-version alle steder, også i feeds, men ikke i admin"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:739
+msgid "WordPress Version in Backend"
+msgstr "WordPress-version i kontrolpanel"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:743
+msgid "Removes version of WordPress on admin-area for non-admins. Show WordPress version of your blog only to users with the rights to edit plugins."
+msgstr "Fjern WordPress-version i admin-området for ikke-admins. Vis kun meddelelse om WordPress-version til de brugere, der har rettigheder til at redigere plugins."
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:749
+msgid "index.php"
+msgstr "index.php"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:753
+msgid "creates an <code>index.php</code> file in <code>/plugins/</code> and <code>/themes/</code> to keep it from showing your directory listing"
+msgstr "Opretter en <code>index.php</code> fil i <code>/plugins/</code>-mappen, så der ikke bliver vist nogen mappeoversigt"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:759
+msgid "Really Simple Discovery"
+msgstr "Really Simple Discovery"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:763
+msgid "Remove Really Simple Discovery link in <code>wp_head</code> of the frontend"
+msgstr "Fjern Really Simple Discovery-linket i <code>wp_head</code> ude i bloggen"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:769
+msgid "Windows Live Writer"
+msgstr "Windows Live Writer"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:773
+msgid "Remove Windows Live Writer link in <code>wp_head</code> of the frontend"
+msgstr "Fjern Windows Live Writer-linket i <code>wp_head</code> ude i bloggen"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:779
+msgid "Core Update"
+msgstr "Kerne-opdatering"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:783
+msgid "Remove WordPress Core update for non-admins. Show message of a new WordPress version only to users with the right to update."
+msgstr "Fjern WordPress Core-opdatering fra ikke-admins. Vis kun meddelelse om ny WordPress-version til de brugere, der har rettigheder til at opdatere."
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:789
+msgid "Plugin Update"
+msgstr "Plugin-opdatering"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:793
+msgid "Remove the plugin update for non-admins. Show message for a new version of a plugin in the install of your blog only to users with the rights to edit plugins."
+msgstr "Fjern plugin-opdatering for ikke-admins. Vis kun meddelelse om ny version af et plugin i din WordPress-installation til de brugere, der har rettigheder til at redigere plugins."
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:800
+msgid "Theme Update"
+msgstr "Tema-opdatering"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:804
+msgid "Remove the theme update for non-admins. Show message for a new version of a theme in the install of your blog only to users with the rights to edit themes."
+msgstr "Fjern tema-opdatering for ikke-admins. Vis kun meddelelse om ny version af et tema i din blogs installation til de brugere, der har rettigheder til at redigere temaer."
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:811
+msgid "WP Scanner"
+msgstr "WP-scanner"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:815
+msgid "WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and is add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> and scan your site."
+msgstr "WordPress scanner er en gratis online-ressource, som blog administratorer kan bruge til at undersøge niveauet af deres WordPress-sikkerhed. Hvis du vil køre wp-scanner, så markér denne indstilling, og <code>&lt;!-- wpscanner --&gt;</code> tilføjes til din aktuelle WordPress-tema. Gå derefter til <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> og scan din site."
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:821
+msgid "Block bad queries"
+msgstr "Blokér ondsindede forespørgsler"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:825
+msgid "Protect WordPress against malicious URL requests, see more informations on the <a href=\"http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/\" title=\"read this post\" >post from Jeff Starr</a>"
+msgstr "Beskyt WordPress mod ondsindede URL-forespørgsler; få flere oplysninger i <a href=\"http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/\" title=\"read this post\" >indlæg fra Jeff Starr</a>"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:833
+msgid "Save Changes"
+msgstr "Gem ændringer"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:844
+msgid "Clear Options"
+msgstr "Ryd indstillinger"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:847
+msgid "Click this button to delete settings of this plugin. Deactivating Secure WordPress plugin remove any data that may have been created."
+msgstr "Klik på denne knap, hvis du vil slette pluginnets indstillinger. Deaktivering af Secure WordPress-pluginnet fjerner al data, det måtte have oprettet."
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:852
+msgid "Delete Options"
+msgstr "Slet indstillinger"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:864
+msgid "About the plugin"
+msgstr "Om pluginnet"
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:877
+msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
+msgstr "Yderligere information: Besøg <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">pluginnets hjemmeside</a> for mere information eller for at hente den seneste udgave af dette plugin."
+
+#: d:\wordpress\plugins\secure-wordpress/secure-wordpress.php:877
+msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
+msgstr "Ønsker du at takke mig? Kig på min <a href=\"http://bueltge.de/wunschliste/\">ønskeliste</a>."
+

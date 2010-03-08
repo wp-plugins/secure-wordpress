@@ -82,11 +82,3 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 * rescan language file; edit de_DE
 
 Please see the older changes on version on the [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress")!
-
-
-== Frequently Asked Questions ==
-= Where can I get more information? =
-Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress") for the latest information on this plugin.
-
-= I love this plugin! How can I show the developer how much I appreciate his work? =
-Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/ "Secure WordPress") and let him know your care or see the [wishlist](http://bueltge.de/wunschliste/ "Wishlist") of the author.

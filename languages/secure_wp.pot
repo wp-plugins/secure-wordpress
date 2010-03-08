@@ -27,7 +27,7 @@ msgstr ""
 #: secure-wordpress.php:413
 #@ secure_wp
 msgid "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Documentation</a>"
-msgstr ""http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">Dokumentation</a> (<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">en</a>)"
+msgstr ""
 
 #: secure-wordpress.php:389
 #@ secure_wp
@@ -173,7 +173,7 @@ msgstr ""
 #: secure-wordpress.php:815
 #@ secure_wp
 msgid "WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and is add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> and scan your site."
-msgstr ""http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> und prüfe deine Site."
+msgstr ""
 
 #: secure-wordpress.php:833
 #@ secure_wp
@@ -203,12 +203,12 @@ msgstr ""
 #: secure-wordpress.php:877
 #@ secure_wp
 msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
-msgstr ""http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">Plugin homepage</a> für mehr Information oder um die aktuelle Version des Plugins herunter zu laden."
+msgstr ""
 
 #: secure-wordpress.php:877
 #@ secure_wp
 msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
-msgstr ""http://bueltge.de/wunschliste/\">Wunschliste</a>."
+msgstr ""
 
 #: secure-wordpress.php:753
 #@ secure_wp
@@ -243,5 +243,4 @@ msgstr ""
 #: secure-wordpress.php:825
 #@ secure_wp
 msgid "Protect WordPress against malicious URL requests, see more informations on the <a href=\"http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/\" title=\"read this post\" >post from Jeff Starr</a>"
-msgstr ""http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/\" title=\"read this post\" >Beitrag von Jeff Starr</a>"
-
+msgstr ""

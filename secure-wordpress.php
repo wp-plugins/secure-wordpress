@@ -10,9 +10,9 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.8
+Version: 0.8.1
 Author URI: http://bueltge.de/
-Last Change: 08.03.2010 11:57:09
+Last Change: 08.03.2010 12:12:07
 License: GPL
 */
 
@@ -188,9 +188,9 @@ if ( !class_exists('SecureWP') ) {
 				
 				// add javascript for metaboxes
 				if ( version_compare( $wp_version, '2.7alpha', '>' ) && file_exists(ABSPATH . '/wp-admin/admin-ajax.php') && (basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') ) {
-					wp_enqueue_script( 'secure_wp_plugin_win_page',  plugins_url( $path = 'secure-wordpress/js/page.php' ), array('jquery') );
+					wp_enqueue_script( 'secure_wp_plugin_win_page',  WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/js/page.php', array('jquery') );
 				} elseif ( version_compare( $wp_version, '2.7alpha', '<' ) && file_exists(ABSPATH . '/wp-admin/admin-ajax.php') && (basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') ) {
-					wp_enqueue_script( 'secure_wp_plugin_win_page', plugins_url( $path = 'secure-wordpress/js/page_s27.php' ), array('jquery') );
+					wp_enqueue_script( 'secure_wp_plugin_win_page', WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/js/page_s27.php', array('jquery') );
 				}
 				add_action( 'wp_ajax_set_toggle_status', array($this, 'set_toggle_status') );
 			}
@@ -493,12 +493,26 @@ if ( !class_exists('SecureWP') ) {
 		
 		
 		/**
+		 * remove WP Version-Information on Dashboard
+		 *
+		 * @package Secure WordPress
+		 */
+		function remove_wp_version_on_admin() {
+			if ( !current_user_can('update_plugins') && is_admin() ) {
+				//wp_enqueue_style( 'remove-wp-version', WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/css/remove_wp_version.css' );
+				wp_enqueue_script( 'remove-wp-version',  WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/js/remove_wp_version.js', array('jquery') );
+				remove_action( 'update_footer', 'core_update_footer' );
+			}
+		}
+		
+		
+		/**
 		 * remove core-Update-Information
 		 *
 		 * @package Secure WordPress
 		 */
 		function remove_core_update() {
-			if ( !current_user_can('edit_plugins') ) {
+			if ( !current_user_can('update_plugins') ) {
 				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_notices', 'maintenance_nag' );" ) );
 				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_notices', 'update_nag', 3 );" ) );
 				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_init', '_maybe_update_core' );" ) );
@@ -560,25 +574,12 @@ if ( !class_exists('SecureWP') ) {
 		
 		
 		/**
-		 * remove WP Version-Information on Dashboard
-		 *
-		 * @package Secure WordPress
-		 */
-		function remove_wp_version_on_admin() {
-			if ( !current_user_can('edit_plugins') && is_admin() ) {
-				wp_enqueue_style( 'remove-wp-version', WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/css/remove_wp_version.css' );
-				remove_action( 'update_footer', 'core_update_footer' );
-			}
-		}
-		
-		
-		/**
 		 * remove error-div
 		 *
 		 * @package Secure WordPress
 		 */
 		function remove_error_div() {
-			echo '<link rel="stylesheet" type="text/css" href="' . plugins_url( $path = 'secure-wordpress/css/remove_login.css' ) . '" />';
+			echo '<link rel="stylesheet" type="text/css" href="' . WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/css/remove_login.css' . '" />';
 		}
 		
 		
@@ -685,6 +686,7 @@ if ( !class_exists('SecureWP') ) {
 			
 			$secure_wp_error         = $GLOBALS['WPlize']->get_option('secure_wp_error');
 			$secure_wp_version       = $GLOBALS['WPlize']->get_option('secure_wp_version');
+			$secure_wp_admin_version = $GLOBALS['WPlize']->get_option('secure_wp_admin_version');
 			$secure_wp_index         = $GLOBALS['WPlize']->get_option('secure_wp_index');
 			$secure_wp_rsd           = $GLOBALS['WPlize']->get_option('secure_wp_rsd');
 			$secure_wp_wlw           = $GLOBALS['WPlize']->get_option('secure_wp_wlw');
@@ -693,7 +695,6 @@ if ( !class_exists('SecureWP') ) {
 			$secure_wp_rtu           = $GLOBALS['WPlize']->get_option('secure_wp_rtu');
 			$secure_wp_wps           = $GLOBALS['WPlize']->get_option('secure_wp_wps');
 			$secure_wp_amurlr        = $GLOBALS['WPlize']->get_option('secure_wp_amurlr');
-			$secure_wp_admin_version = $GLOBALS['WPlize']->get_option('secure_wp_admin_version');
 			
 			$secure_wp_win_settings  = $GLOBALS['WPlize']->get_option('secure_wp_win_settings');
 			$secure_wp_win_about     = $GLOBALS['WPlize']->get_option('secure_wp_win_about');

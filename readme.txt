@@ -58,6 +58,10 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.8.1 (03/08/2010) =
+* remove versions-informations on backend with javascript
+* small changes
+
 = v0.8 (03/04/2010) =
 * Protect WordPress against malicious URL requests, use the idea and script from Jeff Star, [see post](http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/ "Protect WordPress Against Malicious URL Requests")
 

@@ -12,7 +12,7 @@ Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
 Version: 0.8
 Author URI: http://bueltge.de/
-Last Change: 04.03.2010 14:27:13
+Last Change: 08.03.2010 11:57:09
 License: GPL
 */
 
@@ -252,15 +252,15 @@ if ( !class_exists('SecureWP') ) {
 			// set default options
 			$this->options_array = array('secure_wp_error' => '',
 																	 'secure_wp_version' => '1',
+																	 'secure_wp_admin_version' => '1',
 																	 'secure_wp_index' => '1',
-																	 'secure_wp_rsd' => '',
+																	 'secure_wp_rsd' => '1',
 																	 'secure_wp_wlw' => '',
 																	 'secure_wp_rcu' => '1',
 																	 'secure_wp_rpu' => '1',
-																	 'secure_wp_rtu' => '',
-																	 'secure_wp_wps' => '1',
-																	 'secure_wp_amurlr' => '1',
-																	 'secure_wp_admin_version' => '1'
+																	 'secure_wp_rtu' => '1',
+																	 'secure_wp_wps' => '',
+																	 'secure_wp_amurlr' => '1'
 																	);
 			
 			// add class WPlize for options in WP
@@ -592,7 +592,7 @@ if ( !class_exists('SecureWP') ) {
 		}
 		
 		/**
-		 *
+		 * block bad queries
 		 *
 		 * @package Secure WordPress
 		 * @see http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/

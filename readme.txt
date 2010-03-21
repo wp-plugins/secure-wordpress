@@ -58,6 +58,10 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.8.2 (03/21/2010) =
+* fix syntax error on ask for rights to block bad queries
+* add french language files
+
 = v0.8.1 (03/08/2010) =
 * remove versions-informations on backend with javascript
 * small changes

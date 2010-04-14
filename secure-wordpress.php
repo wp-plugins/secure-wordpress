@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.8.2
+ * @version 0.8.3
  */
  
 /*
@@ -10,9 +10,9 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.8.2
+Version: 0.8.3
 Author URI: http://bueltge.de/
-Last Change: 21.03.2010 20:12:07
+Last Change: 14.04.2010 11:10:21
 License: GPL
 */
 
@@ -605,10 +605,10 @@ if ( !class_exists('SecureWP') ) {
 			if ($user_ID) {
 				if ( !current_user_can('manage_options') ) {
 					if (strlen($_SERVER['REQUEST_URI']) > 255 || 
-						strpos($_SERVER['REQUEST_URI'], "eval(") || 
-						strpos($_SERVER['REQUEST_URI'], "CONCAT") || 
-						strpos($_SERVER['REQUEST_URI'], "UNION+SELECT") || 
-						strpos($_SERVER['REQUEST_URI'], "base64")) {
+						stripos($_SERVER['REQUEST_URI'], "eval(") || 
+						stripos($_SERVER['REQUEST_URI'], "CONCAT") || 
+						stripos($_SERVER['REQUEST_URI'], "UNION+SELECT") || 
+						stripos($_SERVER['REQUEST_URI'], "base64")) {
 							@header("HTTP/1.1 414 Request-URI Too Long");
 							@header("Status: 414 Request-URI Too Long");
 							@header("Connection: Close");

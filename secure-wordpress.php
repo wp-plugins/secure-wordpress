@@ -12,7 +12,7 @@ Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
 Version: 0.8.3
 Author URI: http://bueltge.de/
-Last Change: 14.04.2010 11:10:21
+Last Change: 14.04.2010 15:43:45
 License: GPL
 */
 
@@ -627,7 +627,7 @@ if ( !class_exists('SecureWP') ) {
 		function swp_update() {
 		
 			if ( !current_user_can('manage_options') )
-				wp_die( __('Options not update - you don&lsquo;t have the privilidges to do this!', FB_SWP_TEXTDOMAIN) );
+				wp_die( __('Options not updated - you don&lsquo;t have the privileges to do this!', FB_SWP_TEXTDOMAIN) );
 		
 			//cross check the given referer
 			check_admin_referer('secure_wp_settings_form');
@@ -647,7 +647,7 @@ if ( !class_exists('SecureWP') ) {
 		function swp_uninstall() {
 		
 			if ( !current_user_can('manage_options') )
-				wp_die( __('Entries was not delleted - you don&lsquo;t have the privilidges to do this!', FB_SWP_TEXTDOMAIN) );
+				wp_die( __('Entries were not deleted - you don&lsquo;t have the privileges to do this!', FB_SWP_TEXTDOMAIN) );
 		
 			//cross check the given referer
 			check_admin_referer('secure_wp_uninstall_form');
@@ -655,7 +655,7 @@ if ( !class_exists('SecureWP') ) {
 			if ( isset($_POST['deinstall_yes']) ) {
 				$this->deactivate();
 			} else {
-				wp_die( __('Entries was not delleted - check the checkbox!', FB_SWP_TEXTDOMAIN) ); 
+				wp_die( __('Entries were not deleted - check the checkbox!', FB_SWP_TEXTDOMAIN) ); 
 			}
 			
 			wp_redirect( 'plugins.php' );
@@ -675,11 +675,11 @@ if ( !class_exists('SecureWP') ) {
 				if ( current_user_can('manage_options') && isset($_POST['deinstall_yes']) ) {
 					$this->deactivate();
 					?>
-					<div id="message" class="updated fade"><p><?php _e('All entries in the database was cleared.', FB_SWP_TEXTDOMAIN); ?></p></div>
+					<div id="message" class="updated fade"><p><?php _e('All entries in the database were cleared.', FB_SWP_TEXTDOMAIN); ?></p></div>
 					<?php
 				} else {
 					?>
-					<div id="message" class="error"><p><?php _e('Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!', FB_SWP_TEXTDOMAIN); ?></p></div>
+					<div id="message" class="error"><p><?php _e('Entries were not deleted - check the checkbox or you don&lsquo;t have the privileges to do this!', FB_SWP_TEXTDOMAIN); ?></p></div>
 					<?php
 				}
 			}
@@ -813,7 +813,7 @@ if ( !class_exists('SecureWP') ) {
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_wps" id="secure_wp_wps" value="1" <?php if ( $secure_wp_wps == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and is add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href="http://blogsecurity.net/wpscan">http://blogsecurity.net/wpscan</a> and scan your site.', FB_SWP_TEXTDOMAIN); ?>
+										<?php _e('WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href="http://blogsecurity.net/wpscan">http://blogsecurity.net/wpscan</a> and scan your site.', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								
@@ -823,7 +823,7 @@ if ( !class_exists('SecureWP') ) {
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_amurlr" id="secure_wp_amurlr" value="1" <?php if ( $secure_wp_amurlr == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('Protect WordPress against malicious URL requests, see more informations on the <a href="http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/" title="read this post" >post from Jeff Starr</a>', FB_SWP_TEXTDOMAIN); ?>
+										<?php _e('Protect WordPress against malicious URL requests, read more information at the <a href="http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/" title="read this post" >post from Jeff Starr</a>', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 								
@@ -845,7 +845,7 @@ if ( !class_exists('SecureWP') ) {
 					<h3 id="uninstall"><?php _e('Clear Options', FB_SWP_TEXTDOMAIN) ?></h3>
 					<div class="inside">
 						
-						<p><?php _e('Click this button to delete settings of this plugin. Deactivating Secure WordPress plugin remove any data that may have been created.', FB_SWP_TEXTDOMAIN); ?></p>
+						<p><?php _e('Click this button to delete the settings of this plugin. Deactivating Secure WordPress plugin removes any data that may have been created.', FB_SWP_TEXTDOMAIN); ?></p>
 						<form name="deinstall_options" method="post" action="admin-post.php">
 							<?php if (function_exists('wp_nonce_field') === true) wp_nonce_field('secure_wp_uninstall_form'); ?>
 							<p id="submitbutton">

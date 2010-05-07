@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.8.3
+ * @version 0.8.4
  */
  
 /*
@@ -10,9 +10,9 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.8.3
+Version: 0.8.4
 Author URI: http://bueltge.de/
-Last Change: 14.04.2010 15:43:45
+Last Change: 05.05.2010 21:29:45
 License: GPL
 */
 
@@ -157,6 +157,36 @@ if ( !class_exists('SecureWP') ) {
 		}
 		
 		
+		// function for WP < 2.8
+		function get_plugins_url($path = '', $plugin = '') {
+			
+			if ( function_exists('plugin_url') )
+				return plugins_url($path, $plugin);
+			
+			if ( function_exists('is_ssl') )
+				$scheme = ( is_ssl() ? 'https' : 'http' );
+			else
+				$scheme = 'http';
+			$url = WP_PLUGIN_URL;
+			if ( 0 === strpos($url, 'http') ) {
+				if ( function_exists('is_ssl') && is_ssl() )
+					$url = str_replace( 'http://', "{$scheme}://", $url );
+			}
+		
+			if ( !empty($plugin) && is_string($plugin) )
+			{
+				$folder = dirname(plugin_basename($plugin));
+				if ('.' != $folder)
+					$url .= '/' . ltrim($folder, '/');
+			}
+		
+			if ( !empty($path) && is_string($path) && strpos($path, '..') === false )
+				$url .= '/' . ltrim($path, '/');
+		
+			return apply_filters('plugins_url', $url, $path, $plugin);
+		}
+		
+		
 		/**
 		 * init fucntions; check rights and options
 		 *
@@ -174,9 +204,6 @@ if ( !class_exists('SecureWP') ) {
 				// init default options on activate
 				if ( function_exists('register_activation_hook') )
 					register_activation_hook(__FILE__, array($this, 'activate') );
-				// deinstall options on deactive
-				if ( function_exists('register_uninstall_hook') )
-					register_uninstall_hook(__FILE__, array($this, 'deactivate') );
 				// deinstall options in deactivate
 				if ( function_exists('register_deactivation_hook') )
 					register_deactivation_hook(__FILE__, array($this, 'deactivate') );
@@ -188,9 +215,9 @@ if ( !class_exists('SecureWP') ) {
 				
 				// add javascript for metaboxes
 				if ( version_compare( $wp_version, '2.7alpha', '>' ) && file_exists(ABSPATH . '/wp-admin/admin-ajax.php') && (basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') ) {
-					wp_enqueue_script( 'secure_wp_plugin_win_page',  WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/js/page.php', array('jquery') );
+					wp_enqueue_script( 'secure_wp_plugin_win_page', $this->get_plugins_url( 'js/page.php', __FILE__ ), array('jquery') );
 				} elseif ( version_compare( $wp_version, '2.7alpha', '<' ) && file_exists(ABSPATH . '/wp-admin/admin-ajax.php') && (basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') ) {
-					wp_enqueue_script( 'secure_wp_plugin_win_page', WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/js/page_s27.php', array('jquery') );
+					wp_enqueue_script( 'secure_wp_plugin_win_page', $this->get_plugins_url( 'js/page_s27.php', __FILE__ ), array('jquery') );
 				}
 				add_action( 'wp_ajax_set_toggle_status', array($this, 'set_toggle_status') );
 			}
@@ -468,14 +495,15 @@ if ( !class_exists('SecureWP') ) {
 		function replace_wp_version() {
 		
 			if ( !is_admin() ) {
-				global $wp_version, $ver;
+				global $wp_version;
 				
 				// random value
 				$v = intval( rand(0, 9999) );
 				
 				if ( function_exists('the_generator') ) {
 					// eliminate version for wordpress >= 2.4
-					add_filter( 'the_generator', create_function('$a', "return null;") );
+					remove_filter( 'wp_head', 'wp_generator' );
+					//add_filter( 'the_generator', create_function('$a', "return null;") );
 					// add_filter( 'wp_generator_type', create_function( '$a', "return null;" ) );
 					
 					// for $wp_version and db_version
@@ -499,8 +527,7 @@ if ( !class_exists('SecureWP') ) {
 		 */
 		function remove_wp_version_on_admin() {
 			if ( !current_user_can('update_plugins') && is_admin() ) {
-				//wp_enqueue_style( 'remove-wp-version', WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/css/remove_wp_version.css' );
-				wp_enqueue_script( 'remove-wp-version',  WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/js/remove_wp_version.js', array('jquery') );
+				wp_enqueue_script( 'remove-wp-version',  $this->get_plugins_url( 'js/remove_wp_version.js', __FILE__ ), array('jquery') );
 				remove_action( 'update_footer', 'core_update_footer' );
 			}
 		}
@@ -535,7 +562,7 @@ if ( !class_exists('SecureWP') ) {
 		 */
 		function remove_plugin_update() {
 			if ( !current_user_can('update_plugins') ) {
-				wp_enqueue_style( 'remove-update-plugins', WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/css/remove_update_plugins.css' );
+				wp_enqueue_style( 'remove-update-plugins', $this->get_plugins_url( 'css/remove_update_plugins.css', __FILE__ ) );
 				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_init', 'wp_plugin_update_rows' );" ), 2 );
 				add_action( 'admin_init', create_function( '$a', "remove_action( 'admin_init', '_maybe_update_plugins' );" ), 2 );
 				add_action( 'admin_menu', create_function( '$a', "remove_action( 'load-plugins.php', 'wp_update_plugins' );" ) );
@@ -579,7 +606,14 @@ if ( !class_exists('SecureWP') ) {
 		 * @package Secure WordPress
 		 */
 		function remove_error_div() {
-			echo '<link rel="stylesheet" type="text/css" href="' . WP_PLUGIN_URL . '/' . FB_SWP_BASEFOLDER . '/css/remove_login.css' . '" />';
+			global $wp_version;
+			
+			$link = "\n";
+			$link .= '<link rel="stylesheet" type="text/css" href="';
+			$link .= $this->get_plugins_url( 'css/remove_login.css', __FILE__ );
+			$link .= '" />';
+			$link .= "\n";
+			echo $link;
 		}
 		
 		
@@ -866,7 +900,14 @@ if ( !class_exists('SecureWP') ) {
 					<div class="inside">
 					
 						<p>
-							<span style="float: left;">
+							<span style="float:right;width:120px;">
+								<a href="http://chart.apis.google.com/chart?cht=qr&amp;chs=120x120&amp;choe=UTF-8&amp;chl=http%3A%2F%2Fbueltge.de%2Fwunschliste"><img src="http://chart.apis.google.com/chart?cht=qr&amp;chs=120x120&amp;choe=UTF-8&amp;chl=http%3A%2F%2Fbueltge.de%2Fwunschliste" alt="QR Code" title="<?php _e('Scan this QR Code to donate for me', FB_SWP_TEXTDOMAIN); ?>" width="120" height="120" /></a>
+								<br />
+								<small><?php _e('Scan this QR Code to donate for me', FB_SWP_TEXTDOMAIN); ?></small>
+							</span>
+						</p>
+						<p>
+							<span style="float:left;">
 								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 									<input type="hidden" name="cmd" value="_s-xclick">
 									<input type="hidden" name="hosted_button_id" value="5295435">
@@ -876,6 +917,8 @@ if ( !class_exists('SecureWP') ) {
 							</span>
 						</p>
 						<p><?php _e('Further information: Visit the <a href="http://bueltge.de/wordpress-login-sicherheit-plugin/652/">plugin homepage</a> for further information or to grab the latest version of this plugin.', FB_SWP_TEXTDOMAIN); ?><br />&copy; Copyright 2007 - <?php echo date("Y"); ?> <a href="http://bueltge.de">Frank B&uuml;ltge</a> | <?php _e('You want to thank me? Visit my <a href="http://bueltge.de/wunschliste/">wishlist</a>.', FB_SWP_TEXTDOMAIN); ?></p>
+						<br class="clear"/>
+						
 					</div>
 				</div>
 			</div>

@@ -3,7 +3,7 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
-Tested up to: 3.0-alpha
+Tested up to: 3.0-beta1
 Stable tag: 0.1
 
 Secure your WordPress Installation with small functions.
@@ -55,6 +55,10 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.8.4 (05/05/2010) =
+* add methode for use the plugin also on ssl-installs
+* change uninstall method
+
 = v0.8.3 (04/14/2010) =
 * bugfix fox secure block bad queries on string for case-insensitive
 

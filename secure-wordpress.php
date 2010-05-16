@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author Frank B&uuml;ltge
- * @version 0.8.4
+ * @version 0.8.5
  */
  
 /*
@@ -10,9 +10,9 @@ Plugin Name: Secure WordPress
 Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
 Description: Little basics for secure your WordPress-installation.
 Author: Frank B&uuml;ltge
-Version: 0.8.4
+Version: 0.8.5
 Author URI: http://bueltge.de/
-Last Change: 05.05.2010 21:29:45
+Last Change: 15.05.2010 12:29:45
 License: GPL
 */
 
@@ -865,14 +865,237 @@ if ( !class_exists('SecureWP') ) {
 							
 							<p class="submit">
 								<input type="hidden" name="action" value="swp_update" />
-								<input type="submit" name="Submit" value="<?php _e('Save Changes', FB_SWP_TEXTDOMAIN); ?> &raquo;" />
+								<input type="submit" name="Submit" value="<?php _e('Save Changes', FB_SWP_TEXTDOMAIN); ?> &raquo;" class="button-primary" />
 							</p>
 						</form>
 
 					</div>
 				</div>
 			</div>
-			
+
+			<div id="poststuff" class="ui-sortable meta-box-sortables">
+				<div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
+					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
+					<h3 id="uninstall"><?php _e('Validate your site with a free malware scan from www.sitesecuritymonitor.com', FB_SWP_TEXTDOMAIN) ?></h3>
+					<div class="inside">
+						
+						<h4><?php _e('Take us for a Test Drive - Free Scan', FB_SWP_TEXTDOMAIN) ?></h4>
+						<p><a href="http://www.sitesecuritymonitor.com/free-scan-for-secure-wordpress"><img src="<?php echo $this->get_plugins_url( 'img/logo.png', __FILE__ ); ?>" alt="Logo SiteSecurityMonitor.com" width="498" height="165" style="float:right;" /></a><?php _e('We understand you may have questions:', FB_SWP_TEXTDOMAIN) ?></p>
+						<p><?php _e('What does this do for me?', FB_SWP_TEXTDOMAIN) ?></p>
+						<p><?php _e('Am I really safe? I need to be sure.', FB_SWP_TEXTDOMAIN) ?></p>
+						<p><?php _e('Rest Assured, Site Security Monitor has you covered.', FB_SWP_TEXTDOMAIN) ?></p>
+						<ol>
+							<li><?php _e('FREE scan looks for malware', FB_SWP_TEXTDOMAIN) ?></li>
+							<li><?php _e('FREE report of website vulnerabilities found', FB_SWP_TEXTDOMAIN) ?></li>
+							<li><?php _e('No setup, tuning and installation on your site - scan begins immediately', FB_SWP_TEXTDOMAIN) ?></li>
+						</ol>
+						<p><?php _e('We will deliver to you a detailed malware and web vulnerability report - FREE of charge.  You are free to use the report to resolve issues, show your boss that you are clean, or show your clients that the site you built is safe!', FB_SWP_TEXTDOMAIN) ?></p>
+						<p><?php _e('** Bonus: You will be able to use the Site Security Monitor "Safe-Seal" on your site after the scan - this shows the world that you are malware free!', FB_SWP_TEXTDOMAIN) ?></p>
+						
+						<h4><?php _e('The form', FB_SWP_TEXTDOMAIN) ?></h4>
+						<p><?php _e('Use the follow form or use it on <a href="http://www.sitesecuritymonitor.com/free-scan-for-secure-wordpress">our website</a>.', FB_SWP_TEXTDOMAIN) ?></p>
+						<form action="http://www.sitesecuritymonitor.com/Default.aspx?app=iframeform&hidemenu=true&ContactFormID=26978" method="post">
+							<input type="hidden" name="FormSubmitRedirectURL" id="FormSubmitRedirectURL" value="http://www.sitesecuritymonitor.com" >
+							<input type="hidden" name="Lead_Src" id="LeadSrc" value="Get a Free Scan" />
+
+							<script type='text/javascript' language='javascript'>/* <![CDATA[ */
+								HubSpotFormSpamCheck_LeadGen_ContactForm_26978_m0 = function() {
+								var key = document.getElementById('LeadGen_ContactForm_26978_m0spam_check_key').value;
+								var sig = '';
+								for (var x = 0; x< key.length; x++ ) {
+									sig += key.charCodeAt(x)+13;
+								}
+								document.getElementById('LeadGen_ContactForm_26978_m0spam_check_sig').value = sig;
+								// Set the hidden field to contain the user token
+								var results = document.cookie.match ( '(^|;) ?hubspotutk=([^;]*)(;|$)' );
+								if (results && results[2]) {
+									document.getElementById('LeadGen_ContactForm_26978_m0submitter_user_token').value =  results[2];
+								} else if (window['hsut']) {
+									document.getElementById('LeadGen_ContactForm_26978_m0submitter_user_token').value = window['hsut'];
+								}
+								return true;
+								};
+							/*]]>*/</script>
+
+							<input type="hidden" id='LeadGen_ContactForm_26978_m0submitter_user_token' name='LeadGen_ContactForm_26978_m0submitter_user_token'  value='' />
+							<input type="hidden" name='ContactFormId'  value='26978' />
+							<input type="hidden" id='LeadGen_ContactForm_26978_m0spam_check_key' name='LeadGen_ContactForm_26978_m0spam_check_key'  value='jjnjrgslmerhsnofgnqqdsgnrsseldqfkpqssqkfvvweukiulhuqnmgmtvls' /><input type='hidden' id='LeadGen_ContactForm_26978_m0spam_check_sig' name='LeadGen_ContactForm_26978_m0spam_check_sig'  value='' /><div class='ContactFormItems FormClassID_26978'><table border="0" cellspacing="0" cellpadding="5">
+
+							<table class="form-table">
+								
+								<tr valign="top">
+									<th scope="row">
+										<label for="LeadGen_ContactForm_26978_m0_FullName"><?php _e('Full Name', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>	
+										<input type="Text" name="LeadGen_ContactForm_26978_m0:FullName" class="StandardI AutoFormInput LeadGen_ContactForm_26978_m0_AutoForm" id="LeadGen_ContactForm_26978_m0_FullName" value="" /> <?php _e('*required', FB_SWP_TEXTDOMAIN); ?>
+									</td>
+								</tr>
+								<tr valign="top">
+									<th scope="row">
+										<label for="LeadGen_ContactForm_26978_m0_Email"><?php _e('eMail Adress', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<input type="Text" name="LeadGen_ContactForm_26978_m0:Email" class="StandardI AutoFormInput LeadGen_ContactForm_26978_m0_AutoForm" id="LeadGen_ContactForm_26978_m0_Email" value="" /> <?php _e('*required', FB_SWP_TEXTDOMAIN); ?><?php _e(', eMail Address must match domain name', FB_SWP_TEXTDOMAIN); ?>
+									</td>
+								</tr>
+								<tr valign="top">
+									<th scope="row">
+										<label for="LeadGen_ContactForm_26978_m0_WebSite"><?php _e('Website', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<input type="Text" name="LeadGen_ContactForm_26978_m0:WebSite" class="StandardI AutoFormInput LeadGen_ContactForm_26978_m0_AutoForm" id="LeadGen_ContactForm_26978_m0_WebSite" value="" /> <?php _e('*required', FB_SWP_TEXTDOMAIN); ?>
+									</td>
+								</tr>
+								<tr valign="top">
+									<th scope="row">
+										<label for="LeadGen_ContactForm_26978_m0_Phone"><?php _e('Phone', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<input type="Text" name="LeadGen_ContactForm_26978_m0:Phone" class="StandardI AutoFormInput LeadGen_ContactForm_26978_m0_AutoForm" id="LeadGen_ContactForm_26978_m0_Phone" value="" /> <?php _e('*required', FB_SWP_TEXTDOMAIN); ?>
+									</td>
+								</tr>
+								<tr valign="top">
+									<th scope="row">
+										<label for="LeadGen_ContactForm_26978_m0_Field_Checkboxes_5_cb_0"><?php _e('Yes, I need help!', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>	
+										<input type="checkbox" name="LeadGen_ContactForm_26978_m0:Field_Checkboxes_5" id="LeadGen_ContactForm_26978_m0_Field_Checkboxes_5_cb_0" value="Call me"  > <?php _e('Call me', FB_SWP_TEXTDOMAIN); ?>
+									</td>
+								</tr>
+								<tr valign="top">
+									<th scope="row">
+										<label for="LeadGen_ContactForm_26978_m0_Field_Checkboxes_7_cb_0"><?php _e('Terms and Conditions', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>	
+										<input type="checkbox" name="LeadGen_ContactForm_26978_m0:Field_Checkboxes_7" id="LeadGen_ContactForm_26978_m0_Field_Checkboxes_7_cb_0" value="I accept"  > <?php _e('*required', FB_SWP_TEXTDOMAIN); ?><?php _e(', I accept', FB_SWP_TEXTDOMAIN); ?>
+									</td>
+								</tr>
+								
+							</table>
+							
+							<p class="submit">
+								<input onclick='return HubSpotFormSpamCheck_LeadGen_ContactForm_26978_m0();' class='button' type='submit' name='LeadGen_ContactForm_Submit_LeadGen_ContactForm_26978_m0' value="<?php _e('Get my Free Web Scan', FB_SWP_TEXTDOMAIN); ?> &raquo;">
+							</p>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+
+			<div id="poststuff" class="ui-sortable meta-box-sortables">
+				<div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
+					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
+					<h3 id="uninstall"><?php _e('Safe Seal', FB_SWP_TEXTDOMAIN) ?></h3>
+					<div class="inside">
+
+						<p><?php _e('Thankyou for using our scan. You are free to use the scan below (outputs HTML for easy copy-pasting) into your blog.  This seal does not give you scanning services - it simple does the basics of wordpress security - as recommended by the community and our own experiences with our customers.<br/>Should you wish to get regular vulnerability and malware scanning services, please <a href="http://www.sitesecuritymonitor.com/wordpress-secure-plugin/">see our main page here...</a>', FB_SWP_TEXTDOMAIN ); ?></p>
+						
+						<script type="text/javascript">
+							function updateSealPreview()
+							{
+								var seal_color = document.forms['seal_form'].seal_color.options[document.forms['seal_form'].seal_color.options.selectedIndex].value;
+								var seal_text = document.forms['seal_form'].seal_text.options[document.forms['seal_form'].seal_text.options.selectedIndex].value;
+								var seal_orientation = document.forms['seal_form'].seal_orientation.options[document.forms['seal_form'].seal_orientation.options.selectedIndex].value;
+								var seal_border = document.forms['seal_form'].seal_border.checked?"border":"noborder";
+								var country = document.forms['seal_form'].country.options[document.forms['seal_form'].country.options.selectedIndex].value;
+								var image_name = "https://reporting.sitesecuritymonitor.com/img_wp/<?php echo $_SERVER['HTTP_HOST']; ?>/" + seal_color + "_" + seal_text + "_" + seal_orientation + "_notext_" +  seal_border  + ".png";
+								document.seal_preview.src = image_name;
+								var gen_code = "<!-- Start sitesecuritymonitor.com code -->\n";
+								gen_code += "<a target='_blank' href='https://reporting.sitesecuritymonitor.com/clients/go.x?i=l0&site=<?php echo $_SERVER['HTTP_HOST']; ?>&l=" + country + "' title='Web Site Security Scanning - www.sitesecuritymonitor.com' alt='sitesecuritymonitor.com Security Seal'>\n";
+								gen_code += "<img src='" + image_name +  "' oncontextmenu='return false;' border='0' alt='sitesecuritymonitor.com seal' />\n";
+								gen_code += "</a>\n";
+								gen_code += "<br />\n";
+								gen_code += "<span style=\"font-size:8px; font-face:Arial;\">Protected by WP-Secure Plugin<BR><a href='http://www.sitesecuritymonitor.com'>SiteSecurityMonitor.com</a></span>\n";
+								gen_code += "<!-- End sitesecuritymonitor.com code -->\n";
+								document.getElementById('seal_code').value = gen_code;
+							}
+						</script>
+						<form name="seal_form" action="javascript:void(0);" method="post" onsubmit="return false;">
+
+							
+							<table class="form-table">
+								<tr valign="top">
+									<th scope="row">
+										<label for="seal_color"><?php _e('Color', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<select id="seal_color" name="seal_color" onchange="javascript:updateSealPreview();">
+											<option value="green" selected="selected"><?php _e('Green', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="blue"><?php _e('Blue', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="red"><?php _e('Red', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="brown"><?php _e('Brown', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="gray"><?php _e('Gray', FB_SWP_TEXTDOMAIN); ?></option>
+										</select>
+									</td>
+									<td rowspan="5">
+										<img src="" name="seal_preview" oncontextmenu='return false;' style="float:right; margin:10px;" />
+									</td>
+								</tr>
+								<tr valign="top">
+									<th scope="row">
+										<label for="seal_text"><?php _e('Text', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<select id="seal_text" name="seal_text" onchange="javascript:updateSealPreview();">
+											<option value="pr" selected="selected"><?php _e('Protected', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="se"><?php _e('Secured', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="sc"><?php _e('Scanned', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="pb"><?php _e('Protected by', FB_SWP_TEXTDOMAIN); ?></option>
+										</select>
+									</td>
+								</tr>
+								<tr valign="top">
+									<th scope="row">
+										<label for="seal_orientation"><?php _e('Orientation', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<select id="seal_orientation" name="seal_orientation" onchange="javascript:updateSealPreview();">
+											<option value="h" selected="selected"><?php _e('Horizontal', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="v"><?php _e('Vertical', FB_SWP_TEXTDOMAIN); ?></option>
+										</select>
+									</td>
+								</tr>
+								<tr valign="top">
+									<th scope="row">
+										<label for="seal_border"><?php _e('Image border', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<input id="seal_border" type="checkbox" name="seal_border" onchange="javascript:updateSealPreview();" />
+									</td>
+								</tr>
+								<tr valign="top">
+									<th scope="row">
+										<label for="country"><?php _e('Language', FB_SWP_TEXTDOMAIN); ?></label>
+									</th>
+									<td>
+										<select id="country" name="country" onchange="javascript:updateSealPreview();">
+											<option value="EN-US" selected="selected"><?php _e('English (US)', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="EN-GB"><?php _e('English (UK)', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="ES"><?php _e('Spanish', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="DE"><?php _e('German', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="IT"><?php _e('Italian', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="JP"><?php _e('Japanese', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="CN"><?php _e('Chinese (Simplified)', FB_SWP_TEXTDOMAIN); ?></option>
+											<option value="CNT"><?php _e('Chinese (Traditional)', FB_SWP_TEXTDOMAIN); ?></option>
+										</select>
+									</td>
+								</tr>
+							</table>
+
+						</form>
+
+						<h4><?php _E( 'Source', FB_SWP_TEXTDOMAIN ); ?></h4>
+						<p><?php _e('Here is your generated code. Place it on your website (as html widget) to show that you are protected.', FB_SWP_TEXTDOMAIN); ?></p>
+						<textarea id="seal_code" name="seal_code" rows="10" cols="50" class="large-text code"></textarea>
+
+						<script type="text/javascript">
+								updateSealPreview();
+						</script>
+					</div>
+				</div>
+			</div>
+
 			<div id="poststuff" class="ui-sortable meta-box-sortables">
 				<div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
 					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>

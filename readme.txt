@@ -3,7 +3,7 @@ Contributors: Bueltge
 Donate link: http://bueltge.de/wunschliste/
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
-Tested up to: 3.0-beta1
+Tested up to: 3.0-beta2
 Stable tag: 0.1
 
 Secure your WordPress Installation with small functions.
@@ -22,8 +22,8 @@ Little help to secure your WordPress installation: Remove Error information on l
 1. hide wp-version in backend-dashboard for non-admins
 1. Add string for use [WP Scanner](http://blogsecurity.net/wpscan "WP Scanner")
 1. Block bad queries
+1. Validate your site with a free malware and vulnerabilities scan with [SiteSecurityMonitor.com](http://www.sitesecuritymonitor.com/)
 
-Please visit [the official website](http://bueltge.de/wordpress-login-sicherheit-plugin/652/#historie "Secure WordPress") for further details and the latest information on this plugin.
 
 = Localizations =
 Italien translation by [Gianni Diurno](http://gidibao.net/ "Gianni Diurno"), polish translation by Michal Maciejewski, belorussian file by [Fat Cow](http://www.fatcow.com/ "Fat Cow"), ukrainian translation by [AzzePis](http://wordpress.co.ua/plugins/ "AzzePis"), russian language by [Dmitriy Donchenko](http://blogproblog.com/), hungarian language files by [K&ouml;rmendi P&eacute;ter](http://www.seo-hungary.com/ "K&ouml;rmendi P&eacute;ter"), danish language files by [GeorgWP](http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=175 "S&oslash;g efter downloads")m spanish language files by [Pablo Jim&eacute;nez](http://www.ministeriosccc.org" www.ministeriosccc.org"), chinese language (zh_CN) by [tanghaiwei](http://dd54.net), french translation files by [Jez007](http://forum.gmstemple.com/ "forum.gmstemple.com"), japanese translation by [Fumito Mizuno](http://ounziw.com/ "Standing on the Shoulder of Linus") and dutch translation by [Rene](http://wpwebshop.com "wpwebshop.com"). Thanks a lot.

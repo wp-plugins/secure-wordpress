@@ -55,6 +55,10 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.8.5 (05/16/2010) =
+* small code changes for WP coding standards
+* add free malware and vulnerabilities scan for test this; the scan has most interested informations and scan all of the server
+
 = v0.8.4 (05/05/2010) =
 * add methode for use the plugin also on ssl-installs
 * change uninstall method

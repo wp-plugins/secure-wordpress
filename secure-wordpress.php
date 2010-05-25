@@ -1085,7 +1085,7 @@ if ( !class_exists('SecureWP') ) {
 
 						</form>
 
-						<h4><?php _E( 'Source', FB_SWP_TEXTDOMAIN ); ?></h4>
+						<h4><?php _e( 'Source', FB_SWP_TEXTDOMAIN ); ?></h4>
 						<p><?php _e('Here is your generated code. Place it on your website (as html widget) to show that you are protected.', FB_SWP_TEXTDOMAIN); ?></p>
 						<textarea id="seal_code" name="seal_code" rows="10" cols="50" class="large-text code"></textarea>
 

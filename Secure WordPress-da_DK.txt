@@ -1,4 +1,4 @@
-Secure WordPress 0.8
+Secure WordPress 0.8.5
 
 Sprogfilerne skal ligge i plugin-mappen secure-wordpress/languages
 Oplysning om stierne er pakket med.

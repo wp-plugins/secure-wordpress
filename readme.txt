@@ -55,6 +55,9 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v0.8.6 (06/18/2010) =
+* fix a problem with https://; see [Ticket #13941](http://core.trac.wordpress.org/ticket/13941)
+
 = v0.8.5 (05/16/2010) =
 * small code changes for WP coding standards
 * add free malware and vulnerabilities scan for test this; the scan has most interested informations and scan all of the server

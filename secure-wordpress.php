@@ -1000,7 +1000,7 @@ if ( !class_exists('SecureWP') ) {
 					<h3 id="uninstall"><?php _e('Safe Seal', FB_SWP_TEXTDOMAIN) ?></h3>
 					<div class="inside">
 
-						<p><?php _e('Thankyou for using our scan. You are free to use the scan below (outputs HTML for easy copy-pasting) into your blog.  This seal does not give you scanning services - it simple does the basics of wordpress security - as recommended by the community and our own experiences with our customers.<br/>Should you wish to get regular vulnerability and malware scanning services, please <a href="http://www.sitesecuritymonitor.com/wordpress-secure-plugin/">see our main page here...</a>', FB_SWP_TEXTDOMAIN ); ?></p>
+						<p><?php _e('Thankyou for using our plugin! You are free to use the scan below (outputs HTML for easy copy-pasting) into your blog.  This seal does not give you scanning services - it simple does the basics of wordpress security - as recommended by the community and our own experiences with our customers.<br/>Should you wish to get regular vulnerability and malware scanning services, please <a href="http://www.sitesecuritymonitor.com/wordpress-secure-plugin/">see our main page here...</a>', FB_SWP_TEXTDOMAIN ); ?></p>
 						
 						<script type="text/javascript">
 							function updateSealPreview()
@@ -1103,6 +1103,8 @@ if ( !class_exists('SecureWP') ) {
 						<script type="text/javascript">
 								updateSealPreview();
 						</script>
+
+<iframe src="http://www.facebook.com/plugins/likebox.php?id=185550966885&amp;width=292&amp;connections=10&amp;stream=true&amp;header=true&amp;height=587" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:587px;" allowTransparency="true"></iframe>
 					</div>
 				</div>
 			</div>

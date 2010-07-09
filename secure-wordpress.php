@@ -1,20 +1,22 @@
 <?php
 /**
  * @package Secure WordPress
- * @author Frank B&uuml;ltge
- * @version 0.8.6
+ * @author jremillard
+ * @version 1.0
  */
  
-/*
-Plugin Name: Secure WordPress
-Plugin URI: http://bueltge.de/wordpress-login-sicherheit-plugin/652/
-Description: Little basics for secure your WordPress-installation.
-Author: Frank B&uuml;ltge
-Version: 0.8.6
-Author URI: http://bueltge.de/
-Last Change: 18.06.2010 11:29:58
-License: GPL
-*/
+/**
+ * Plugin Name: Secure WordPress
+ * Plugin URI: http://www.sitesecuritymonitor.com/secure-wordpress-plugin
+ * Text Domain: secure_wp
+ * Domain Path: /languages
+ * Description: Little basics for secure your WordPress-installation.
+ * Author: jremillard
+ * Version: 1.0
+ * Author URI: http://www.sitesecuritymonitor.com/
+ * Last Change: 09.07.2010 12:18:26
+ * License: GPL
+ */
 
 global $wp_version;
 if ( !function_exists ('add_action') || version_compare($wp_version, "2.6alpha", "<") ) {
@@ -25,22 +27,6 @@ if ( !function_exists ('add_action') || version_compare($wp_version, "2.6alpha",
 	header('Status: 403 Forbidden');
 	header('HTTP/1.1 403 Forbidden');
 	exit($exit_msg);
-}
-
-if ( function_exists ('add_action') ) {
-	// Pre-2.6 compatibility
-	if ( !defined( 'WP_CONTENT_URL' ) )
-		define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
-	if ( !defined( 'WP_PLUGIN_URL' ) )
-		define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
-	if ( !defined( 'WP_PLUGIN_DIR' ) )
-		define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
-	
-	// plugin definitions
-	define( 'FB_SWP_BASENAME', plugin_basename(__FILE__) );
-	define( 'FB_SWP_BASEFOLDER', plugin_basename( dirname( __FILE__ ) ) );
-	define( 'FB_SWP_FILENAME', str_replace( FB_SWP_BASEFOLDER.'/', '', plugin_basename(__FILE__) ) );
-	define( 'FB_SWP_TEXTDOMAIN', 'secure_wp' );
 }
 
 /**
@@ -91,6 +77,23 @@ if ( isset($_GET['resource']) && !empty($_GET['resource']) ) {
 
 
 if ( !class_exists('SecureWP') ) {
+
+	if ( function_exists ('add_action') ) {
+		// Pre-2.6 compatibility
+		if ( !defined( 'WP_CONTENT_URL' ) )
+			define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
+		if ( !defined( 'WP_PLUGIN_URL' ) )
+			define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
+		if ( !defined( 'WP_PLUGIN_DIR' ) )
+			define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
+		
+		// plugin definitions
+		define( 'FB_SWP_BASENAME', plugin_basename(__FILE__) );
+		define( 'FB_SWP_BASEFOLDER', plugin_basename( dirname( __FILE__ ) ) );
+		define( 'FB_SWP_FILENAME', str_replace( FB_SWP_BASEFOLDER.'/', '', plugin_basename(__FILE__) ) );
+		define( 'FB_SWP_TEXTDOMAIN', 'secure_wp' );
+	}
+
 	class SecureWP {
 		
 		// constructor
@@ -738,6 +741,7 @@ if ( !class_exists('SecureWP') ) {
 			$secure_wp_win_opt       = $GLOBALS['WPlize']->get_option('secure_wp_win_opt');
 		?>
 		<div class="wrap">
+			<div id="icon-sitesecuritymonitor" class="icon32" style="background: url('<?php echo $this->get_plugins_url( 'img/h2logo.png', __FILE__ ); ?>') no-repeat;"><br /></div>
 			<h2><?php _e('Secure WordPress', FB_SWP_TEXTDOMAIN); ?></h2>
 			<br class="clear" />
 			
@@ -901,7 +905,8 @@ if ( !class_exists('SecureWP') ) {
 							<input type="hidden" name="FormSubmitRedirectURL" id="FormSubmitRedirectURL" value="http://www.sitesecuritymonitor.com" >
 							<input type="hidden" name="Lead_Src" id="LeadSrc" value="Get a Free Scan" />
 
-							<script type='text/javascript' language='javascript'>/* <![CDATA[ */
+							<script type='text/javascript' language='javascript'>
+								/* <![CDATA[ */
 								HubSpotFormSpamCheck_LeadGen_ContactForm_26978_m0 = function() {
 								var key = document.getElementById('LeadGen_ContactForm_26978_m0spam_check_key').value;
 								var sig = '';
@@ -918,11 +923,14 @@ if ( !class_exists('SecureWP') ) {
 								}
 								return true;
 								};
-							/*]]>*/</script>
+								/*]]>*/
+							</script>
 
 							<input type="hidden" id='LeadGen_ContactForm_26978_m0submitter_user_token' name='LeadGen_ContactForm_26978_m0submitter_user_token'  value='' />
 							<input type="hidden" name='ContactFormId'  value='26978' />
-							<input type="hidden" id='LeadGen_ContactForm_26978_m0spam_check_key' name='LeadGen_ContactForm_26978_m0spam_check_key'  value='jjnjrgslmerhsnofgnqqdsgnrsseldqfkpqssqkfvvweukiulhuqnmgmtvls' /><input type='hidden' id='LeadGen_ContactForm_26978_m0spam_check_sig' name='LeadGen_ContactForm_26978_m0spam_check_sig'  value='' /><div class='ContactFormItems FormClassID_26978'><table border="0" cellspacing="0" cellpadding="5">
+							<input type="hidden" id='LeadGen_ContactForm_26978_m0spam_check_key' name='LeadGen_ContactForm_26978_m0spam_check_key'  value='jjnjrgslmerhsnofgnqqdsgnrsseldqfkpqssqkfvvweukiulhuqnmgmtvls' />
+							<input type='hidden' id='LeadGen_ContactForm_26978_m0spam_check_sig' name='LeadGen_ContactForm_26978_m0spam_check_sig'  value='' />
+							<div class='ContactFormItems FormClassID_26978'><table border="0" cellspacing="0" cellpadding="5">
 
 							<table class="form-table">
 								
@@ -1114,36 +1122,6 @@ if ( !class_exists('SecureWP') ) {
 								<input type="checkbox" name="deinstall_yes" />
 							</p>
 						</form>
-	
-					</div>
-				</div>
-			</div>
-			
-			<div id="poststuff" class="ui-sortable meta-box-sortables">
-				<div id="secure_wp_win_about" class="postbox <?php echo $secure_wp_win_about ?>" >
-					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
-					<h3><?php _e('About the plugin', FB_SWP_TEXTDOMAIN) ?></h3>
-					<div class="inside">
-					
-						<p>
-							<span style="float:right;width:120px;">
-								<a href="http://chart.apis.google.com/chart?cht=qr&amp;chs=120x120&amp;choe=UTF-8&amp;chl=http%3A%2F%2Fbueltge.de%2Fwunschliste"><img src="http://chart.apis.google.com/chart?cht=qr&amp;chs=120x120&amp;choe=UTF-8&amp;chl=http%3A%2F%2Fbueltge.de%2Fwunschliste" alt="QR Code" title="<?php _e('Scan this QR Code to donate for me', FB_SWP_TEXTDOMAIN); ?>" width="120" height="120" /></a>
-								<br />
-								<small><?php _e('Scan this QR Code to donate for me', FB_SWP_TEXTDOMAIN); ?></small>
-							</span>
-						</p>
-						<p>
-							<span style="float:left;">
-								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-									<input type="hidden" name="cmd" value="_s-xclick">
-									<input type="hidden" name="hosted_button_id" value="5295435">
-									<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-									<img alt="" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1">
-								</form>
-							</span>
-						</p>
-						<p><?php _e('Further information: Visit the <a href="http://bueltge.de/wordpress-login-sicherheit-plugin/652/">plugin homepage</a> for further information or to grab the latest version of this plugin.', FB_SWP_TEXTDOMAIN); ?><br />&copy; Copyright 2007 - <?php echo date("Y"); ?> <a href="http://bueltge.de">Frank B&uuml;ltge</a> | <?php _e('You want to thank me? Visit my <a href="http://bueltge.de/wunschliste/">wishlist</a>.', FB_SWP_TEXTDOMAIN); ?></p>
-						<br class="clear"/>
 						
 					</div>
 				</div>

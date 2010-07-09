@@ -3,9 +3,7 @@ msgstr ""
 "Project-Id-Version: Secure WordPress\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-16 12:34+0100\n"
-"PO-Revision-Date: 2010-05-16 12:51+0100\n"
-"Last-Translator: Frank Bueltge <frank@bueltge.de>\n"
-"Language-Team: Frank Bültge <frank@bueltge.de>\n"
+"PO-Revision-Date: 2010-07-09 13:20+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,7 +12,13 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Textdomain-Support: yes\n"
+"Language-Team: \n"
+"Last-Translator: Frank Bueltge <frank@bueltge.de>\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: secure-wordpress.php:13
+msgid "Little basics for secure your WordPress-installation."
+msgstr "Kleine Grundlagen für die Sicherheit deiner WordPress Installation"
 
 #: secure-wordpress.php:364
 msgid "Settings"
@@ -24,7 +28,7 @@ msgstr "Einstellungen"
 #: secure-wordpress.php:393
 #: secure-wordpress.php:440
 msgid "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Documentation</a>"
-msgstr "<a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">Dokumentation</a> (<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">en</a>)"
+msgstr "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Dokumentation</a>"
 
 # @ secure_wp
 #: secure-wordpress.php:416
@@ -438,24 +442,4 @@ msgstr "Nutze diese Möglichkeit um alle Einstellungen des Plugins in der Datenb
 #: secure-wordpress.php:1110
 msgid "Delete Options"
 msgstr "Einstellungen löschen"
-
-# @ secure_wp
-#: secure-wordpress.php:1122
-msgid "About the plugin"
-msgstr "Über das Plugin"
-
-#: secure-wordpress.php:1127
-#: secure-wordpress.php:1129
-msgid "Scan this QR Code to donate for me"
-msgstr "Nutze diesen QR Code für eine Spende an mich"
-
-# @ secure_wp
-#: secure-wordpress.php:1142
-msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
-msgstr "Weitere Information: Besuche die <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">Plugin homepage</a> für mehr Information oder um die aktuelle Version des Plugins herunter zu laden."
-
-# @ secure_wp
-#: secure-wordpress.php:1142
-msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
-msgstr "Du willst Danke sagen? Besuche meine <a href=\"http://bueltge.de/wunschliste/\">Wunschliste</a>."
 

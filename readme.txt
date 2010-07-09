@@ -1,6 +1,5 @@
 === Secure WordPress ===
 Contributors: jremillard
-Donate link: http://bueltge.de/wunschliste/
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
 Tested up to: 3.0

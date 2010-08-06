@@ -51,6 +51,9 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v1.0.1 (08/06/2010) =
+* add more hooks to remove WordPress Version; was change with WP3.0
+
 = v1.0 (07/09/2010) =
 * relese stable version
 * small changes on the source

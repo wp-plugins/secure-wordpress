@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author jremillard
- * @version 1.0
+ * @version 1.0.1
  */
 
 /**
@@ -12,16 +12,16 @@
  * Domain Path: /languages
  * Description: Little basics for secure your WordPress-installation.
  * Author: jremillard
- * Version: 1.0
+ * Version: 1.0.1
  * Author URI: http://www.sitesecuritymonitor.com/
- * Last Change: 09.07.2010 12:18:26
+ * Last Change: 06.08.2010 07:41:48
  * License: GPL
  */
 
 global $wp_version;
 if ( !function_exists ('add_action') || version_compare($wp_version, "2.6alpha", "<") ) {
 	if (function_exists ('add_action'))
-		$exit_msg = 'The plugin <em><a href="http://bueltge.de/wordpress-login-sicherheit-plugin/652/">Secure WordPress</a></em> requires WordPress 2.6 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please update WordPress</a> or delete the plugin.';
+		$exit_msg = 'The plugin <em><a href="http://wordpress.org/extend/plugins/secure-wordpress/">Secure WordPress</a></em> requires WordPress 2.6 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please update WordPress</a> or delete the plugin.';
 	else
 		$exit_msg = '';
 	header('Status: 403 Forbidden');
@@ -466,7 +466,7 @@ if ( !class_exists('SecureWP') ) {
 
 			if( basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') {
 				$plugin_data = get_plugin_data( __FILE__ );
-				printf('%1$s plugin | ' . __('Version') . ' <a href="http://bueltge.de/wordpress-login-sicherheit-plugin/652/#historie" title="' . __('History', FB_SWP_TEXTDOMAIN) . '">%2$s</a> | ' . __('Author') . ' %3$s<br />', $plugin_data['Title'], $plugin_data['Version'], $plugin_data['Author']);
+				printf('%1$s plugin | ' . __('Version') . ' <a href="http://wordpress.org/extend/plugins/secure-wordpress/changelog/" title="' . __('History', FB_SWP_TEXTDOMAIN) . '">%2$s</a> | ' . __('Author') . ' %3$s<br />', $plugin_data['Title'], $plugin_data['Version'], $plugin_data['Author']);
 			}
 		}
 
@@ -494,7 +494,7 @@ if ( !class_exists('SecureWP') ) {
 		/**
 		 * Replace the WP-version with a random string &lt; WP 2.4
 		 * and eliminate WP-version &gt; WP 2.4
-		 * http://bueltge.de/wordpress-version-verschleiern-plugin/602/
+		 * @link http://bueltge.de/wordpress-version-verschleiern-plugin/602/
 		 *
 		 * @package Secure WordPress
 		 */
@@ -503,23 +503,34 @@ if ( !class_exists('SecureWP') ) {
 			if ( !is_admin() ) {
 				global $wp_version;
 
-				// random value
+				// random values
 				$v = intval( rand(0, 9999) );
-
+				$d = intval( rand(9999, 99999) );
+				$m = intval( rand(99999, 999999) );
+				$t = intval( rand(999999, 9999999) );
+				
 				if ( function_exists('the_generator') ) {
 					// eliminate version for wordpress >= 2.4
 					remove_filter( 'wp_head', 'wp_generator' );
-					//add_filter( 'the_generator', create_function('$a', "return null;") );
-					// add_filter( 'wp_generator_type', create_function( '$a', "return null;" ) );
+					foreach ( 
+						array( 'rss2_head', 'commentsrss2_head', 'rss_head', 'rdf_header', 'atom_head', 'comments_atom_head', 'opml_head', 'app_head' ) as $action ) {
+						remove_action( $action, 'the_generator' );
+					}
 
-					// for $wp_version and db_version
+					// for vars
 					$wp_version = $v;
+					$wp_db_version = $d;
+					$manifest_version = $m;
+					$tinymce_version = $t;
 				} else {
 					// for wordpress < 2.4
 					add_filter( "bloginfo_rss('version')", create_function('$a', "return $v;") );
 
 					// for rdf and rss v0.92
 					$wp_version = $v;
+					$wp_db_version = $d;
+					$manifest_version = $m;
+					$tinymce_version = $t;
 				}
 			}
 
@@ -930,8 +941,7 @@ if ( !class_exists('SecureWP') ) {
 							<input type="hidden" name='ContactFormId'  value='26978' />
 							<input type="hidden" id='LeadGen_ContactForm_26978_m0spam_check_key' name='LeadGen_ContactForm_26978_m0spam_check_key'  value='jjnjrgslmerhsnofgnqqdsgnrsseldqfkpqssqkfvvweukiulhuqnmgmtvls' />
 							<input type='hidden' id='LeadGen_ContactForm_26978_m0spam_check_sig' name='LeadGen_ContactForm_26978_m0spam_check_sig'  value='' />
-							<div class='ContactFormItems FormClassID_26978'><table border="0" cellspacing="0" cellpadding="5">
-
+							
 							<table class="form-table">
 
 								<tr valign="top">
@@ -989,7 +999,7 @@ if ( !class_exists('SecureWP') ) {
 								<input onclick='return HubSpotFormSpamCheck_LeadGen_ContactForm_26978_m0();' class='button' type='submit' name='LeadGen_ContactForm_Submit_LeadGen_ContactForm_26978_m0' value="<?php _e('Get my Free Web Scan', FB_SWP_TEXTDOMAIN); ?> &raquo;">
 							</p>
 						</form>
-
+						
 					</div>
 				</div>
 			</div>
@@ -1023,7 +1033,6 @@ if ( !class_exists('SecureWP') ) {
 							}
 						</script>
 						<form name="seal_form" action="javascript:void(0);" method="post" onsubmit="return false;">
-
 
 							<table class="form-table">
 								<tr valign="top">
@@ -1103,8 +1112,8 @@ if ( !class_exists('SecureWP') ) {
 						<script type="text/javascript">
 								updateSealPreview();
 						</script>
-
-<iframe src="http://www.facebook.com/plugins/likebox.php?id=346589752350&amp;width=292&amp;connections=10&amp;stream=true&amp;header=true&amp;height=587" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:587px;" allowTransparency="true"></iframe>
+						
+						<iframe src="http://www.facebook.com/plugins/likebox.php?id=346589752350&amp;width=680&amp;connections=10&amp;stream=true&amp;header=true&amp;height=587" scrolling="no" frameborder="0" style="margin:10px auto; border:none; overflow:hidden; width:680px; height:587px;" allowTransparency="true"></iframe>
 					</div>
 				</div>
 			</div>

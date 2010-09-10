@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author jremillard
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 /**
@@ -12,9 +12,9 @@
  * Domain Path: /languages
  * Description: Little basics for secure your WordPress-installation.
  * Author: jremillard
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author URI: http://www.sitesecuritymonitor.com/
- * Last Change: 06.08.2010 07:41:48
+ * Last Change: 10.09.2010 16:14:47
  * License: GPL
  */
 
@@ -219,12 +219,6 @@ if ( !class_exists('SecureWP') ) {
 				// hint in footer of the options page
 				add_action( 'in_admin_footer', array(&$this, 'admin_footer') );
 
-				// add javascript for metaboxes
-				if ( version_compare( $wp_version, '2.7alpha', '>' ) && file_exists(ABSPATH . '/wp-admin/admin-ajax.php') && (basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') ) {
-					wp_enqueue_script( 'secure_wp_plugin_win_page', $this->get_plugins_url( 'js/page.php', __FILE__ ), array('jquery') );
-				} elseif ( version_compare( $wp_version, '2.7alpha', '<' ) && file_exists(ABSPATH . '/wp-admin/admin-ajax.php') && (basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') ) {
-					wp_enqueue_script( 'secure_wp_plugin_win_page', $this->get_plugins_url( 'js/page_s27.php', __FILE__ ), array('jquery') );
-				}
 				add_action( 'wp_ajax_set_toggle_status', array($this, 'set_toggle_status') );
 			}
 
@@ -746,7 +740,7 @@ if ( !class_exists('SecureWP') ) {
 			$secure_wp_rtu           = $GLOBALS['WPlize']->get_option('secure_wp_rtu');
 			$secure_wp_wps           = $GLOBALS['WPlize']->get_option('secure_wp_wps');
 			$secure_wp_amurlr        = $GLOBALS['WPlize']->get_option('secure_wp_amurlr');
-
+			
 			$secure_wp_win_settings  = $GLOBALS['WPlize']->get_option('secure_wp_win_settings');
 			$secure_wp_win_about     = $GLOBALS['WPlize']->get_option('secure_wp_win_about');
 			$secure_wp_win_opt       = $GLOBALS['WPlize']->get_option('secure_wp_win_opt');
@@ -891,6 +885,7 @@ if ( !class_exists('SecureWP') ) {
 				</div>
 			</div>
 
+<!--
 			<div id="poststuff" class="ui-sortable meta-box-sortables">
 				<div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
 					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
@@ -1003,7 +998,7 @@ if ( !class_exists('SecureWP') ) {
 					</div>
 				</div>
 			</div>
-
+-->
 			<div id="poststuff" class="ui-sortable meta-box-sortables">
 				<div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
 					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
@@ -1137,7 +1132,19 @@ if ( !class_exists('SecureWP') ) {
 					</div>
 				</div>
 			</div>
-
+			
+			<script type="text/javascript">
+				//<![CDATA[
+				jQuery(document).ready( function($) {
+					$('.postbox h3').click( function() { $($(this).parent().get(0)).toggleClass('closed'); } );
+					$('.postbox .handlediv').click( function() { $($(this).parent().get(0)).toggleClass('closed'); } );
+					$('.postbox.close-me').each(function() {
+						$(this).addClass("closed");
+					});
+				});
+				//]]>
+			</script>
+		
 		</div>
 		<?php
 		}

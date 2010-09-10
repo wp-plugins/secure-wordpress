@@ -21,8 +21,6 @@ Little help to secure your WordPress installation: Remove Error information on l
 1. hide wp-version in backend-dashboard for non-admins
 1. Add string for use [WP Scanner](http://blogsecurity.net/wpscan "WP Scanner")
 1. Block bad queries
-1. Validate your site with a free malware and vulnerabilities scan with [SiteSecurityMonitor.com](http://www.sitesecuritymonitor.com/)
-
 
 = Localizations =
 Idea, first version and german translation by [Frank B&uuml;ltge](http://bueltge.de "bueltge.de"), italien translation by [Gianni Diurno](http://gidibao.net/ "gidibao.net"), polish translation by Michal Maciejewski, belorussian file by [Fat Cow](http://www.fatcow.com/ "www.fatcow.com"), ukrainian translation by [AzzePis](http://wordpress.co.ua/plugins/ "wordpress.co.ua/plugins/"), russian language by [Dmitriy Donchenko](http://blogproblog.com/ "blogproblog.com"), hungarian language files by [K&ouml;rmendi P&eacute;ter](http://www.seo-hungary.com/ "www.seo-hungary.com"), danish language files by [GeorgWP](http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=175 "S&oslash;g efter downloads")m spanish language files by [Pablo Jim&eacute;nez](http://www.ministeriosccc.org "www.ministeriosccc.org"), chinese language (zh_CN) by [tanghaiwei](http://dd54.net), french translation files by [Jez007](http://forum.gmstemple.com/ "forum.gmstemple.com"), japanese translation by [Fumito Mizuno](http://ounziw.com/ "Standing on the Shoulder of Linus"), dutch translation by [Rene](http://wpwebshop.com "wpwebshop.com"), persian language files by [ALiRezaCH](http://alirezach.co.cc) and arabic language files by [مدونة](http://www.r-sn.com/wp). Thanks a lot.

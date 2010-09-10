@@ -49,7 +49,7 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
-= v1.0.2 =
+= v1.0.2 (09/10/2010)=
 * add persian language file
 * change the backend; remove WP Scanner function
 * change the include of javascript for metaboxes

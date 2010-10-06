@@ -2,7 +2,7 @@
 Contributors: jremillard
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
-Tested up to: 3.0
+Tested up to: 3.1-alpha
 Stable tag: 0.1
 
 Secure your WordPress Installation with small functions.

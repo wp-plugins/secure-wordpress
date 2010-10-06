@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author jremillard
- * @version 1.0.2
+ * @version 1.0.3
  */
 
 /**
@@ -12,9 +12,9 @@
  * Domain Path: /languages
  * Description: Little basics for secure your WordPress-installation.
  * Author: jremillard
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author URI: http://www.sitesecuritymonitor.com/
- * Last Change: 10.09.2010 16:14:47
+ * Last Change: 06.10.2010 23:14:47
  * License: GPL
  */
 
@@ -309,7 +309,8 @@ if ( !class_exists('SecureWP') ) {
 
 			// set value
 			foreach ($this->options_array as $key => $value) {
-				$update_options[$key] = stripslashes_deep( trim($_POST[$key]) );
+				if (isset($_POST[$key]))
+					$update_options[$key] = stripslashes_deep( trim($_POST[$key]) );
 			}
 
 			// save value

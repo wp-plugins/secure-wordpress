@@ -49,6 +49,13 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v1.0.3 (10/06/2010) =
+* Bugfix: include JS for remove version in backend for Non-Admins
+* Bugfix: change for php-warning at update options
+* Maintenance: update italien language files
+* Maintenance: update german language files
+* Maintenance: update pot file
+
 = v1.0.2 (09/10/2010) =
 * add persian language file
 * change the backend; remove WP Scanner function

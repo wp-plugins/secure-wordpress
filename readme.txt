@@ -49,6 +49,9 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v1.0.4 (10/09/2010 =
+* Bugfix: update options
+
 = v1.0.3 (10/06/2010) =
 * Bugfix: include JS for remove version in backend for Non-Admins
 * Bugfix: change for php-warning at update options

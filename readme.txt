@@ -3,7 +3,7 @@ Contributors: jremillard
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
 Tested up to: 3.1-alpha
-Stable tag: 0.1
+Stable tag: 1.0.5
 
 Secure your WordPress Installation with small functions.
 
@@ -19,7 +19,7 @@ Little help to secure your WordPress installation: Remove Error information on l
 1. remove plugin-update information for non-admins
 1. remove theme-update informationfor non-admins (only WP 2.8 and higher)
 1. hide wp-version in backend-dashboard for non-admins
-1. Add string for use [WP Scanner](http://blogsecurity.net/wpscan "WP Scanner")
+1. remove version on urls from scripts and stylesheets onyl on frontend
 1. Block bad queries
 
 = Localizations =
@@ -49,6 +49,11 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v1.0.5 (11/10/2010) =
+* Feature: Remove WordPress version on urls form scripts and stylesheets
+* Maintenance: rescan and update german language file
+* Remove: exclude to add string fpr wp-scanner-service; Wish of the community users
+
 = v1.0.4 (10/09/2010 =
 * Bugfix: update options
 

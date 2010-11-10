@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author jremillard
- * @version 1.0.4
+ * @version 1.0.5
  */
 
 /**
@@ -12,9 +12,9 @@
  * Domain Path: /languages
  * Description: Little basics for secure your WordPress-installation.
  * Author: jremillard
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author URI: http://www.sitesecuritymonitor.com/
- * Last Change: 09.10.2010 23:14:47
+ * Last Change: 10.11.2010 23:55
  * License: GPL
  */
 
@@ -95,15 +95,18 @@ if ( !class_exists('SecureWP') ) {
 	}
 
 	class SecureWP {
-
+		
+		public $wpversion;
+		
 		// constructor
 		function SecureWP() {
 			global $wp_version;
-
+			
+			$this->wpversion = $wp_version;
+			
 			$this->activate();
 
 			add_action( 'init', array(&$this, 'textdomain') );
-
 			/**
 			 * remove WP version
 			 */
@@ -258,8 +261,11 @@ if ( !class_exists('SecureWP') ) {
 			 * add wp-scanner
 			 * @link http://blogsecurity.net/wordpress/tools/wp-scanner
 			 */
-			if ( !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_wps') == '1') )
-				add_action( 'wp_head', array(&$this, 'wp_scanner') );
+			 
+			if ( !is_admin() && ($GLOBALS['WPlize']->get_option('secure_wp_wps') == '1') ) {
+				add_filter( 'script_loader_src', array(&$this, 'filter_script_loader') );
+				add_filter( 'style_loader_src', array(&$this, 'filter_script_loader') );
+			}
 
 			/**
 			 * block bad queries
@@ -638,6 +644,23 @@ if ( !class_exists('SecureWP') ) {
 		}
 
 		/**
+		 * Removes the version parameter from urls
+		 *
+		 * @param  string $src Original script URI
+		 * @return string
+		 */
+		function filter_script_loader($src) {
+			
+			if ( is_admin() )
+				return $src;
+				
+			// Separate the version parameter.
+			$src = explode('?ver=' . $this->wpversion, $src);
+			// Just the URI without the query string.
+			return $src[0];
+		}
+
+		/**
 		 * block bad queries
 		 *
 		 * @package Secure WordPress
@@ -855,11 +878,11 @@ if ( !class_exists('SecureWP') ) {
 
 								<tr valign="top">
 									<th scope="row">
-										<label for="secure_wp_wps"><?php _e('WP Scanner', FB_SWP_TEXTDOMAIN); ?></label>
+										<label for="secure_wp_wps"><?php _e('WP Version on Scripts/Styles', FB_SWP_TEXTDOMAIN); ?></label>
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_wps" id="secure_wp_wps" value="1" <?php if ( $secure_wp_wps == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href="http://blogsecurity.net/wpscan">http://blogsecurity.net/wpscan</a> and scan your site.', FB_SWP_TEXTDOMAIN); ?>
+										<?php _e('Removes version of WordPress on the url form scripts and stylesheets only on frontend.', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 

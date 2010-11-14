@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author jremillard
- * @version 1.0.5
+ * @version 1.0.6
  */
 
 /**
@@ -12,9 +12,9 @@
  * Domain Path: /languages
  * Description: Little basics for secure your WordPress-installation.
  * Author: jremillard
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author URI: http://www.sitesecuritymonitor.com/
- * Last Change: 10.11.2010 23:55
+ * Last Change: 15.11.2010 00:55
  * License: GPL
  */
 
@@ -96,7 +96,7 @@ if ( !class_exists('SecureWP') ) {
 
 	class SecureWP {
 		
-		public $wpversion;
+		var $wpversion;
 		
 		// constructor
 		function SecureWP() {

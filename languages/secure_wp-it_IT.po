@@ -1,0 +1,170 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Secure WordPress in italiano\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-03 13:50+0100\n"
+"PO-Revision-Date: 2009-02-04 11:37+0100\n"
+"Last-Translator: Gianni Diurno (aka gidibao) <gidibao@gmail.com>\n"
+"Language-Team: Gianni Diurno | http://gidibao.net/ <gidibao@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: D:\\WP-Plugins\\secure-wordpress\\trunk\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: secure-wordpress.php:292
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: secure-wordpress.php:320
+#: secure-wordpress.php:357
+msgid "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Documentation</a>"
+msgstr "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Documentazione</a>"
+
+#: secure-wordpress.php:337
+msgid "Options update."
+msgstr "Le opzioni sono state aggiornate."
+
+#: secure-wordpress.php:339
+msgid "All entries in the database was cleared. Now deactivate this plugin."
+msgstr "Sono state cancellate tutte le informazioni contenute nel database. Ora puoi disattivare il plugin."
+
+#: secure-wordpress.php:353
+#: secure-wordpress.php:360
+msgid "Secure WP"
+msgstr "Secure WP"
+
+#: secure-wordpress.php:356
+#: secure-wordpress.php:554
+msgid "Secure WordPress"
+msgstr "Secure WordPress"
+
+#: secure-wordpress.php:378
+msgid "Version"
+msgstr "Versione"
+
+#: secure-wordpress.php:378
+msgid "History"
+msgstr "Storico"
+
+#: secure-wordpress.php:378
+msgid "Author"
+msgstr "Autore"
+
+#: secure-wordpress.php:479
+msgid "Options not update - you don&lsquo;t have the privilidges to do this!"
+msgstr "Le opzioni non sono state aggiornate - non hai i permessi per poter operare queste modifiche!"
+
+#: secure-wordpress.php:499
+msgid "Entries was not delleted - you don&lsquo;t have the privilidges to do this!"
+msgstr "Le informazioni non sono state cancellate - non hai i permessi per poter operare queste modifiche!"
+
+#: secure-wordpress.php:507
+msgid "Entries was not delleted - check the checkbox!"
+msgstr "Le informazioni non sono state cancellate - verifica la casella di selezione!"
+
+#: secure-wordpress.php:522
+#, php-format
+msgid "Warning: %s is currently editing this post"
+msgstr "Attenzione: %s in questo momento sta modificando questo articolo"
+
+#: secure-wordpress.php:532
+msgid "All entries in the database was cleared."
+msgstr "Sono state cancellate tutte le informazioni contenute nel database."
+
+#: secure-wordpress.php:536
+msgid "Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!"
+msgstr "Le informazioni non sono state cancellate - verifica la casella di selezione oppure potresti non avere i permessi per poter operare queste modifiche!"
+
+#: secure-wordpress.php:559
+msgid "Configuration"
+msgstr "Configurazione"
+
+#: secure-wordpress.php:569
+msgid "Error-Messages"
+msgstr "Messaggi di errore"
+
+#: secure-wordpress.php:573
+msgid "deactivates tooltip and error message at login of WordPress"
+msgstr "disattiva i suggerimenti ed il messaggio di errore durante il login a WordPress"
+
+#: secure-wordpress.php:579
+msgid "WordPress Version"
+msgstr "Versione WordPress"
+
+#: secure-wordpress.php:583
+msgid "Removes version of WordPress in all areas, including feed, not in admin"
+msgstr "Rimuove da tutte le aree la versione di WordPress in uso, inclusi i feed: non in amministrazione"
+
+#: secure-wordpress.php:589
+msgid "index.html"
+msgstr "index.html"
+
+#: secure-wordpress.php:593
+msgid "creates an <code>index.html</code> file in <code>/plugins/</code> to keep it from showing your directory listing"
+msgstr "creazione di un file <code>index.html</code> sotto <code>/plugins/</code> in modo tale da poter offuscare il contenuto della cartella"
+
+#: secure-wordpress.php:599
+msgid "Really Simple Discovery"
+msgstr "Really Simple Discovery"
+
+#: secure-wordpress.php:603
+msgid "Remove Really Simple Discovery link in <code>wp_head</code> of the frontend"
+msgstr "Rimuovi il link Really Simple Discovery in <code>wp_head</code> nel frontend"
+
+#: secure-wordpress.php:609
+msgid "Windows Live Writer"
+msgstr "Windows Live Writer"
+
+#: secure-wordpress.php:613
+msgid "Remove Windows Live Writer link in <code>wp_head</code> of the frontend"
+msgstr "Rimuovi il link Windows Live Writer in <code>wp_head</code> nel frontend"
+
+#: secure-wordpress.php:619
+msgid "Core Update"
+msgstr "Aggiornamento core"
+
+#: secure-wordpress.php:623
+msgid "Remove WordPress Core update for non-admins. Show message of a new WordPress version only to users with the right to update."
+msgstr "Rimuovi gli aggiornamenti del core di WordPress per gli utenti che non sono amministratori. Mostra il messaggio di notifica per una nuova versione di WordPress solamente per gli utenti che possono effettuare l'aggiornamento."
+
+#: secure-wordpress.php:629
+msgid "Plugin Update"
+msgstr "Aggiornamento plugin"
+
+#: secure-wordpress.php:633
+msgid "Remove the plugin update for non-admins. Show message for a new version of a plugin in the install of your blog only to users with the rights to edit plugins."
+msgstr "Rimuovi l'aggiornamento del plugin per gli utenti che non sono amministratori. Mostra il messaggio di notifica per una nuova versione di un plugin solamente per gli utenti che hanno i diritti per poter modificare i plugin."
+
+#: secure-wordpress.php:641
+msgid "Save Changes"
+msgstr "Salva le modifiche"
+
+#: secure-wordpress.php:651
+msgid "Clear Options"
+msgstr "Rimuovi le opzioni"
+
+#: secure-wordpress.php:654
+msgid "Click this button to delete settings of this plugin. Deactivating Secure WordPress plugin remove any data that may have been created."
+msgstr "Clicca su questo pulsante per poter disattivare il plugin. La disattivazione del plugin rimuoverà ogni dato da te creato, comprese le opzioni cache."
+
+#: secure-wordpress.php:659
+msgid "Delete Options"
+msgstr "Opzioni rimozione"
+
+#: secure-wordpress.php:670
+msgid "About the plugin"
+msgstr "Info sul plugin"
+
+#: secure-wordpress.php:673
+msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
+msgstr "Per ulteriori informazioni e per poter scaricare la versione aggiornata, visitare la <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">homepage del plugin</a>."
+
+#: secure-wordpress.php:673
+msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
+msgstr "Cerchi un modo per ringraziarmi? Visita la mia <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
+

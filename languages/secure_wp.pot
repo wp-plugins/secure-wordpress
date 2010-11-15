@@ -1,0 +1,188 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Secure WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-06-22 12:29+0100\n"
+"PO-Revision-Date: 2009-06-22 12:30+0100\n"
+"Last-Translator: Frank Bueltge <frank@bueltge.de>\n"
+"Language-Team: Frank Bültge <frank@bueltge.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: secure-wordpress.php:321
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: secure-wordpress.php:350
+#: secure-wordpress.php:387
+msgid "<a href=\"http://wordpress.org/extend/plugins/secure-wordpress/\">Documentation</a>"
+msgstr "<a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">Dokumentation</a>"
+
+#: secure-wordpress.php:367
+msgid "Options update."
+msgstr "Einstellungen aktualisiert."
+
+#: secure-wordpress.php:369
+msgid "All entries in the database was cleared. Now deactivate this plugin."
+msgstr "Alle Einträge in der Datenbank wurden entfernt. Jetzt deaktiviere das Plugin."
+
+#: secure-wordpress.php:383
+#: secure-wordpress.php:390
+msgid "Secure WP"
+msgstr "Secure WP"
+
+#: secure-wordpress.php:386
+#: secure-wordpress.php:612
+msgid "Secure WordPress"
+msgstr "Secure WordPress"
+
+#: secure-wordpress.php:410
+msgid "Version"
+msgstr "Version"
+
+#: secure-wordpress.php:410
+msgid "History"
+msgstr "Historie"
+
+#: secure-wordpress.php:410
+msgid "Author"
+msgstr "Autor"
+
+#: secure-wordpress.php:540
+msgid "Options not update - you don&lsquo;t have the privilidges to do this!"
+msgstr "Einstellungen wurden nicht aktualisiert - du hast nicht genügend Rechte dazu!"
+
+#: secure-wordpress.php:560
+msgid "Entries was not delleted - you don&lsquo;t have the privilidges to do this!"
+msgstr "Einstellungen wurden nicht entfernt - du hast nicht genügend Rechte dazu! "
+
+#: secure-wordpress.php:568
+msgid "Entries was not delleted - check the checkbox!"
+msgstr "Einstellungen wurden nicht entfernt - prüfe dich Checkbox! "
+
+#: secure-wordpress.php:588
+msgid "All entries in the database was cleared."
+msgstr "Alle Einträge in der Datenbank wurden entfernt."
+
+#: secure-wordpress.php:592
+msgid "Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!"
+msgstr "Einstellungen wurden nicht entfernt - prüfe dich Checkbox oder du hast nicht genügend Rechte dazu! "
+
+#: secure-wordpress.php:617
+#: secure-wordpress.php:732
+#: secure-wordpress.php:752
+msgid "Click to toggle"
+msgstr "Zum umschalten klicken"
+
+#: secure-wordpress.php:618
+msgid "Configuration"
+msgstr "Einstellungen"
+
+#: secure-wordpress.php:628
+msgid "Error-Messages"
+msgstr "Fehler-Meldungen"
+
+#: secure-wordpress.php:632
+msgid "deactivates tooltip and error message at login of WordPress"
+msgstr "deaktivert die Hinweis- und Fehlermeldung beim Login von WordPress"
+
+#: secure-wordpress.php:638
+msgid "WordPress Version"
+msgstr "WordPress Version"
+
+#: secure-wordpress.php:642
+msgid "Removes version of WordPress in all areas, including feed, not in admin"
+msgstr "Entfernen der Version von WordPress in allen Bereichen, inkl. Feed, nicht im Admin-Bereich"
+
+#: secure-wordpress.php:648
+msgid "index.html"
+msgstr "index.html"
+
+#: secure-wordpress.php:652
+msgid "creates an <code>index.html</code> file in <code>/plugins/</code> to keep it from showing your directory listing"
+msgstr "hinterlegt eine <code>index.html</code> in <code>/plugins/</code> um das Auslesen des Verzeichnis zu vermeiden"
+
+#: secure-wordpress.php:658
+msgid "Really Simple Discovery"
+msgstr "Really Simple Discovery"
+
+#: secure-wordpress.php:662
+msgid "Remove Really Simple Discovery link in <code>wp_head</code> of the frontend"
+msgstr "Entfernt den link für Really Simple Discovery im head des Frontend"
+
+#: secure-wordpress.php:668
+msgid "Windows Live Writer"
+msgstr "Windows Live Writer"
+
+#: secure-wordpress.php:672
+msgid "Remove Windows Live Writer link in <code>wp_head</code> of the frontend"
+msgstr "Entfernt den link für Windows Live Writer im head des Frontend"
+
+#: secure-wordpress.php:678
+msgid "Core Update"
+msgstr "Core Update"
+
+#: secure-wordpress.php:682
+msgid "Remove WordPress Core update for non-admins. Show message of a new WordPress version only to users with the right to update."
+msgstr "Deaktiviert das Core-Update für Nicht-Admin's. Die Mitteilung einer neuen Version von WordPress wird ausschließlich Nutzern gezeigt, die die Rechte zum Editieren von Plugins haben."
+
+#: secure-wordpress.php:688
+msgid "Plugin Update"
+msgstr "Plugin Update"
+
+#: secure-wordpress.php:692
+msgid "Remove the plugin update for non-admins. Show message for a new version of a plugin in the install of your blog only to users with the rights to edit plugins."
+msgstr "Deaktiviert das Plugin-Update für Nicht-Admin's. Die Mitteilung einer neuen Version von WordPress zu Plugins wird ausschließlich Nutzern gezeigt, die die Rechte zum Editieren von Plugins haben."
+
+#: secure-wordpress.php:699
+msgid "Theme Update"
+msgstr "Theme Update"
+
+#: secure-wordpress.php:703
+msgid "Remove the theme update for non-admins. Show message for a new version of a theme in the install of your blog only to users with the rights to edit themes."
+msgstr "Deaktiviert das Theme-Update für Nicht-Admin's. Die Mitteilung einer neuen Version von WordPress zum Theme wird ausschließlich Nutzern gezeigt, die die Rechte zum Editieren von Themes haben."
+
+#: secure-wordpress.php:710
+msgid "WP Scanner"
+msgstr "WP Scanner"
+
+#: secure-wordpress.php:714
+msgid "WordPress scanner is a free online resource that blog administrators can use to provide a measure of their wordpress security level. To run wp-scanner check this option and is add <code>&lt;!-- wpscanner --&gt;</code> to your current WordPress template. After this go to <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> and scan your site."
+msgstr "Der WordPress Scanner ist eine freie online Resource für Blog-Administratoren um die Sicherheit der WordPress Installation über das Frontend zu prüfen. Um den Scanner zu nutzen, aktivere die Checkbox und es wird der String <code>&lt;!-- wpscanner --&gt;</code> im aktuell verwendeten Theme eingefügt. Danach besuche den Online-Scanner unter <a href=\"http://blogsecurity.net/wpscan\">http://blogsecurity.net/wpscan</a> und prüfe deine Site."
+
+#: secure-wordpress.php:722
+msgid "Save Changes"
+msgstr "Einstellungen aktualisieren"
+
+#: secure-wordpress.php:733
+msgid "Clear Options"
+msgstr "Einstellungen löschen"
+
+#: secure-wordpress.php:736
+msgid "Click this button to delete settings of this plugin. Deactivating Secure WordPress plugin remove any data that may have been created."
+msgstr "Nutze diese Möglichkeit um alle Einstellungen des Plugins in der Datenbank zu löschen. Das Plugin löscht ebenfalls alle Einstellungen wenn du es deaktivierst oder aus dem Backend heraus entfernst."
+
+#: secure-wordpress.php:741
+msgid "Delete Options"
+msgstr "Einstellungen löschen"
+
+#: secure-wordpress.php:753
+msgid "About the plugin"
+msgstr "Über das Plugin"
+
+#: secure-wordpress.php:766
+msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
+msgstr "Weitere Information: Besuche die <a href=\"http://bueltge.de/wordpress-login-sicherheit-plugin/652/\">Plugin homepage</a> für mehr Information oder um die aktuelle Version des Plugins herunter zu laden."
+
+#: secure-wordpress.php:766
+msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
+msgstr "Du willst Danke sagen? Besuche meine <a href=\"http://bueltge.de/wunschliste/\">Wunschliste</a>."
+
+#~ msgid "Warning: %s is currently editing this post"
+#~ msgstr "Warning: %s is currently editing this post"
+

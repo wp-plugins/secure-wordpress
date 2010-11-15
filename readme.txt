@@ -3,7 +3,7 @@ Contributors: jremillard
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
 Tested up to: 3.1-alpha
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 
 Secure your WordPress Installation with small functions.
 
@@ -53,6 +53,9 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v1.0.6 (11/15/2010) =
+* Bugfix: change from `public` to `var` for variables to use the plugin on PHP5.2 and smaller
+
 = v1.0.5 (11/10/2010) =
 * Feature: Remove WordPress version on urls form scripts and stylesheets
 * Maintenance: rescan and update german language file

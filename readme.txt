@@ -1,47 +1,45 @@
 === Secure WordPress ===
-Contributors: jremillard
+Contributors: WebsiteDefender
+Author: WebsiteDefender
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
-Tested up to: 3.1-alpha
-Stable tag: 1.0.6
+Tested up to: 3.1
+Stable tag: 2.0.0
 
-Secure your WordPress Installation with small functions.
+WordPress Security Plugin
 
 == Description ==
-Little help to secure your WordPress installation: Remove Error information on login page; adds index.html to plugin directory; removes the wp-version, except in admin area.
+Secure WordPress beefs up the security of your WordPress installation by removing error information on login pages, adds index.html to plugin directories, hides the WordPress version and much more.
 
-1. removes error-information on login-page
-1. adds index.php plugin-directory (virtual)
-1. removes the wp-version, except in admin-area
-1. removes Really Simple Discovery
-1. removes Windows Live Writer
-1. remove core update information for non-admins
-1. remove plugin-update information for non-admins
-1. remove theme-update informationfor non-admins (only WP 2.8 and higher)
-1. hide wp-version in backend-dashboard for non-admins
-1. remove version on urls from scripts and stylesheets onyl on frontend
-1. Block bad queries
+1. Removes error-information on login-page
+1. Adds index.php plugin-directory (virtual)
+1. Removes the wp-version, except in admin-area
+1. Removes Really Simple Discovery
+1. Removes Windows Live Writer
+1. Removes core update information for non-admins
+1. Removes plugin-update information for non-admins
+1. Removes theme-update information for non-admins (only WP 2.8 and higher)
+1. Hides wp-version in backend-dashboard for non-admins
+1. Removes version on URLs from scripts and stylesheets only on frontend
+1. Blocks any bad queries that could be harmful to your WordPress website
 
 = Requirements =
-* WordPress version 2.6 and higher (tested at 3.1-beta)
+* WordPress version 2.6 and higher (tested at 3.1)
 * PHP5 (tested with PHP Interpreter >= 5.2.9)
 
 = Localizations =
-Idea, first version and german translation by [Frank B&uuml;ltge](http://bueltge.de "bueltge.de"), italien translation by [Gianni Diurno](http://gidibao.net/ "gidibao.net"), polish translation by Michal Maciejewski, belorussian file by [Fat Cow](http://www.fatcow.com/ "www.fatcow.com"), ukrainian translation by [AzzePis](http://wordpress.co.ua/plugins/ "wordpress.co.ua/plugins/"), russian language by [Dmitriy Donchenko](http://blogproblog.com/ "blogproblog.com"), hungarian language files by [K&ouml;rmendi P&eacute;ter](http://www.seo-hungary.com/ "www.seo-hungary.com"), danish language files by [GeorgWP](http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=175 "S&oslash;g efter downloads")m spanish language files by [Pablo Jim&eacute;nez](http://www.ministeriosccc.org "www.ministeriosccc.org"), chinese language (zh_CN) by [tanghaiwei](http://dd54.net), french translation files by [Jez007](http://forum.gmstemple.com/ "forum.gmstemple.com"), japanese translation by [Fumito Mizuno](http://ounziw.com/ "Standing on the Shoulder of Linus"), dutch translation by [Rene](http://wpwebshop.com "wpwebshop.com"), persian language files by [ALiRezaCH](http://alirezach.co.cc), romanian translation by [ Selco Resita]( http://www.selco-computers.ro " selco-computers.ro") and arabic language files by [مدونة](http://www.r-sn.com/wp). Thanks a lot.
-
+Idea, first version and german translation by [Frank B&uuml;ltge](http://bueltge.de "bueltge.de"), Italian translation by [Gianni Diurno](http://gidibao.net/ "gidibao.net"), Polish translation by Michal Maciejewski, Belorussian file by [Fat Cow](http://www.fatcow.com/ "www.fatcow.com"), Ukrainian translation by [AzzePis](http://wordpress.co.ua/plugins/ "wordpress.co.ua/plugins/"), Russian language by [Dmitriy Donchenko](http://blogproblog.com/ "blogproblog.com"), Hungarian language files by [K&ouml;rmendi P&eacute;ter](http://www.seo-hungary.com/ "www.seo-hungary.com"), Danish language files by [GeorgWP](http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=175 "S&oslash;g efter downloads")m Spanish language files by [Pablo Jim&eacute;nez](http://www.ministeriosccc.org "www.ministeriosccc.org"), Chinese language (zh_CN) by [tanghaiwei](http://dd54.net), French translation files by [Jez007](http://forum.gmstemple.com/ "forum.gmstemple.com"), Japanese translation by [Fumito Mizuno](http://ounziw.com/ "Standing on the Shoulder of Linus"), Dutch translation by [Rene](http://wpwebshop.com "wpwebshop.com"), Persian language files by [ALiRezaCH](http://alirezach.co.cc), Romanian translation by [ Selco Resita]( http://www.selco-computers.ro " selco-computers.ro") and Arabic language files by [مدونة](http://www.r-sn.com/wp). WebsiteDefender would like to thank everyone that worked on making Secure WordPress a success.
 
 == Installation ==
+1. Make a backup of your current installation
 1. Unpack the download-package
-1. Upload the file to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Configure the options
-1. Ready
+1. Upload the extracted files to the /wp-content/plugins/ directory
+1. Configure the desired options and activate the plugin from the 'Plugins' menu in WordPress
 
-See on [the official website](http://www.sitesecuritymonitor.com/secure-wordpress-plugin "Secure WordPress").
-
+If you do encounter any bugs, or have comments or suggestions, please contact the WebsiteDefender team on support@websitedefender.com 
 
 == Screenshots ==
-1. options-area (WordPress 3.1-alpha)
+1. options-area (WordPress 3.1)
 
 
 == Other Notes ==
@@ -53,6 +51,13 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+= v2.0.0 (03/22/2011) =
+* Feature: Relese new stable version
+* Feature: Support for WordPress 3.1
+* Feature: Change owner of the plugin to WebsiteDefender
+* Feature: Rebranding of the plugin
+* Feature: Integrated WebsiteDefender registration in Settings
+
 = v1.0.6 (11/15/2010) =
 * Bugfix: change from `public` to `var` for variables to use the plugin on PHP5.2 and smaller
 

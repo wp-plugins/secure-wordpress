@@ -1,20 +1,20 @@
 <?php
 /**
  * @package Secure WordPress
- * @author jremillard
- * @version 1.0.6
+ * @author WebsiteDefender
+ * @version 2.0.0
  */
 
 /**
  * Plugin Name: Secure WordPress
- * Plugin URI: http://www.sitesecuritymonitor.com/secure-wordpress-plugin
+ * Plugin URI: http://www.websitedefender.com/secure-wordpress-plugin/
  * Text Domain: secure_wp
  * Domain Path: /languages
- * Description: Little basics for secure your WordPress-installation.
- * Author: jremillard
- * Version: 1.0.6
- * Author URI: http://www.sitesecuritymonitor.com/
- * Last Change: 15.11.2010 00:55
+ * Description: Basic security checks for securing your WordPress installation
+ * Author: WebsiteDefender
+ * Version: 2.0.0
+ * Author URI: http://www.websitedefender.com/
+ * Last Change: 22.03.2011 12:00
  * License: GPL
  */
 
@@ -37,10 +37,7 @@ if ( isset($_GET['resource']) && !empty($_GET['resource']) ) {
 	# base64 encoding performed by base64img.php from http://php.holtsmark.no
 	$resources = array(
 		'secure_wp.gif' =>
-		'R0lGODlhCwALAKIEAPb29tTU1P///5SUlP///wAAAAAAAAAAAC'.
-		'H5BAEAAAQALAAAAAALAAsAAAMhSLrT+0MAMB6JIujKgN6Qp1HW'.
-		'MHKK06BXwDKulcby9T4JADs='.
-		'',
+		'R0lGODlhCwALAKIHALOzs8PDw9fX16GhoZSUlPz8/Orq6v///yH5BAEAAAcALAAAAAALAAsAAAMveLrMFtCwEoi1oZwCrgeFcA3BcAkdAQgBagEmIZiDSAzxfNtDajy/10PQYEkajQQAOw==',
 		'wp.png' =>
 		'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAFfKj/FAAAAB3RJTUUH1wYQEiwG0'.
 		'0adjQAAAAlwSFlzAAALEgAACxIB0t1+/AAAAARnQU1BAACxjwv8YQUAAABOUExURZ'.
@@ -769,8 +766,8 @@ if ( !class_exists('SecureWP') ) {
 			$secure_wp_win_opt       = $GLOBALS['WPlize']->get_option('secure_wp_win_opt');
 		?>
 		<div class="wrap">
-			<div id="icon-sitesecuritymonitor" class="icon32" style="background: url('<?php echo $this->get_plugins_url( 'img/h2logo.png', __FILE__ ); ?>') no-repeat;"><br /></div>
-			<h2><?php _e('Secure WordPress', FB_SWP_TEXTDOMAIN); ?></h2>
+			<div id="icon-acunetix" class="icon32" style="background: url('<?php echo $this->get_plugins_url( 'img/acunetix.png', __FILE__ ); ?>') no-repeat;"><br /></div>
+			<h2><?php _e('Secure WordPress by WebsiteDefender', FB_SWP_TEXTDOMAIN); ?></h2>
 			<br class="clear" />
 
 			<div id="poststuff" class="ui-sortable meta-box-sortables">
@@ -892,7 +889,7 @@ if ( !class_exists('SecureWP') ) {
 									</th>
 									<td>
 										<input type="checkbox" name="secure_wp_amurlr" id="secure_wp_amurlr" value="1" <?php if ( $secure_wp_amurlr == '1') { echo "checked='checked'"; } ?> />
-										<?php _e('Protect WordPress against malicious URL requests, read more information at the <a href="http://perishablepress.com/press/2009/12/22/protect-wordpress-against-malicious-url-requests/" title="read this post" >post from Jeff Starr</a>', FB_SWP_TEXTDOMAIN); ?>
+										<?php _e('Protect WordPress against malicious URL requests', FB_SWP_TEXTDOMAIN); ?>
 									</td>
 								</tr>
 
@@ -908,230 +905,57 @@ if ( !class_exists('SecureWP') ) {
 				</div>
 			</div>
 
-<!--
 			<div id="poststuff" class="ui-sortable meta-box-sortables">
 				<div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
 					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
-					<h3 id="uninstall"><?php _e('Validate your site with a free malware scan from www.sitesecuritymonitor.com', FB_SWP_TEXTDOMAIN) ?></h3>
+					<h3>About WebsiteDefender.com</h3>
 					<div class="inside">
-
-						<h4><?php _e('Take us for a Test Drive - Free Scan', FB_SWP_TEXTDOMAIN) ?></h4>
-						<p><a href="http://www.sitesecuritymonitor.com/free-scan-for-secure-wordpress"><img src="<?php echo $this->get_plugins_url( 'img/logo.png', __FILE__ ); ?>" alt="Logo SiteSecurityMonitor.com" width="498" height="165" style="float:right;" /></a><?php _e('We understand you may have questions:', FB_SWP_TEXTDOMAIN) ?></p>
-						<p><?php _e('What does this do for me?', FB_SWP_TEXTDOMAIN) ?></p>
-						<p><?php _e('Am I really safe? I need to be sure.', FB_SWP_TEXTDOMAIN) ?></p>
-						<p><?php _e('Rest Assured, Site Security Monitor has you covered.', FB_SWP_TEXTDOMAIN) ?></p>
-						<ol>
-							<li><?php _e('FREE scan looks for malware', FB_SWP_TEXTDOMAIN) ?></li>
-							<li><?php _e('FREE report of website vulnerabilities found', FB_SWP_TEXTDOMAIN) ?></li>
-							<li><?php _e('No setup, tuning and installation on your site - scan begins immediately', FB_SWP_TEXTDOMAIN) ?></li>
-						</ol>
-						<p><?php _e('We will deliver to you a detailed malware and web vulnerability report - FREE of charge.  You are free to use the report to resolve issues, show your boss that you are clean, or show your clients that the site you built is safe!', FB_SWP_TEXTDOMAIN) ?></p>
-						<p><?php _e('** Bonus: You will be able to use the Site Security Monitor "Safe-Seal" on your site after the scan - this shows the world that you are malware free!', FB_SWP_TEXTDOMAIN) ?></p>
-
-						<h4><?php _e('The form', FB_SWP_TEXTDOMAIN) ?></h4>
-						<p><?php _e('Use the follow form or use it on <a href="http://www.sitesecuritymonitor.com/free-scan-for-secure-wordpress">our website</a>.', FB_SWP_TEXTDOMAIN) ?></p>
-						<form action="http://www.sitesecuritymonitor.com/Default.aspx?app=iframeform&hidemenu=true&ContactFormID=26978" method="post">
-							<input type="hidden" name="FormSubmitRedirectURL" id="FormSubmitRedirectURL" value="http://www.sitesecuritymonitor.com" >
-							<input type="hidden" name="Lead_Src" id="LeadSrc" value="Get a Free Scan" />
-
-							<script type='text/javascript' language='javascript'>
-								/* <![CDATA[ */
-								HubSpotFormSpamCheck_LeadGen_ContactForm_26978_m0 = function() {
-								var key = document.getElementById('LeadGen_ContactForm_26978_m0spam_check_key').value;
-								var sig = '';
-								for (var x = 0; x< key.length; x++ ) {
-									sig += key.charCodeAt(x)+13;
-								}
-								document.getElementById('LeadGen_ContactForm_26978_m0spam_check_sig').value = sig;
-								// Set the hidden field to contain the user token
-								var results = document.cookie.match ( '(^|;) ?hubspotutk=([^;]*)(;|$)' );
-								if (results && results[2]) {
-									document.getElementById('LeadGen_ContactForm_26978_m0submitter_user_token').value =  results[2];
-								} else if (window['hsut']) {
-									document.getElementById('LeadGen_ContactForm_26978_m0submitter_user_token').value = window['hsut'];
-								}
-								return true;
-								};
-								/*]]>*/
-							</script>
-
-							<input type="hidden" id='LeadGen_ContactForm_26978_m0submitter_user_token' name='LeadGen_ContactForm_26978_m0submitter_user_token'  value='' />
-							<input type="hidden" name='ContactFormId'  value='26978' />
-							<input type="hidden" id='LeadGen_ContactForm_26978_m0spam_check_key' name='LeadGen_ContactForm_26978_m0spam_check_key'  value='jjnjrgslmerhsnofgnqqdsgnrsseldqfkpqssqkfvvweukiulhuqnmgmtvls' />
-							<input type='hidden' id='LeadGen_ContactForm_26978_m0spam_check_sig' name='LeadGen_ContactForm_26978_m0spam_check_sig'  value='' />
-							
-							<table class="form-table">
-
-								<tr valign="top">
-									<th scope="row">
-										<label for="LeadGen_ContactForm_26978_m0_FullName"><?php _e('Full Name', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<input type="Text" name="LeadGen_ContactForm_26978_m0:FullName" class="StandardI AutoFormInput LeadGen_ContactForm_26978_m0_AutoForm" id="LeadGen_ContactForm_26978_m0_FullName" value="" /> <?php _e('*required', FB_SWP_TEXTDOMAIN); ?>
-									</td>
-								</tr>
-								<tr valign="top">
-									<th scope="row">
-										<label for="LeadGen_ContactForm_26978_m0_Email"><?php _e('eMail Adress', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<input type="Text" name="LeadGen_ContactForm_26978_m0:Email" class="StandardI AutoFormInput LeadGen_ContactForm_26978_m0_AutoForm" id="LeadGen_ContactForm_26978_m0_Email" value="" /> <?php _e('*required', FB_SWP_TEXTDOMAIN); ?><?php _e(', eMail Address must match domain name', FB_SWP_TEXTDOMAIN); ?>
-									</td>
-								</tr>
-								<tr valign="top">
-									<th scope="row">
-										<label for="LeadGen_ContactForm_26978_m0_WebSite"><?php _e('Website', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<input type="Text" name="LeadGen_ContactForm_26978_m0:WebSite" class="StandardI AutoFormInput LeadGen_ContactForm_26978_m0_AutoForm" id="LeadGen_ContactForm_26978_m0_WebSite" value="" /> <?php _e('*required', FB_SWP_TEXTDOMAIN); ?>
-									</td>
-								</tr>
-								<tr valign="top">
-									<th scope="row">
-										<label for="LeadGen_ContactForm_26978_m0_Phone"><?php _e('Phone', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<input type="Text" name="LeadGen_ContactForm_26978_m0:Phone" class="StandardI AutoFormInput LeadGen_ContactForm_26978_m0_AutoForm" id="LeadGen_ContactForm_26978_m0_Phone" value="" /> <?php _e('*required', FB_SWP_TEXTDOMAIN); ?>
-									</td>
-								</tr>
-								<tr valign="top">
-									<th scope="row">
-										<label for="LeadGen_ContactForm_26978_m0_Field_Checkboxes_5_cb_0"><?php _e('Yes, I need help!', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<input type="checkbox" name="LeadGen_ContactForm_26978_m0:Field_Checkboxes_5" id="LeadGen_ContactForm_26978_m0_Field_Checkboxes_5_cb_0" value="Call me"  > <?php _e('Call me', FB_SWP_TEXTDOMAIN); ?>
-									</td>
-								</tr>
-								<tr valign="top">
-									<th scope="row">
-										<label for="LeadGen_ContactForm_26978_m0_Field_Checkboxes_7_cb_0"><?php _e('Terms and Conditions', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<input type="checkbox" name="LeadGen_ContactForm_26978_m0:Field_Checkboxes_7" id="LeadGen_ContactForm_26978_m0_Field_Checkboxes_7_cb_0" value="I accept"  > <?php _e('*required', FB_SWP_TEXTDOMAIN); ?><?php _e(', I accept', FB_SWP_TEXTDOMAIN); ?>
-									</td>
-								</tr>
-
-							</table>
-
-							<p class="submit">
-								<input onclick='return HubSpotFormSpamCheck_LeadGen_ContactForm_26978_m0();' class='button' type='submit' name='LeadGen_ContactForm_Submit_LeadGen_ContactForm_26978_m0' value="<?php _e('Get my Free Web Scan', FB_SWP_TEXTDOMAIN); ?> &raquo;">
-							</p>
-						</form>
-						
-					</div>
-				</div>
-			</div>
--->
-			<div id="poststuff" class="ui-sortable meta-box-sortables">
-				<div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
-					<div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
-					<h3 id="uninstall"><?php _e('Safe Seal', FB_SWP_TEXTDOMAIN) ?></h3>
-					<div class="inside">
-
-						<p><?php _e('Thankyou for using our plugin! You are free to use the scan below (outputs HTML for easy copy-pasting) into your blog.  This seal does not give you scanning services - it simple does the basics of wordpress security - as recommended by the community and our own experiences with our customers.<br/>Should you wish to get regular vulnerability and malware scanning services, please <a href="http://www.sitesecuritymonitor.com/wordpress-secure-plugin/">see our main page here...</a>', FB_SWP_TEXTDOMAIN ); ?></p>
-
-						<script type="text/javascript">
-							function updateSealPreview()
-							{
-								var seal_color = document.forms['seal_form'].seal_color.options[document.forms['seal_form'].seal_color.options.selectedIndex].value;
-								var seal_text = document.forms['seal_form'].seal_text.options[document.forms['seal_form'].seal_text.options.selectedIndex].value;
-								var seal_orientation = document.forms['seal_form'].seal_orientation.options[document.forms['seal_form'].seal_orientation.options.selectedIndex].value;
-								var seal_border = document.forms['seal_form'].seal_border.checked?"border":"noborder";
-								var country = document.forms['seal_form'].country.options[document.forms['seal_form'].country.options.selectedIndex].value;
-								var image_name = "https://reporting.sitesecuritymonitor.com/img_wp/<?php echo $_SERVER['HTTP_HOST']; ?>/" + seal_color + "_" + seal_text + "_" + seal_orientation + "_notext_" +  seal_border  + ".png";
-								document.seal_preview.src = image_name;
-								var gen_code = "<!-- Start sitesecuritymonitor.com code -->\n";
-								gen_code += "<a target='_blank' href='https://reporting.sitesecuritymonitor.com/clients/go.x?i=l0&site=<?php echo $_SERVER['HTTP_HOST']; ?>&l=" + country + "' title='Web Site Security Scanning - www.sitesecuritymonitor.com' alt='sitesecuritymonitor.com Security Seal'>\n";
-								gen_code += "<img src='" + image_name +  "' oncontextmenu='return false;' border='0' alt='sitesecuritymonitor.com seal' />\n";
-								gen_code += "</a>\n";
-								gen_code += "<br />\n";
-								gen_code += "<span style=\"font-size:8px; font-face:Arial;\">Protected by WP-Secure Plugin<BR><a href='http://www.sitesecuritymonitor.com'>SiteSecurityMonitor.com</a></span>\n";
-								gen_code += "<!-- End sitesecuritymonitor.com code -->\n";
-								document.getElementById('seal_code').value = gen_code;
-							}
-						</script>
-						<form name="seal_form" action="javascript:void(0);" method="post" onsubmit="return false;">
-
-							<table class="form-table">
-								<tr valign="top">
-									<th scope="row">
-										<label for="seal_color"><?php _e('Color', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<select id="seal_color" name="seal_color" onchange="javascript:updateSealPreview();">
-											<option value="green" selected="selected"><?php _e('Green', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="blue"><?php _e('Blue', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="red"><?php _e('Red', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="brown"><?php _e('Brown', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="gray"><?php _e('Gray', FB_SWP_TEXTDOMAIN); ?></option>
-										</select>
-									</td>
-									<td rowspan="5">
-										<img src="" name="seal_preview" oncontextmenu='return false;' style="float:right; margin:10px;" />
-									</td>
-								</tr>
-								<tr valign="top">
-									<th scope="row">
-										<label for="seal_text"><?php _e('Text', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<select id="seal_text" name="seal_text" onchange="javascript:updateSealPreview();">
-											<option value="pr" selected="selected"><?php _e('Protected', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="se"><?php _e('Secured', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="sc"><?php _e('Scanned', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="pb"><?php _e('Protected by', FB_SWP_TEXTDOMAIN); ?></option>
-										</select>
-									</td>
-								</tr>
-								<tr valign="top">
-									<th scope="row">
-										<label for="seal_orientation"><?php _e('Orientation', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<select id="seal_orientation" name="seal_orientation" onchange="javascript:updateSealPreview();">
-											<option value="h" selected="selected"><?php _e('Horizontal', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="v"><?php _e('Vertical', FB_SWP_TEXTDOMAIN); ?></option>
-										</select>
-									</td>
-								</tr>
-								<tr valign="top">
-									<th scope="row">
-										<label for="seal_border"><?php _e('Image border', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<input id="seal_border" type="checkbox" name="seal_border" onchange="javascript:updateSealPreview();" />
-									</td>
-								</tr>
-								<tr valign="top">
-									<th scope="row">
-										<label for="country"><?php _e('Language', FB_SWP_TEXTDOMAIN); ?></label>
-									</th>
-									<td>
-										<select id="country" name="country" onchange="javascript:updateSealPreview();">
-											<option value="EN-US" selected="selected"><?php _e('English (US)', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="EN-GB"><?php _e('English (UK)', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="ES"><?php _e('Spanish', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="DE"><?php _e('German', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="IT"><?php _e('Italian', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="JP"><?php _e('Japanese', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="CN"><?php _e('Chinese (Simplified)', FB_SWP_TEXTDOMAIN); ?></option>
-											<option value="CNT"><?php _e('Chinese (Traditional)', FB_SWP_TEXTDOMAIN); ?></option>
-										</select>
-									</td>
-								</tr>
-							</table>
-
-						</form>
-
-						<h4><?php _e( 'Source', FB_SWP_TEXTDOMAIN ); ?></h4>
-						<p><?php _e('Here is your generated code. Place it on your website (as html widget) to show that you are protected.', FB_SWP_TEXTDOMAIN); ?></p>
-						<textarea id="seal_code" name="seal_code" rows="10" cols="50" class="large-text code"></textarea>
-
-						<script type="text/javascript">
-								updateSealPreview();
-						</script>
-						
-						<iframe src="http://www.facebook.com/plugins/likebox.php?id=346589752350&amp;width=680&amp;connections=10&amp;stream=true&amp;header=true&amp;height=587" scrolling="no" frameborder="0" style="margin:10px auto; border:none; overflow:hidden; width:680px; height:587px;" allowTransparency="true"></iframe>
+						<p><?php _e('WebsiteDefender.com is based upon web application scanning technology from <a href="http://www.acunetix.com/" target="_blank">Acunetix</a>; a pioneer in website security. WebsiteDefender requires no installation, no learning curve and no maintenance. Above all, there is no impact on site performance! WebsiteDefender regularly scans and monitors your WordPress website/blog effortlessly, efficient, easily and is available for Free! Start scanning your WordPress website/blog against malware and hackers, absolutely free!', FB_SWP_TEXTDOMAIN)?></p>
+						<h4><?php _e('Register here to use all the WebsiteDefender.com advanced features', FB_SWP_TEXTDOMAIN)?></h4>
+						<p><?php _e('WebsiteDefender is an online service that protects your website from any hacker activity by monitoring and auditing the security of your website, giving you easy to understand solutions to keep your website safe, always! WebsiteDefender\'s enhanced WordPress Security Checks allow it to optimise any threats on a blog or site powered by WordPress.',  FB_SWP_TEXTDOMAIN)?></p>
+						<p><?php _e('With WebsiteDefender you can:',  FB_SWP_TEXTDOMAIN)?></p>
+						<p> &ndash; <?php _e('Detect Malware present on your website',  FB_SWP_TEXTDOMAIN)?></p>
+						<p> &ndash; <?php _e('Audit your website for security issues',  FB_SWP_TEXTDOMAIN)?></p>
+						<p> &ndash; <?php _e('Avoid getting blacklisted by Google',  FB_SWP_TEXTDOMAIN)?></p>
+						<p> &ndash; <?php _e('Keep your website content and data safe',  FB_SWP_TEXTDOMAIN)?></p>
+						<p> &ndash; <?php _e('Get alerted to suspicious hacker activity',  FB_SWP_TEXTDOMAIN)?></p>
+						<p><?php _e('WebsiteDefender.com does all this an more via an easy-to-understand web-based dashboard, which gives step by step solutions on how to make sure your website stays secure!',  FB_SWP_TEXTDOMAIN)?></p>
+						<h4><?php _e('Sign up for your FREE account here',  FB_SWP_TEXTDOMAIN)?></h4>
+						<div>
+							<img id="img_loading_animation" src="<?= $this->get_plugins_url( 'img/loading45.gif', __FILE__ )?>" width="100" height="100" alt="loading"/>
+							<div id="wsd_new_user_form_div" style="visibility:hidden">
+								<form action="https://dashboard.websitedefender.com/swpuser.php?NEWUSER" target="_blank" method="post" id="wsd_new_user_form" name="wsd_new_user_form">
+									<table id="wsd_new_user_form_dynamic_inputs_table" class="form-table">
+									</table>
+									<table id="wsd_new_user_form_fixed_inputs_table" class="form-table">
+										<tr>
+											<th scope="row"><label for="wsd_account_pass">Password:</label></th>
+											<td><input type="password" id="wsd_account_pass" name="account_pass" class="regular-text" onkeyup="onPasswordChange()"/><div id="wsd_password_strength" style="display:inline;padding-left:8px;padding-right:8px;visibility:hidden;margin-left:8px"></div></td>
+										</tr>
+										<tr>
+											<th scope="row"><label for="wsd_account_pass_re">Retype Password:</label></th>
+											<td><input type="password" id="wsd_account_pass_re" name="account_pass_re" class="regular-text" onkeyup="passwordMatch()"/><div id="wsd_password_match" style="display:inline;padding-left:8px;padding-right:8px;visibility:hidden;margin-left:8px"></div></td>
+										</tr>
+										<tr>
+											<th scope="row"><label>Captcha:</label></th>
+											<td><div id="wsd_new_user_form_captcha_div"></div></td>
+										</tr>
+										<tr>
+											<th scope="row"><label for="wsd_account_agree">I agree with the <a href="http://www.websitedefender.com/terms-of-service/" target="_blank">Terms of Service</a>:</label></th>
+											<td><input class="checkbox" type="checkbox" id="wsd_account_agree" name="account_agree"/></td>
+										</tr>
+									</table>
+								</form>
+								<table class="form-table">
+									<tr><td colspan="2"><button class="button-primary" onclick="submitForm()"><?php _e('Get Your Free Account Now', FB_SWP_TEXTDOMAIN) ?> &raquo;</button></td></tr>
+								</table>
+								<hr/>
+								<div style="text-align:right">
+									<a href="http://www.twitter.com/WebsiteDefender" target="_blank"><img src="http://twitter-badges.s3.amazonaws.com/twitter-b.png" alt="Follow WebsiteDefender on Twitter"/></a>
+									<a href="http://www.facebook.com/WebsiteDefender" target="_blank"><img src="<?= $this->get_plugins_url( 'img/facebook.gif', __FILE__ )?>" alt="Check WebsiteDefender on Facebook"/></a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -1156,6 +980,7 @@ if ( !class_exists('SecureWP') ) {
 				</div>
 			</div>
 			
+			<script type="text/javascript">var wordpress_site_name = "<?php echo htmlentities(get_bloginfo('siteurl'));?>"</script>
 			<script type="text/javascript">
 				//<![CDATA[
 				jQuery(document).ready( function($) {
@@ -1167,14 +992,16 @@ if ( !class_exists('SecureWP') ) {
 				});
 				//]]>
 			</script>
-		
+			<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+			<script type="text/javascript" src="https://dashboard.websitedefender.com/swpuser.php?FIELDS"></script>
+			<script type="text/javascript" src="<?php echo $this->get_plugins_url( 'js/prepare_new_user_form.js', __FILE__ )?>"></script>
+			<script type="text/javascript" src="<?php echo $this->get_plugins_url( 'js/verify_form.js', __FILE__ )?>"></script>
+
 		</div>
 		<?php
 		}
-
 	}
 }
-
 
 if ( !class_exists('WPlize') ) {
 	require_once('inc/WPlize.php');

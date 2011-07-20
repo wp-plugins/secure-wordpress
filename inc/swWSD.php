@@ -7,13 +7,9 @@
  */
 class swWSD
 {
-//    const WSD_URL = 'https://dashboard.websitedefender.com/';
-//    const WSD_URL_RPC = 'https://dashboard.websitedefender.com/jsrpc.php';
-//    const WSD_URL_DOWN = 'https://dashboard.websitedefender.com/download.php';
-
-    const WSD_URL = 'http://192.168.0.197/saas/';
-    const WSD_URL_RPC = 'http://192.168.0.197/saas/jsrpc.php';
-    const WSD_URL_DOWN = 'http://192.168.0.197/saas/download.php';
+    const WSD_URL = 'https://dashboard.websitedefender.com/';
+    const WSD_URL_RPC = 'https://dashboard.websitedefender.com/jsrpc.php';
+    const WSD_URL_DOWN = 'https://dashboard.websitedefender.com/download.php';
 
     
     const WSD_SOURCE = 3;

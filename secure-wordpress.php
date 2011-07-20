@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author WebsiteDefender
- * @version 2.0.1
+ * @version 2.0.2
  */
 /**
  * Plugin Name: Secure WordPress
@@ -11,7 +11,7 @@
  * Domain Path: /languages
  * Description: Basic security checks for securing your WordPress installation
  * Author: WebsiteDefender
- * Version: 2.0.1
+ * Version: 2.0.2
  * Author URI: http://www.websitedefender.com/
  * Last Change: 07/16/2011 {c}
  * License: GPL

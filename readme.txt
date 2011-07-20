@@ -3,8 +3,8 @@ Contributors: WebsiteDefender
 Author: WebsiteDefender
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
-Tested up to: 3.1
-Stable tag: 2.0.0
+Tested up to: 3.2.1
+Stable tag: 2.0.1
 
 WordPress Security Plugin
 
@@ -51,6 +51,12 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+
+= v2.0.1 (07/20/2011) =
+* Update: Major code cleanup
+* Update: Updated the class that handles the authentication/registration with WebsiteDefender.com in order to avoid code collision when both plug-ins are active.
+* New: Dependent files (.css/.js/.php) have been added
+
 = v2.0.0 (03/22/2011) =
 * Feature: Relese new stable version
 * Feature: Support for WordPress 3.1

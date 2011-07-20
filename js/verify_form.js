@@ -131,7 +131,7 @@ function submitForm(){
 		alert("Please correct the following errors and try again:\n" + errors)
 	}
 	else {
-		if(form=document.getElementById("wsd_new_user_form"))form.submit();
+		if(form=document.getElementById("sw_wsd_new_user_form"))form.submit();
 		Recaptcha.reload();
 	}
 }

@@ -4,6 +4,7 @@
  *
  * @author WebsiteDefender
  * $rev #1 07/16/2011 {c}$
+ * $rev #2 07/21/2011 {c}$
  */
 class swWSD
 {

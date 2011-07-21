@@ -2,7 +2,7 @@
 /**
  * @package Secure WordPress
  * @author WebsiteDefender
- * @version 2.0.2
+ * @version 2.0.3
  */
 /**
  * Plugin Name: Secure WordPress
@@ -11,7 +11,7 @@
  * Domain Path: /languages
  * Description: Basic security checks for securing your WordPress installation
  * Author: WebsiteDefender
- * Version: 2.0.2
+ * Version: 2.0.3
  * Author URI: http://www.websitedefender.com/
  * Last Change: 07/16/2011 {c}
  * License: GPL
@@ -102,14 +102,14 @@ function sw_is_plugin_active($plugin)
  */
 if (!sw_is_plugin_active('wp-security-scan/securityscan.php'))
 {
-    require_once 'inc/json.php';
-    require_once 'inc/recaptchalib.php';
+    @require_once 'inc/json.php';
+    @require_once 'inc/recaptchalib.php';
 }
 
 /*
  * Instantiate the swWSD class
  */
-require 'inc/swWSD.php';
+@require 'inc/swWSD.php';
 $swwsd = new swWSD();
 
 
@@ -1051,7 +1051,7 @@ if ( !class_exists('SecureWP') ){
    
     
 if ( !class_exists('WPlize') ) {
-	require 'inc/WPlize.php';
+	@require 'inc/WPlize.php';
 }
 
 if ( class_exists('WPlize') && function_exists('is_admin') ) {

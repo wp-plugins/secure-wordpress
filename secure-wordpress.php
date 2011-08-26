@@ -1,24 +1,20 @@
 <?php
 /**
- * @package Secure WordPress
- * @author WebsiteDefender
- * @version 2.0.3
- */
-/**
  * Plugin Name: Secure WordPress
  * Plugin URI: http://www.websitedefender.com/secure-wordpress-plugin/
  * Text Domain: secure_wp
  * Domain Path: /languages
  * Description: Basic security checks for securing your WordPress installation
  * Author: WebsiteDefender
- * Version: 2.0.3
+ * Version: 2.0.4
  * Author URI: http://www.websitedefender.com/
- * Last Change: 07/16/2011 {c}
  * License: GPL
  */
-
-
-
+/*
+ * rev #1: 07/16/2011 {c}
+ * rev #2: 07/26/2011 {c}
+ * rev #3: 08/26/2011 {c}
+ */
 
 global $wp_version;
 if ( !function_exists ('add_action') || version_compare($wp_version, "2.6alpha", "<") ) {
@@ -55,7 +51,7 @@ if ( isset($_GET['resource']) && !empty($_GET['resource']) ) {
 		'RK5CYII='.
 		'');
 
-	if ( array_key_exists($_GET['resource'], $resources) )
+	if (array_key_exists($_GET['resource'], $resources))
     {
 		$content = base64_decode($resources[ $_GET['resource'] ]);
 		$lastMod = filemtime(__FILE__);
@@ -82,37 +78,43 @@ if ( isset($_GET['resource']) && !empty($_GET['resource']) ) {
 }
 
 
-/*
- * Alias for the WP's is_plugin_active function because when calling it here
- * throws an error: call to undefined function is_plugin_active.
- * MU support not enabled!
- * 
- * @param string the path to the plug-in file (dirName/pluginFile.php)
- * @return bool
- */
-function sw_is_plugin_active($plugin)
+
+/* $rev #1, #2 {c} */
+if (!function_exists('json_encode') || !class_exists('Services_JSON'))
 {
-    $activePlugins = get_option('active_plugins');
-    return in_array($plugin, $activePlugins);
+    @require_once('inc/json.php');
+}
+if (!defined('WSD_RECAPTCHA_API_SERVER'))
+{
+    @require_once('inc/recaptchalib.php');
+}
+if ( !class_exists('WPlize') ) {
+	@require_once('inc/WPlize.php');
 }
 
 
-/*
- * Import required files if not already loaded by the WP Security Scan plug-in
- */
-if (!sw_is_plugin_active('wp-security-scan/securityscan.php'))
+// Check to see whether or not we should display the dashboard widget
+//@ $rev3
+$plugin1 = 'websitedefender-wordpress-security';
+$plugin2 = 'wp-security-scan';
+if (! in_array($plugin1.'/'.$plugin1.'.php', apply_filters('active_plugins', get_option('active_plugins')))
+        || ! in_array($plugin2.'/securityscan.php', apply_filters('active_plugins', get_option('active_plugins'))))
 {
-    @require_once 'inc/json.php';
-    @require_once 'inc/recaptchalib.php';
+    define('SWP_WSD_BLOG_FEED', 'http://www.websitedefender.com/feed/');
+    @require_once('inc/swUtil.php');
+    //@@ Hook into the 'wp_dashboard_setup' action to create the dashboard widget
+    add_action('wp_dashboard_setup', "swUtil::addDashboardWidget");
 }
+unset($plugin1,$plugin2);
+//@===
+
+
 
 /*
  * Instantiate the swWSD class
  */
 @require 'inc/swWSD.php';
 $swwsd = new swWSD();
-
-
 
 
 if ( !class_exists('SecureWP') ){
@@ -290,19 +292,24 @@ if ( !class_exists('SecureWP') ){
 
                 add_action( 'wp_ajax_set_toggle_status', array($this, 'set_toggle_status') );
 
-                /*$rev #1 07/15/2011 {c}$*/
-                $h1 = 'wsd_sw-styles'; $h2 = 'wsd_sw_jsn'; $h3 = 'wsd_sw_md5'; $h4 = 'wsd_sw_wsd'; $h5 = 'wsd_sw_scripts';
-                    wp_register_style($h1, $this->get_plugins_url('css/wsd_sw_styles.css', __FILE__));
-                    wp_register_script($h2, $this->get_plugins_url('js/json.js', __FILE__));
-                    wp_register_script($h3, $this->get_plugins_url('js/md5.js', __FILE__));
-                    wp_register_script($h4, $this->get_plugins_url('js/sw_wsd.js', __FILE__),array('jquery'));
-                    wp_register_script($h5, $this->get_plugins_url('js/sw_wsd_scripts.js', __FILE__),array('jquery'));
-                wp_enqueue_style($h1);
-                wp_enqueue_script($h2);
-                wp_enqueue_script($h3);
-                wp_enqueue_script($h4);
-                wp_enqueue_script($h5);
-                /*[ End $rev #1 ]*/
+                // Only load in the plug-in page
+                /*$rev #2 07/27/2011 {c}$*/
+                $url = $_SERVER['REQUEST_URI'];
+                if (stristr($url, 'secure-wordpress'))
+                {
+                    /*$rev #1 07/15/2011 {c}$*/
+                    $h1 = 'wsd_sw-styles'; $h2 = 'acx-json'; $h3 = 'acx-md5'; $h4 = 'wsd_sw_wsd'; $h5 = 'wsd_sw_scripts';
+                        wp_register_style($h1, $this->get_plugins_url('css/wsd_sw_styles.css', __FILE__));
+                        wp_register_script($h2, $this->get_plugins_url('js/json.js', __FILE__));
+                        wp_register_script($h3, $this->get_plugins_url('js/md5.js', __FILE__));
+                        wp_register_script($h4, $this->get_plugins_url('js/sw_wsd.js', __FILE__),array('jquery'));
+                        wp_register_script($h5, $this->get_plugins_url('js/sw_wsd_scripts.js', __FILE__),array('jquery'));
+                    wp_enqueue_style($h1);
+                    wp_enqueue_script($h2);
+                    wp_enqueue_script($h3);
+                    wp_enqueue_script($h4);
+                    wp_enqueue_script($h5);
+                }
             }
             /* End if admin*/
 
@@ -1049,10 +1056,6 @@ if ( !class_exists('SecureWP') ){
 }
 /* End if (!class_exists('SecureWP')) */
    
-    
-if ( !class_exists('WPlize') ) {
-	@require 'inc/WPlize.php';
-}
 
 if ( class_exists('WPlize') && function_exists('is_admin') ) {
 	$SecureWP = new SecureWP();

@@ -4,7 +4,7 @@ Author: WebsiteDefender
 Tags: secure, notice, hack, hacked, protection, version, security
 Requires at least: 2.6
 Tested up to: 3.2.1
-Stable tag: 2.0.3
+Stable tag: trunk
 
 WordPress Security Plugin
 
@@ -28,7 +28,7 @@ Secure WordPress beefs up the security of your WordPress installation by removin
 * PHP5 (tested with PHP Interpreter >= 5.2.9)
 
 = Localizations =
-Idea, first version and german translation by [Frank B&uuml;ltge](http://bueltge.de "bueltge.de"), Italian translation by [Gianni Diurno](http://gidibao.net/ "gidibao.net"), Polish translation by Michal Maciejewski, Belorussian file by [Fat Cow](http://www.fatcow.com/ "www.fatcow.com"), Ukrainian translation by [AzzePis](http://wordpress.co.ua/plugins/ "wordpress.co.ua/plugins/"), Russian language by [Dmitriy Donchenko](http://blogproblog.com/ "blogproblog.com"), Hungarian language files by [K&ouml;rmendi P&eacute;ter](http://www.seo-hungary.com/ "www.seo-hungary.com"), Danish language files by [GeorgWP](http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=175 "S&oslash;g efter downloads")m Spanish language files by [Pablo Jim&eacute;nez](http://www.ministeriosccc.org "www.ministeriosccc.org"), Chinese language (zh_CN) by [tanghaiwei](http://dd54.net), French translation files by [Jez007](http://forum.gmstemple.com/ "forum.gmstemple.com"), Japanese translation by [Fumito Mizuno](http://ounziw.com/ "Standing on the Shoulder of Linus"), Dutch translation by [Rene](http://wpwebshop.com "wpwebshop.com"), Persian language files by [ALiRezaCH](http://alirezach.co.cc), Romanian translation by [ Selco Resita]( http://www.selco-computers.ro " selco-computers.ro") and Arabic language files by [مدونة](http://www.r-sn.com/wp). WebsiteDefender would like to thank everyone that worked on making Secure WordPress a success.
+Idea, first version and german translation by [Frank B&uuml;ltge](http://bueltge.de "bueltge.de"), Italian translation by [Gianni Diurno](http://gidibao.net/ "gidibao.net"), Polish translation by Michal Maciejewski, Belorussian file by [Fat Cow](http://www.fatcow.com/ "www.fatcow.com"), Ukrainian translation by [AzzePis](http://wordpress.co.ua/plugins/ "wordpress.co.ua/plugins/"), Russian language by [Dmitriy Donchenko](http://blogproblog.com/ "blogproblog.com"), Hungarian language files by [K&ouml;rmendi P&eacute;ter](http://www.seo-hungary.com/ "www.seo-hungary.com"), Danish language files by [GeorgWP](http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=175 "S&oslash;g efter downloads")m Spanish language files by [Pablo Jim&eacute;nez](http://www.ministeriosccc.org "www.ministeriosccc.org"), Chinese language (zh_CN) by [tanghaiwei](http://dd54.net), French translation files by [Jez007](http://forum.gmstemple.com/ "forum.gmstemple.com"), Japanese translation by [Fumito Mizuno](http://ounziw.com/ "Standing on the Shoulder of Linus"), Dutch translation by [Rene](http://wpwebshop.com "wpwebshop.com"), Persian language files by [ALiRezaCH](http://alirezach.co.cc), Romanian translation by [ Selco Resita]( http://www.selco-computers.ro "selco-computers.ro") and Arabic language files by [مدونة](http://www.r-sn.com/wp), Turkish translation by [Nightmare17] (http://sanalespri.com). WebsiteDefender would like to thank everyone that worked on making Secure WordPress a success.
 
 == Installation ==
 1. Make a backup of your current installation
@@ -43,7 +43,7 @@ If you do encounter any bugs, or have comments or suggestions, please contact th
 
 
 == Other Notes ==
-= Licence =
+= License =
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog.
 
 = Translations =
@@ -51,6 +51,11 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+
+= v2.0.4 =
+* Feature: The WebsiteDefender RSS widget added to the admin dashboard
+* Update: The plug-in has been made compatible with WP Security Scan and WebsiteDefender WordPress Security
+* Feature: Turkish language files added.
 
 = v2.0.3 (07/21/2011) =
 * Bugfix: The import of external resources has been fixed.
@@ -64,10 +69,10 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 * New: Dependent files (.css/.js/.php) have been added
 
 = v2.0.0 (03/22/2011) =
-* Feature: Relese new stable version
+* Feature: Release new stable version
 * Feature: Support for WordPress 3.1
 * Feature: Change owner of the plugin to WebsiteDefender
-* Feature: Rebranding of the plugin
+* Feature: Re-branding of the plugin
 * Feature: Integrated WebsiteDefender registration in Settings
 
 = v1.0.6 (11/15/2010) =

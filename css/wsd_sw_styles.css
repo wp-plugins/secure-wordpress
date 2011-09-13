@@ -151,19 +151,15 @@ p.wsd-error-summary a:hover, .wsd-inside a:hover {
 /********************************************************
  * BEGIN >> Initial scan widget styling
 */
-#wsd-information-scan-list,
-#sw_wsd-information-scan-list {
+#wsd-information-scan-list {
 	list-style-type: disc;
 	margin: 10px;
 	padding-left: 20px;
 }
 
+#wsd-initial-scan { }
 
-
-#wsd-initial-scan, #sw_wsd-initial-scan { }
-
-#wsd-initial-scan .wsd-initial-scan-section,
-#sw_wsd-initial-scan .wsd-initial-scan-section {
+#wsd-initial-scan .wsd-initial-scan-section {
 	line-height: 1.4em;
 	display: block;
     color: #090;
@@ -173,14 +169,12 @@ p.wsd-error-summary a:hover, .wsd-inside a:hover {
 /********************************************************
  * BEGIN >> Target update form styling
 */
-#wsd_target_id_form,
-#sw_wsd_target_id_form {
+#wsd_target_id_form {
 	width: 100%;
 }
 
-#wsd_target_id_form #targetid,
-#sw_wsd_target_id_form #targetid {
-	width: 300px;
+#wsd_target_id_form #targetid {
+	width: 290px !important;
 }
 
 
@@ -188,31 +182,28 @@ p.wsd-error-summary a:hover, .wsd-inside a:hover {
 /********************************************************
  * BEGIN >> Status content styling
 */
-div#wsd-target-status-holder,
-div#sw_wsd-target-status-holder {
+div#wsd-target-status-holder {
 	overflow: hidden;
 }
 
-p.wsd-target-status-title, p.sw_wsd-target-status-title {
+p.wsd-target-status-title {
 	font-weight: bold;
 }
 
-div.wsd-target-status-section, div.sw_wsd-target-status-section {
+div.wsd-target-status-section {
 	display: block;
 	float: left;
 	margin-right: 5px;
 }
 
-span.wsd-target-status-section-label,
-span.sw_wsd-target-status-section-label {
+span.wsd-target-status-section-label {
 	display: block;
 	padding: 5px 4px;
 	float: left;
 	color: #999999
 }
 
-span.wsd-target-status-section-enabled,
-span.sw_wsd-target-status-section-enabled {
+span.wsd-target-status-section-enabled {
 	display: block;
 	padding: 5px 0px;
 	background-color: #0f0;
@@ -226,11 +217,10 @@ span.sw_wsd-target-status-section-enabled {
 	text-align: center;
 	font-weight: bold;
 
-	background: url('../images/agent-green.png') no-repeat scroll left top transparent;
+	background: url('../img/agent-green.png') no-repeat scroll left top transparent;
 }
 
-span.wsd-target-status-section-disabled,
-span.sw_wsd-target-status-section-disabled {
+span.wsd-target-status-section-disabled {
 	display: block;
 	padding: 5px 0px;
 	background-color: #f00;
@@ -244,31 +234,8 @@ span.sw_wsd-target-status-section-disabled {
 	text-align: center;
 	font-weight: bold;
 
-	background: url('../images/agent-red.png') no-repeat scroll left top transparent;
+	background: url('../img/agent-red.png') no-repeat scroll left top transparent;
 }
-
-
-
-
-/********************************************************
- * BEGIN >> Password meter styling
-*/
-label.password-meter {
-	display: none;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	font-weight: bolder;
-	border-radius: 3px;
-	text-align: center;
-	font-size: 12px;
-	color: #000;
-	width: 70px !important;
-	margin-left: 7px;
-	padding: 4px;
-	cursor: default;
-}
-
-
 
 .scanpass { color: #090; }
 

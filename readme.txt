@@ -2,7 +2,7 @@
 Contributors: WebsiteDefender
 Author: WebsiteDefender
 Tags: secure, notice, hack, hacked, protection, version, security
-Requires at least: 2.6
+Requires at least: 3.0
 Tested up to: 3.2.1
 Stable tag: trunk
 
@@ -24,7 +24,7 @@ Secure WordPress beefs up the security of your WordPress installation by removin
 1. Blocks any bad queries that could be harmful to your WordPress website
 
 = Requirements =
-* WordPress version 2.6 and higher (tested at 3.1)
+* WordPress version 3.0 and higher (tested at 3.1)
 * PHP5 (tested with PHP Interpreter >= 5.2.9)
 
 = Localizations =
@@ -51,6 +51,11 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+
+= v2.0.5 =
+* BugFix: The bug reported about ALTER rights retrieval has been addressed
+* Update: Code cleanup
+* Update: Minor internal updates
 
 = v2.0.4 =
 * Feature: The WebsiteDefender RSS widget added to the admin dashboard

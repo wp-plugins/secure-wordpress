@@ -11,8 +11,6 @@ class swWSD
     const WSD_URL = 'https://dashboard.websitedefender.com/';
     const WSD_URL_RPC = 'https://dashboard.websitedefender.com/jsrpc.php';
     const WSD_URL_DOWN = 'https://dashboard.websitedefender.com/download.php';
-
-    
     const WSD_SOURCE = 3;
     //error codes
     const WSD_ERROR_LIMITATION = 0x27;
@@ -35,7 +33,10 @@ class swWSD
     public function __construct() {}
 
     
-    function wsd_site_url(){return get_option( 'siteurl' ).'/';}
+    function wsd_site_url(){
+        $url = get_option( 'siteurl' );
+        return trailingslashit($url);
+    }
 
     function wsd_parseUrl($url)
     {
@@ -507,9 +508,9 @@ class swWSD
         <div class="wsd-inside">
             <?php if(!empty($error)) {$this->wsd_render_error($error);} ?>
             <form action="" method="post" id="wsd_target_id_form" name="wsd_target_id_form">
-                <label for="wsd_target_update_id">Target ID:</label>
-                    <input type="text" name="targetid" id="targetid"/>
-                <input type="submit" name="wsd_update_target_id" value="Update" />
+                <label for="wsd_target_update_id"><?php echo __('Target ID');?>:</label>
+                    <input type="text" name="targetid" id="targetid" value="<?php echo get_option('WSD-TARGETID');?>"/>
+                <input type="submit" name="wsd_update_target_id" value="<?php echo __('Update');?>" />
             </form>
         </div>
       <?php
@@ -689,7 +690,7 @@ class swWSD
       #echo "wsd_render_target_status<br>";
       $user = get_option('WSD-USER');
       if((!is_string($user))||($user == "") ) {$user = get_option("admin_email"); } 
-      $status = $this->wsd_jsonRPC(self::WSD_URL_RPC, "cPlugin.status", array($user, get_option('WSD-TARGETID')));
+      $status = $this->wsd_jsonRPC(self::WSD_URL_RPC, "cPlugin.status", array($user, get_option('WSD-TARGETID'), $this->wsd_site_url()));
       if($status === null)
       {
         $this->wsd_render_error();

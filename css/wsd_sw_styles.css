@@ -148,6 +148,94 @@ p.wsd-error-summary a:hover, .wsd-inside a:hover {
 	margin-left: 70px;
 }
 
+/********************************************************
+ * BEGIN >> Initial scan widget styling
+*/
+#wsd-information-scan-list {
+	list-style-type: disc;
+	margin: 10px;
+	padding-left: 20px;
+}
+
+#wsd-initial-scan { }
+
+#wsd-initial-scan .wsd-initial-scan-section {
+	line-height: 1.4em;
+	display: block;
+    color: #090;
+}
+
+
+/********************************************************
+ * BEGIN >> Target update form styling
+*/
+#wsd_target_id_form {
+	width: 100%;
+}
+
+#wsd_target_id_form #targetid {
+	width: 290px !important;
+}
+
+
+
+/********************************************************
+ * BEGIN >> Status content styling
+*/
+div#wsd-target-status-holder {
+	overflow: hidden;
+}
+
+p.wsd-target-status-title {
+	font-weight: bold;
+}
+
+div.wsd-target-status-section {
+	display: block;
+	float: left;
+	margin-right: 5px;
+}
+
+span.wsd-target-status-section-label {
+	display: block;
+	padding: 5px 4px;
+	float: left;
+	color: #999999
+}
+
+span.wsd-target-status-section-enabled {
+	display: block;
+	padding: 5px 0px;
+	background-color: #0f0;
+	color: #000;
+	float: left;
+	width: 50px;
+	height: 24px;
+	        border-radius: 3px;
+	   -moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	text-align: center;
+	font-weight: bold;
+
+	background: url('../img/agent-green.png') no-repeat scroll left top transparent;
+}
+
+span.wsd-target-status-section-disabled {
+	display: block;
+	padding: 5px 0px;
+	background-color: #f00;
+	color: #fff;
+	float: left;
+	width: 50px;
+	height: 24px;
+	        border-radius: 3px;
+	   -moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	text-align: center;
+	font-weight: bold;
+
+	background: url('../img/agent-red.png') no-repeat scroll left top transparent;
+}
 
 .scanpass { color: #090; }
 

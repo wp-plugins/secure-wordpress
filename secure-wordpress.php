@@ -6,7 +6,7 @@
  * Domain Path: /languages
  * Description: Basic security checks for securing your WordPress installation
  * Author: WebsiteDefender
- * Version: 2.0.4
+ * Version: 2.0.5
  * Author URI: http://www.websitedefender.com/
  * License: GPL
  */
@@ -14,6 +14,7 @@
  * rev #1: 07/16/2011 {c}
  * rev #2: 07/26/2011 {c}
  * rev #3: 08/26/2011 {c}
+ * rev #4: 09/12/2011 {c}
  */
 
 global $wp_version;
@@ -297,8 +298,8 @@ if ( !class_exists('SecureWP') ){
                 $url = $_SERVER['REQUEST_URI'];
                 if (stristr($url, 'secure-wordpress'))
                 {
-                    /*$rev #1 07/15/2011 {c}$*/
-                    $h1 = 'wsd_sw-styles'; $h2 = 'acx-json'; $h3 = 'acx-md5'; $h4 = 'wsd_sw_wsd'; $h5 = 'wsd_sw_scripts';
+                    /* $rev #1 07/15/2011 {c}$ */
+                    $h1 = 'wsd_sw-styles'; $h2 = 'acx-json'; $h3 = 'acx-md5'; $h4 = 'wsd_sw_wsd'; $h5 = 'wsd_sw_scripts'; 
                         wp_register_style($h1, $this->get_plugins_url('css/wsd_sw_styles.css', __FILE__));
                         wp_register_script($h2, $this->get_plugins_url('js/json.js', __FILE__));
                         wp_register_script($h3, $this->get_plugins_url('js/md5.js', __FILE__));
@@ -310,6 +311,11 @@ if ( !class_exists('SecureWP') ){
                     wp_enqueue_script($h4);
                     wp_enqueue_script($h5);
                 }
+                /* $rev #2 09/12/2011 {c}$ */
+                $h6 = 'swp-dashboard';
+                wp_register_style($h6, $this->get_plugins_url('css/acx-wp-dashboard.css', __FILE__));
+                wp_enqueue_style($h6);
+                
             }
             /* End if admin*/
 

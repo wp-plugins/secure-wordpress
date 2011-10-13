@@ -9,7 +9,7 @@ Stable tag: trunk
 WordPress Security Plugin
 
 == Description ==
-Secure WordPress beefs up the security of your WordPress installation by removing error information on login pages, adds index.html to plugin directories, hides the WordPress version and much more.
+Secure WordPress beefs up the security of your WordPress installation by removing error information on login pages, adds index.html to plugin directories, hides the WordPress version and much more. 
 
 1. Removes error-information on login-page
 1. Adds index.php plugin-directory (virtual)

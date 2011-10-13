@@ -6,7 +6,7 @@
  * Domain Path: /languages
  * Description: Basic security checks for securing your WordPress installation
  * Author: WebsiteDefender
- * Version: 2.0.5
+ * Version: 2.0.6
  * Author URI: http://www.websitedefender.com/
  * License: GPL
  */
@@ -15,6 +15,8 @@
  * rev #2: 07/26/2011 {c}
  * rev #3: 08/26/2011 {c}
  * rev #4: 09/12/2011 {c}
+ * rev #5: 09/20/2011 {c}
+ * rev #6: 09/30/2011 {c}
  */
 
 global $wp_version;
@@ -29,7 +31,6 @@ if ( !function_exists ('add_action') || version_compare($wp_version, "2.6alpha",
     }
 	exit($exit_msg);
 }
-
 /**
  * Displayed for the menu item in te admin menu
  * Images/ Icons in base64-encoding
@@ -79,7 +80,6 @@ if ( isset($_GET['resource']) && !empty($_GET['resource']) ) {
 }
 
 
-
 /* $rev #1, #2 {c} */
 if (!function_exists('json_encode') || !class_exists('Services_JSON'))
 {
@@ -119,7 +119,7 @@ $swwsd = new swWSD();
 
 
 if ( !class_exists('SecureWP') ){
-    
+
 	if (function_exists ('add_action'))
     {
 		// Pre-2.6 compatibility
@@ -299,7 +299,7 @@ if ( !class_exists('SecureWP') ){
                 if (stristr($url, 'secure-wordpress'))
                 {
                     /* $rev #1 07/15/2011 {c}$ */
-                    $h1 = 'wsd_sw-styles'; $h2 = 'acx-json'; $h3 = 'acx-md5'; $h4 = 'wsd_sw_wsd'; $h5 = 'wsd_sw_scripts'; 
+                    $h1 = 'wsd_sw-styles'; $h2 = 'acx-json'; $h3 = 'acx-md5'; $h4 = 'wsd_sw_wsd'; $h5 = 'wsd_sw_scripts';
                         wp_register_style($h1, $this->get_plugins_url('css/wsd_sw_styles.css', __FILE__));
                         wp_register_script($h2, $this->get_plugins_url('js/json.js', __FILE__));
                         wp_register_script($h3, $this->get_plugins_url('js/md5.js', __FILE__));
@@ -315,7 +315,7 @@ if ( !class_exists('SecureWP') ){
                 $h6 = 'swp-dashboard';
                 wp_register_style($h6, $this->get_plugins_url('css/acx-wp-dashboard.css', __FILE__));
                 wp_enqueue_style($h6);
-                
+
             }
             /* End if admin*/
 
@@ -398,7 +398,7 @@ if ( !class_exists('SecureWP') ){
         }
 
         /**
-         * unpdate options
+         * update options
          *
          * @package Secure WordPress
          */
@@ -415,6 +415,14 @@ if ( !class_exists('SecureWP') ){
             // save value
             if ($update_options) {
                 $GLOBALS['WPlize']->update_option($update_options);
+            }
+
+            // update 10/04/2011
+            if($_POST['show_rss_widget'] == 'on'){
+                update_option('WSD-RSS-WGT-DISPLAY', 'yes');
+            }
+            else {
+                update_option('WSD-RSS-WGT-DISPLAY', 'no');
             }
         }
 
@@ -554,7 +562,7 @@ if ( !class_exists('SecureWP') ){
         {
             if( basename($_SERVER['QUERY_STRING']) == 'page=secure-wordpress.php') {
                 $plugin_data = get_plugin_data( __FILE__ );
-                printf('%1$s plugin | ' . __('Version') . ' <a href="http://wordpress.org/extend/plugins/secure-wordpress/changelog/" target="_blank" title="' . __('History', FB_SWP_TEXTDOMAIN) . '">%2$s</a> | ' . __('Author') . ' %3$s<br />', $plugin_data['Title'], $plugin_data['Version'], $plugin_data['Author']);
+                printf('%1$s plugin | ' . __('Version', FB_SWP_TEXTDOMAIN) . ' <a href="http://wordpress.org/extend/plugins/secure-wordpress/changelog/" target="_blank" title="' . __('History', FB_SWP_TEXTDOMAIN) . '">%2$s</a> | ' . __('Author', FB_SWP_TEXTDOMAIN) . ' %3$s<br />', $plugin_data['Title'], $plugin_data['Version'], $plugin_data['Author']);
             }
         }
 
@@ -989,6 +997,29 @@ if ( !class_exists('SecureWP') ){
                                     </td>
                                 </tr>
 
+<?php
+//# 10/04/2011
+$_checked = false;
+$wsdRssWidgetVisible = get_option('WSD-RSS-WGT-DISPLAY');
+if (empty($wsdRssWidgetVisible) || $wsdRssWidgetVisible=='yes') {
+    add_option('WSD-RSS-WGT-DISPLAY', 'yes');
+    $_checked = true;
+}
+else {
+    if (strtolower($wsdRssWidgetVisible) == 'no') {
+        $_checked = false;
+    }
+}
+?>
+                                <tr valign="top">
+                                    <th scope="row">
+                                        <label for="show_rss_widget"><?php _e('Dashboard RSS widget', FB_SWP_TEXTDOMAIN); ?></label>
+                                    </th>
+                                    <td>
+                                        <input type="checkbox" name="show_rss_widget" id="show_rss_widget" <?php echo ($_checked ? 'checked="checked"' : '');?> />
+                                        <label for="show_rss_widget"><?php _e("Show the WebsiteDefender News dashboard widget", FB_SWP_TEXTDOMAIN);?></label>
+                                    </td>
+                                </tr>
                             </table>
 
                             <p class="submit">
@@ -1003,8 +1034,8 @@ if ( !class_exists('SecureWP') ){
 
             <div id="poststuff" class="ui-sortable meta-box-sortables poststuff">
                 <div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
-                    <div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
-                    <h3>About WebsiteDefender.com</h3>
+                    <div class="handlediv" title="<?php _e('Click to toggle', FB_SWP_TEXTDOMAIN); ?>"><br/></div>
+                    <h3><?php _e("About WebsiteDefender.com", FB_SWP_TEXTDOMAIN);?></h3>
                     <div class="inside">
                     <?php
                     /*
@@ -1061,7 +1092,7 @@ if ( !class_exists('SecureWP') ){
 
 }
 /* End if (!class_exists('SecureWP')) */
-   
+
 
 if ( class_exists('WPlize') && function_exists('is_admin') ) {
 	$SecureWP = new SecureWP();

@@ -36,7 +36,7 @@ Idea, first version and german translation by [Frank B&uuml;ltge](http://bueltge
 1. Upload the extracted files to the /wp-content/plugins/ directory
 1. Configure the desired options and activate the plugin from the 'Plugins' menu in WordPress
 
-If you do encounter any bugs, or have comments or suggestions, please contact the WebsiteDefender team on support@websitedefender.com 
+If you do encounter any bugs, or have comments or suggestions, please contact the WebsiteDefender team on support@websitedefender.com
 
 == Screenshots ==
 1. options-area (WordPress 3.1)
@@ -51,6 +51,10 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 
 == Changelog ==
+
+= v2.0.6 =
+* New setting: Option to open / close WebsiteDefender dashboard widget
+* Update: Internal code updates
 
 = v2.0.5 =
 * BugFix: The bug reported about ALTER rights retrieval has been addressed

@@ -5,6 +5,8 @@
  * @author WebsiteDefender
  * $rev #1 07/16/2011 {c}$
  * $rev #2 07/21/2011 {c}$
+ * $rev #3 09/20/2011 {c}$
+ * $rev #4 09/30/2011 {c}$
  */
 class swWSD
 {
@@ -508,10 +510,36 @@ class swWSD
         <div class="wsd-inside">
             <?php if(!empty($error)) {$this->wsd_render_error($error);} ?>
             <form action="" method="post" id="wsd_target_id_form" name="wsd_target_id_form">
-                <label for="wsd_target_update_id"><?php echo __('Target ID');?>:</label>
+                <?php
+                    $emailAddress = get_option('WSD-USER');
+                    if(empty($emailAddress)){
+                        $emailAddress = get_option('admin_email');
+                    }
+                ?>
+                <p>
+                    <label><?php echo __('WebsiteDefender email account');?>:</label>
+                    <br/>
+                    <input type="text" name="sw_user_email" id="sw_user_email" value="<?php echo $emailAddress;?>"
+                           style="width: 200px;"/>
+                </p>    
+                <p>
+                    <label for="wsd_target_update_id"><?php echo __('Target ID');?>:</label>
+                    <br/>
                     <input type="text" name="targetid" id="targetid" value="<?php echo get_option('WSD-TARGETID');?>"/>
-                <input type="submit" name="wsd_update_target_id" value="<?php echo __('Update');?>" />
+                    <br/><br/>
+                    <input type="submit" name="wsd_update_target_id" value="<?php echo __('Update');?>" />
+                </p>
             </form>
+            <div>
+                <p>
+                    <?php
+                        echo __('To get the WebsiteDefender target ID of your website, login to the
+                            <a href="https://dashboard.websitedefender.com/" target="_blank">WebsiteDefender dashboard</a>
+                            and from the <code>Website Settings</code> navigate to the <code>Status</code> tab. The Target ID 
+                            can be found under the <code>Scan Status</code> section.');
+                    ?>
+                </p>
+            </div>
         </div>
       <?php
     }
@@ -519,7 +547,12 @@ class swWSD
     function wsd_process_add_target_id()
     {
       //echo "wsd_process_add_target_id<br>";
-      add_option('WSD-TARGETID', $_POST['targetid']);
+        if(! empty($_POST['targetid'])){
+            add_option('WSD-TARGETID', $_POST['targetid']);
+        }
+        if( ! empty($_POST['sw_user_email'])){
+            add_option('WSD-USER', $_POST['sw_user_email']);
+        }
       $this->wsd_render_target_status();
     }
 
@@ -700,6 +733,11 @@ class swWSD
       {
         //our target is not valid anymore
         delete_option('WSD-TARGETID');
+        
+        // Display the add target id form
+        // update: $rev 3
+        $this->wsd_render_add_target_id();
+        $this->wsd_render_error('Invalid Target ID!');
         return false;
       }
 
@@ -727,10 +765,6 @@ class swWSD
         </p>
         <div class="wsd-target-status-section">
             <?php
-//                $statusText = 'NO';
-//                if ($enabled == 1) {
-//                    $statusText = 'YES';
-//                }
                 $statusText = (($enabled == 1) ? 'YES' : 'NO');
 
                 echo '<span class="wsd-target-status-section-label">Enabled: </span>',
@@ -739,10 +773,6 @@ class swWSD
         </div>
         <div class="wsd-target-status-section">
             <?php
-//                $statusText = 'NO';
-//                if ($scanned == 1) {
-//                    $statusText = 'YES';
-//                }
                 $statusText = (($scanned == 1) ? 'YES' : 'NO');
 
                 echo '<span class="wsd-target-status-section-label">Scanned: </span>',
@@ -751,10 +781,6 @@ class swWSD
         </div>
         <div class="wsd-target-status-section">
             <?php
-//                $statusText = 'UP';
-//                if ($agentless == 1) {
-//                    $statusText = 'DOWN';
-//                }
                 $statusText = (($agentless == 1) ? 'DOWN' : 'UP');
 
                 echo '<span class="wsd-target-status-section-label">Agent status: </span>',
@@ -803,7 +829,9 @@ class swWSD
       $hello = $this->wsd_jsonRPC(self::WSD_URL_RPC, "cPlugin.hello", $this->wsd_site_url());
       if($hello == null)
       {
-        $this->wsd_render_error();
+        // update: $rev 3
+        $this->wsd_render_new_user();
+        
         return;
       }
 

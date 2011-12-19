@@ -7,6 +7,7 @@
  * $rev #2 07/21/2011 {c}$
  * $rev #3 09/20/2011 {c}$
  * $rev #4 09/30/2011 {c}$
+ * $rev #5 12/17/2011 {c}$
  */
 class swWSD
 {
@@ -29,12 +30,12 @@ class swWSD
     const HTTP_BODY = 2;
     const HTTP_CHUNK_HEADER = 3;
     const HTTP_CHUNK_BODY = 4;
-    
-    
+
+
     // constructor
     public function __construct() {}
 
-    
+
     function wsd_site_url(){
         $url = get_option( 'siteurl' );
         return trailingslashit($url);
@@ -85,7 +86,7 @@ class swWSD
         if(array_key_exists("port", $result)) {$port = ":".$result["port"];}
 
         $result["all"] = $scheme."://".$userPass.$result["host"].$port;
-        
+
         return $result;
     }
 
@@ -106,7 +107,7 @@ class swWSD
 
         $scheme = $url["scheme"]=="https" ? "ssl://" : "";
 
-        $fp = fsockopen($scheme.$url["host"], $url["port"] , $errno, $errstr, $timeout);	
+        $fp = fsockopen($scheme.$url["host"], $url["port"] , $errno, $errstr, $timeout);
 
       if (!$fp)
       {
@@ -129,11 +130,11 @@ class swWSD
       $out  = $verb." ".$url["path"].$url["query"]." HTTP/1.1\r\n";
       $out .= "Host: ". $url["host"] . "\r\n";
       $out .= "Connection: Close\r\n";
-      $out .= "Accept-Encoding: identity\r\n"; 
-      if($verb == "POST") {$out .= "Content-Length: " . strlen($body) . "\r\n"; }   
-      foreach ($headers as $name => $value) {$out .= $name .": " . $value . "\r\n";}    
-      $out .= "\r\n";    
-      if($verb == "POST") {$out .= $body;}    
+      $out .= "Accept-Encoding: identity\r\n";
+      if($verb == "POST") {$out .= "Content-Length: " . strlen($body) . "\r\n"; }
+      foreach ($headers as $name => $value) {$out .= $name .": " . $value . "\r\n";}
+      $out .= "\r\n";
+      if($verb == "POST") {$out .= $body;}
       fwrite($fp, $out);
       fflush($fp);
 
@@ -177,11 +178,11 @@ class swWSD
               $status = self::HTTP_CHUNK_HEADER;
             }
             else {$status = self::HTTP_BODY;}
-            
+
             continue;
           }
 
-          $data = trim($data);    		
+          $data = trim($data);
           $separator = strpos($data, ": ");
 
           if(($separator === false)||($separator == 0) || ($separator >= (strlen($data) -2))) {
@@ -360,16 +361,17 @@ class swWSD
       echo $html;
     }
 
+    //$rev #5 12/17/2011 {c}$
     function wsd_render_user_login($error = '')
     {
       if($error !== '') {$this->wsd_render_error($error);}
       ?>
 
-    <?php if(!empty($error)) { ?>
+    <?php //if(!empty($error)) { ?>
         <div class="wsd-inside">
-    <?php } ?>
+    <?php //} ?>
 
-            <p class="wsd-login-notice">Login here if you already have a WSD account.</p>
+        <p class="wsd-login-notice"><?php echo __('Login here if you already have a WSD account.');?></p>
         <form action="" method="post" id="sw_wsd_login_form" name="sw_wsd_login_form">
           <div>
               <div class="wsd-login-section">
@@ -383,14 +385,44 @@ class swWSD
             <input type="submit" name="wsd-login" id="wsd-login" value="Login">
           </div>
         </form>
-
-    <?php if(!empty($error)) { ?>
+<script type="text/javascript">
+jQuery(document).ready(function($)
+{
+    var $wsd_login_form = $('#sw_wsd_login_form');
+    if ($wsd_login_form.length > 0) {
+        $wsd_login_form.delegate('#wsd-login', 'click',
+            function() {
+                var $wsdUserEmailInput = $("#wsd_login_form_email")
+                var $wsdUserEmail = $.trim($wsdUserEmailInput.val());
+                if('' == $wsdUserEmail){
+                    alert("Email address is required!");
+                    $wsdUserEmailInput.focus();
+                    return false;
+                }
+                var $wsd_login_form_password = $('#wsd_login_form_password');
+                var password = $wsd_login_form_password.val();
+                if (password != '') {
+                    var passwordHash = wsdMD5(password);
+                    $wsd_login_form_password.val(passwordHash);
+                }
+                else {
+                    alert('Password is required!');
+                    $wsd_login_form_password.focus();
+                    return false;
+                }
+                return true;
+            });
+    }
+});
+</script>
+    <?php //if(!empty($error)) { ?>
         </div>
-    <?php } ?>
+    <?php //} ?>
 
       <?php
     }
 
+    //$rev #5 12/17/2011 {c}$
     function wsd_render_new_user($error = '')
     {
       //print "wsd_render_new_user $error<br>";
@@ -398,13 +430,15 @@ class swWSD
       $form = $this->wsd_jsonRPC(self::WSD_URL_RPC, "cPlugin.getfrm", $this->wsd_site_url());
       if ($form === null)
       {
-          $this->wsd_render_error();
+          $this->wsd_render_user_login();
           return;
+//          $this->wsd_render_error();
+//          return;
       }
       $recaptcha_publickey = $form['captcha'];
       if(empty($recaptcha_publickey))
       {
-        $this->wsd_render_error('Invalid server response.');
+        $this->wsd_render_error(__('Invalid server response. Please try again in a few minutes!'));
         return;
       }
 
@@ -415,19 +449,19 @@ class swWSD
 
       ?>
       <div class="wsd-inside">
-        <?php    
-        $this->wsd_render_user_login();
+        <?php
+        //$this->wsd_render_user_login();
         ?>
 
             <h4><?php _e('Register here to use all the WebsiteDefender.com advanced features', FB_SWP_TEXTDOMAIN)?></h4>
             <p><?php _e('WebsiteDefender is an online service that protects your website from any hacker activity by monitoring and auditing the security of your website, giving you easy to understand solutions to keep your website safe, always! WebsiteDefender\'s enhanced WordPress Security Checks allow it to optimise any threats on a blog or site powered by WordPress.',  FB_SWP_TEXTDOMAIN)?></p>
             <p><?php _e('<strong>With WebsiteDefender you can:</strong>',  FB_SWP_TEXTDOMAIN)?></p>
             <ul class="wsd_commonList">
-                <li><span>Detect Malware present on your website</span></li>
-                <li><span>Audit your website for security issues</span></li>
-                <li><span>Avoid getting blacklisted by Google</span></li>
-                <li><span>Keep your website content and data safe</span></li>
-                <li><span>Get alerted to suspicious hacker activity</span></li>
+            <li><span><?php _e('Detect Malware present on your website', FB_SWP_TEXTDOMAIN);?></span></li>
+            <li><span><?php _e('Audit your website for security issues', FB_SWP_TEXTDOMAIN);?></span></li>
+            <li><span><?php _e('Avoid getting blacklisted by Google', FB_SWP_TEXTDOMAIN);?></span></li>
+            <li><span><?php _e('Keep your website content and data safe', FB_SWP_TEXTDOMAIN);?></span></li>
+            <li><span><?php _e('Get alerted to suspicious hacker activity', FB_SWP_TEXTDOMAIN);?></span></li>
             </ul>
 
             <p><?php _e('WebsiteDefender.com does all this an more via an easy-to-understand web-based dashboard, which gives step by step solutions on how to make sure your website stays secure!',  FB_SWP_TEXTDOMAIN)?></p>
@@ -466,9 +500,9 @@ class swWSD
               ?>
             </div>
           <input type="submit" name="wsd-new-user" id="wsd-new-user" value="Register">
-        </form>    
+        </form>
       </div>
-      <?php  
+      <?php
     }
 
 
@@ -495,11 +529,14 @@ class swWSD
             return;
         }
 
+        $email = strtolower($email);
         $user = get_option("WSD-USER");
         if ($user === false) {
             add_option("WSD-USER", $email);
         }
-        else {update_option("WSD-USER", $email);}
+        else {
+            $user = strtolower($user);
+            update_option("WSD-USER", $email);}
 
         $this->wsd_add_or_process_target();
     }
@@ -515,13 +552,14 @@ class swWSD
                     if(empty($emailAddress)){
                         $emailAddress = get_option('admin_email');
                     }
+                    $emailAddress = strtolower($emailAddress);
                 ?>
                 <p>
                     <label><?php echo __('WebsiteDefender email account');?>:</label>
                     <br/>
                     <input type="text" name="sw_user_email" id="sw_user_email" value="<?php echo $emailAddress;?>"
                            style="width: 200px;"/>
-                </p>    
+                </p>
                 <p>
                     <label for="wsd_target_update_id"><?php echo __('Target ID');?>:</label>
                     <br/>
@@ -535,7 +573,7 @@ class swWSD
                     <?php
                         echo __('To get the WebsiteDefender target ID of your website, login to the
                             <a href="https://dashboard.websitedefender.com/" target="_blank">WebsiteDefender dashboard</a>
-                            and from the <code>Website Settings</code> navigate to the <code>Status</code> tab. The Target ID 
+                            and from the <code>Website Settings</code> navigate to the <code>Status</code> tab. The Target ID
                             can be found under the <code>Scan Status</code> section.');
                     ?>
                 </p>
@@ -551,7 +589,8 @@ class swWSD
             add_option('WSD-TARGETID', $_POST['targetid']);
         }
         if( ! empty($_POST['sw_user_email'])){
-            add_option('WSD-USER', $_POST['sw_user_email']);
+            $em = strtolower($_POST['sw_user_email']);
+            add_option('WSD-USER', $em);
         }
       $this->wsd_render_target_status();
     }
@@ -582,7 +621,7 @@ class swWSD
           $this->wsd_render_target_status();
           return;
         }
-      }  
+      }
 
       //the target was not there so we have to register a new one
       $newtarget = $this->wsd_jsonRPC(self::WSD_URL_RPC, "cTargets.add", $this->wsd_site_url());
@@ -641,12 +680,12 @@ class swWSD
       }
 
       //test the agent, this will triger agentless if agent not functioning
-      $testTarget = $this->wsd_jsonRPC(self::WSD_URL_RPC, "cTargets.agenttest", $newtarget['id']);  
+      $testTarget = $this->wsd_jsonRPC(self::WSD_URL_RPC, "cTargets.agenttest", $newtarget['id']);
       $enbableTarget = $this->wsd_jsonRPC(self::WSD_URL_RPC, "cTargets.enable", array($newtarget['id'], true));
 
       if($targetInstalError != '') {$this->wsd_render_agent_install_issues($targetInstalError);}
 
-      $this->wsd_render_target_status();  
+      $this->wsd_render_target_status();
     }
 
     function wsd_process_new_user_form()
@@ -709,12 +748,15 @@ class swWSD
         $this->wsd_render_new_user('Registration failed! Please try again.');
         return;
       }
+      $email = strtolower($email);
       $user = get_option("WSD-USER");
       if($user === false) {
           add_option("WSD-USER", $email);
-      } 
-      else {update_option("WSD-USER", $email);}
-      
+      }
+      else {
+          $user = strtolower($user);
+          update_option("WSD-USER", $email);}
+
       $this->wsd_add_or_process_target();
     }
 
@@ -722,18 +764,19 @@ class swWSD
     {
       #echo "wsd_render_target_status<br>";
       $user = get_option('WSD-USER');
-      if((!is_string($user))||($user == "") ) {$user = get_option("admin_email"); } 
+      if((!is_string($user))||($user == "") ) {$user = get_option("admin_email"); }
+      $user = strtolower($user);
       $status = $this->wsd_jsonRPC(self::WSD_URL_RPC, "cPlugin.status", array($user, get_option('WSD-TARGETID'), $this->wsd_site_url()));
       if($status === null)
       {
         $this->wsd_render_error();
-        return;  
+        return;
       }
       if((!array_key_exists('active', $status)) || ($status['active'] !== 1))
       {
         //our target is not valid anymore
         delete_option('WSD-TARGETID');
-        
+
         // Display the add target id form
         // update: $rev 3
         $this->wsd_render_add_target_id();
@@ -801,6 +844,31 @@ class swWSD
         return;
       }
 
+//-- GET
+      $rm = strtoupper($_SERVER['REQUEST_METHOD']);
+      if ('GET' == $rm)
+      {
+          $targetid = get_option("WSD-TARGETID");
+          if($targetid !== false)
+          {
+            $this->wsd_render_target_status();
+            return;
+          }
+
+          $u = get_option('WSD-USER');
+          if (false === $u)
+          {
+              $this->wsd_render_new_user();
+              return;
+          }
+          else{
+              $this->wsd_render_user_login();
+              return;
+          }
+      }
+
+
+//-- POST
       if(isset($_POST['wsd-new-user']))
       {
         $this->wsd_process_new_user_form();
@@ -819,19 +887,12 @@ class swWSD
         return;
       }
 
-      $targetid = get_option("WSD-TARGETID");
-      if($targetid !== false)
-      {
-        $this->wsd_render_target_status();
-        return;
-      }
-
       $hello = $this->wsd_jsonRPC(self::WSD_URL_RPC, "cPlugin.hello", $this->wsd_site_url());
       if($hello == null)
       {
         // update: $rev 3
         $this->wsd_render_new_user();
-        
+
         return;
       }
 
@@ -848,7 +909,7 @@ class swWSD
       }
       else
       {
-        $this->wsd_render_error("Invalid server response.");
+        $this->wsd_render_error(__("Invalid server response. Please try again in a few minutes!"));
         return;
       }
     }

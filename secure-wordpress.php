@@ -6,7 +6,7 @@
  * Domain Path: /languages
  * Description: Basic security checks for securing your WordPress installation
  * Author: WebsiteDefender
- * Version: 2.0.6
+ * Version: 2.0.7
  * Author URI: http://www.websitedefender.com/
  * License: GPL
  */
@@ -17,12 +17,13 @@
  * rev #4: 09/12/2011 {c}
  * rev #5: 09/20/2011 {c}
  * rev #6: 09/30/2011 {c}
+ * rev #7: 11/15/2011 {c}
  */
 
 global $wp_version;
-if ( !function_exists ('add_action') || version_compare($wp_version, "2.6alpha", "<") ) {
+if ( !function_exists ('add_action') || version_compare($wp_version, "3.0", "<") ) {
 	if (function_exists ('add_action')) {
-		$exit_msg = 'The plugin <em><a href="http://wordpress.org/extend/plugins/secure-wordpress/" target="_blank">Secure WordPress</a></em> requires WordPress 2.6 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress" target="_blank">Please update WordPress</a> or delete the plugin.';
+		$exit_msg = 'The plugin <em><a href="http://wordpress.org/extend/plugins/secure-wordpress/" target="_blank">Secure WordPress</a></em> requires WordPress 3.0 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress" target="_blank">Please update WordPress</a> or delete the plugin.';
     }
 	else {$exit_msg = '';}
     if (!headers_sent()) {
@@ -152,13 +153,6 @@ if ( !class_exists('SecureWP') ){
     {
         var $wpversion;
 
-        /*
-         * constructor {php 4}
-         * calls $this->__construct()
-         */
-       // public function SecureWP() { return $this->__construct(); }
-
-        // constructor {php5+}
         public function __construct()
         {
             global $wp_version;
@@ -1069,7 +1063,7 @@ else {
                 </div>
             </div>
 
-            <script type="text/javascript">var wordpress_site_name = "<?php echo htmlentities(get_bloginfo('siteurl'));?>"</script>
+            <script type="text/javascript">var wordpress_site_name = "<?php echo htmlentities(get_bloginfo('url'));?>"</script>
             <script type="text/javascript">
                 jQuery(document).ready(function($) {
                     $('.postbox h3').click(function() { $($(this).parent().get(0)).toggleClass('closed'); } );

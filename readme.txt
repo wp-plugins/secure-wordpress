@@ -52,6 +52,9 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 
 == Changelog ==
 
+= v2.0.8 =
+* Removed the registration requirement
+
 = v2.0.7 =
 * Update: Updated the deprecated function call get_bloginfo('siteurl') to get_bloginfo('url')
 * Update: Updated validation for plug-in form fields (email address, user name, target id, etc.)

@@ -6,7 +6,7 @@
  * Domain Path: /languages
  * Description: Basic security checks for securing your WordPress installation
  * Author: WebsiteDefender
- * Version: 2.0.7
+ * Version: 2.0.8
  * Author URI: http://www.websitedefender.com/
  * License: GPL
  */
@@ -80,16 +80,6 @@ if ( isset($_GET['resource']) && !empty($_GET['resource']) ) {
 	}
 }
 
-
-/* $rev #1, #2 {c} */
-if (!function_exists('json_encode') || !class_exists('Services_JSON'))
-{
-    @require_once('inc/json.php');
-}
-if (!defined('WSD_RECAPTCHA_API_SERVER'))
-{
-    @require_once('inc/recaptchalib.php');
-}
 if ( !class_exists('WPlize') ) {
 	@require_once('inc/WPlize.php');
 }
@@ -109,15 +99,6 @@ if (! in_array($plugin1.'/'.$plugin1.'.php', apply_filters('active_plugins', get
 }
 unset($plugin1,$plugin2);
 //@===
-
-
-
-/*
- * Instantiate the swWSD class
- */
-@require 'inc/swWSD.php';
-$swwsd = new swWSD();
-
 
 if ( !class_exists('SecureWP') ){
 
@@ -292,18 +273,8 @@ if ( !class_exists('SecureWP') ){
                 $url = $_SERVER['REQUEST_URI'];
                 if (stristr($url, 'secure-wordpress'))
                 {
-                    /* $rev #1 07/15/2011 {c}$ */
-                    $h1 = 'wsd_sw-styles'; $h2 = 'acx-json'; $h3 = 'acx-md5'; $h4 = 'wsd_sw_wsd'; $h5 = 'wsd_sw_scripts';
-                        wp_register_style($h1, $this->get_plugins_url('css/wsd_sw_styles.css', __FILE__));
-                        wp_register_script($h2, $this->get_plugins_url('js/json.js', __FILE__));
-                        wp_register_script($h3, $this->get_plugins_url('js/md5.js', __FILE__));
-                        wp_register_script($h4, $this->get_plugins_url('js/sw_wsd.js', __FILE__),array('jquery'));
-                        wp_register_script($h5, $this->get_plugins_url('js/sw_wsd_scripts.js', __FILE__),array('jquery'));
-                    wp_enqueue_style($h1);
-                    wp_enqueue_script($h2);
-                    wp_enqueue_script($h3);
-                    wp_enqueue_script($h4);
-                    wp_enqueue_script($h5);
+                    wp_register_style('wsd_sw-styles', $this->get_plugins_url('css/wsd_sw_styles.css', __FILE__));
+                    wp_enqueue_style('wsd_sw-styles');
                 }
                 /* $rev #2 09/12/2011 {c}$ */
                 $h6 = 'swp-dashboard';
@@ -328,7 +299,7 @@ if ( !class_exists('SecureWP') ){
              */
             if ( $GLOBALS['WPlize']->get_option('secure_wp_index') == '1' ) {
                 $this->add_index( WP_PLUGIN_DIR, true );
-                $this->add_index( WP_CONTENT_URL . '/themes', true );
+                $this->add_index( WP_CONTENT_DIR . '/themes/', true );
             }
 
 
@@ -534,7 +505,7 @@ if ( !class_exists('SecureWP') ){
 
                 if ( version_compare( $wp_version, '2.7alpha', '>' ) && function_exists('add_contextual_help') ) {
                     $hook = add_submenu_page( 'options-general.php', __('Secure WordPress', FB_SWP_TEXTDOMAIN), $menutitle, 'manage_options', basename(__FILE__), array(&$this, 'display_page') );
-                    add_contextual_help( $hook, __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/" target="_blank">Documentation</a>', FB_SWP_TEXTDOMAIN) );
+                    @add_contextual_help( $hook, __('<a href="http://wordpress.org/extend/plugins/secure-wordpress/" target="_blank">Documentation</a>', FB_SWP_TEXTDOMAIN) );
                     //add_filter( 'contextual_help', array(&$this, 'contextual_help') );
                 }
                 else { add_submenu_page( 'options-general.php', __('Secure WP', FB_SWP_TEXTDOMAIN), $menutitle, 9, basename(__FILE__), array(&$this, 'display_page') ); }
@@ -633,10 +604,44 @@ if ( !class_exists('SecureWP') ){
          */
         public function remove_wp_version_on_admin()
         {
-            if ( !current_user_can('update_plugins') && is_admin() ) {
-                wp_enqueue_script( 'remove-wp-version',  $this->get_plugins_url( 'js/remove_wp_version.js', __FILE__ ), array('jquery') );
-                remove_action( 'update_footer', 'core_update_footer' );
+            if(! is_admin()) { return; }
+            if(! current_user_can('administrator'))
+            {
+                global $wp_version;
+
+                // random values
+                $v = intval( rand(0, 9999) );
+                $d = intval( rand(9999, 99999) );
+                $m = intval( rand(99999, 999999) );
+                $t = intval( rand(999999, 9999999) );
+
+                if ( function_exists('the_generator') )
+                {
+                    // eliminate version for wordpress >= 2.4
+                    remove_filter( 'wp_head', 'wp_generator' );
+                    $actions = array( 'rss2_head', 'commentsrss2_head', 'rss_head', 'rdf_header', 'atom_head', 'comments_atom_head', 'opml_head', 'app_head', 'wp_head' );
+                    foreach ( $actions as $action ) {
+                        remove_action( $action, 'the_generator' );
+                    }
+
+                    // for vars
+                    $wp_version = $v;
+                    $wp_db_version = $d;
+                    $manifest_version = $m;
+                    $tinymce_version = $t;
+                }
+                else {
+                    // for wordpress < 2.4
+                    add_filter( "bloginfo_rss('version')", create_function('$a', "return $v;") );
+
+                    // for rdf and rss v0.92
+                    $wp_version = $v;
+                    $wp_db_version = $d;
+                    $manifest_version = $m;
+                    $tinymce_version = $t;
+                }
             }
+
         }
 
         /**
@@ -858,7 +863,6 @@ if ( !class_exists('SecureWP') ){
             $secure_wp_rtu           = $GLOBALS['WPlize']->get_option('secure_wp_rtu');
             $secure_wp_wps           = $GLOBALS['WPlize']->get_option('secure_wp_wps');
             $secure_wp_amurlr        = $GLOBALS['WPlize']->get_option('secure_wp_amurlr');
-
             $secure_wp_win_settings  = $GLOBALS['WPlize']->get_option('secure_wp_win_settings');
             $secure_wp_win_about     = $GLOBALS['WPlize']->get_option('secure_wp_win_about');
             $secure_wp_win_opt       = $GLOBALS['WPlize']->get_option('secure_wp_win_opt');
@@ -868,12 +872,11 @@ if ( !class_exists('SecureWP') ){
             <h2><?php _e('Secure WordPress by WebsiteDefender', FB_SWP_TEXTDOMAIN); ?></h2>
             <br class="clear" />
 
-            <div id="poststuff" class="ui-sortable meta-box-sortables poststuff poststuff_left">
+            <div id="poststuff" class="ui-sortable meta-box-sortables poststuff poststuff_left" style="width: 80%;">
                 <div id="secure_wp_win_settings" class="postbox <?php echo $secure_wp_win_settings ?>" >
                     <div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
                     <h3><?php _e('Configuration', FB_SWP_TEXTDOMAIN); ?></h3>
                     <div class="inside">
-
                         <form name="secure_wp_config-update" method="post" action="admin-post.php">
                             <?php if (function_exists('wp_nonce_field') === true) {wp_nonce_field('secure_wp_settings_form');} ?>
 
@@ -1026,24 +1029,7 @@ else {
                 </div>
             </div>
 
-            <div id="poststuff" class="ui-sortable meta-box-sortables poststuff">
-                <div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
-                    <div class="handlediv" title="<?php _e('Click to toggle', FB_SWP_TEXTDOMAIN); ?>"><br/></div>
-                    <h3><?php _e("About WebsiteDefender.com", FB_SWP_TEXTDOMAIN);?></h3>
-                    <div class="inside">
-                    <?php
-                    /*
-                     * $rev #1 07/15/2011 k$
-                     * >> Display the WSD form
-                     */
-                     global $swwsd;
-                     $swwsd->wsd_render_main();
-                    ?>
-                    </div>
-                </div>
-            </div>
-
-            <div id="poststuff" class="ui-sortable meta-box-sortables poststuff  poststuff_left poststuff_clear">
+            <div id="poststuff" class="ui-sortable meta-box-sortables poststuff  poststuff_left poststuff_clear" style="width: 80%;">
                 <div id="secure_wp_win_opt" class="postbox <?php echo $secure_wp_win_opt ?>" >
                     <div class="handlediv" title="<?php _e('Click to toggle'); ?>"><br/></div>
                     <h3 id="uninstall"><?php _e('Clear Options', FB_SWP_TEXTDOMAIN) ?></h3>
@@ -1063,7 +1049,6 @@ else {
                 </div>
             </div>
 
-            <script type="text/javascript">var wordpress_site_name = "<?php echo htmlentities(get_bloginfo('url'));?>"</script>
             <script type="text/javascript">
                 jQuery(document).ready(function($) {
                     $('.postbox h3').click(function() { $($(this).parent().get(0)).toggleClass('closed'); } );
@@ -1073,23 +1058,15 @@ else {
                     });
                 });
             </script>
-            <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
-            <script type="text/javascript" src="https://dashboard.websitedefender.com/swpuser.php?FIELDS"></script>
-            <script type="text/javascript" src="<?php echo $this->get_plugins_url( 'js/prepare_new_user_form.js', __FILE__ )?>"></script>
-            <script type="text/javascript" src="<?php echo $this->get_plugins_url( 'js/verify_form.js', __FILE__ )?>"></script>
-
         </div>
         <?php
         }
     }
     /* End class: SecureWP.php */
-
 }
 /* End if (!class_exists('SecureWP')) */
 
 
-if ( class_exists('WPlize') && function_exists('is_admin') ) {
-	$SecureWP = new SecureWP();
-}
 
+new SecureWP();
 ?>

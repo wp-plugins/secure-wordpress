@@ -1,56 +1,159 @@
-=== Secure WordPress ===
-Contributors: WebsiteDefender
-Author: WebsiteDefender
-Tags: secure, notice, hack, hacked, protection, version, security
+=== Acunetix Secure WordPress ===
+Author: Acunetix
+Contributors: Acunetix
+Tags: security, securityscan, chmod, permissions, admin, administration, authentication, database, dashboard, post, notification, password, plugin, posts,
+plugins, private, protection, tracking, wordpress
 Requires at least: 3.0
-Tested up to: 3.3
+Tested up to: 3.6
 Stable tag: trunk
 
-WordPress Security Plugin
+Scans your WordPress installation for security vulnerabilities.
 
 == Description ==
-Secure WordPress beefs up the security of your WordPress installation by removing error information on login pages, adds index.html to plugin directories, hides the WordPress version and much more.
+Acunetix Secure WordPress plugin is a free and comprehensive security tool that helps you secure your WordPress
+installation and suggests corrective measures for: securing file permissions, security of the database, version hiding,
+WordPress admin protection and lots more.
 
-1. Removes error-information on login-page
-1. Adds index.php plugin-directory (virtual)
-1. Removes the wp-version, except in admin-area
-1. Removes Really Simple Discovery
-1. Removes Windows Live Writer
-1. Removes core update information for non-admins
-1. Removes plugin-update information for non-admins
-1. Removes theme-update information for non-admins (only WP 2.8 and higher)
-1. Hides wp-version in backend-dashboard for non-admins
-1. Removes version on URLs from scripts and stylesheets only on frontend
-1. Blocks any bad queries that could be harmful to your WordPress website
+Acunetix Secure WordPress checks your WordPress website/blog for security vulnerabilities and suggests corrective actions such as:
+
+1. Passwords
+2. File permissions
+3. Database security
+4. Version hiding
+5. WordPress admin protection/security
+6. Removes WP Generator META tag from core code
 
 = Requirements =
-* WordPress version 3.0 and higher (tested with 3.2.1, 3.3)
+
+* WordPress version 3.0 and higher
 * PHP5 (tested with PHP Interpreter >= 5.2.9)
 
-= Localizations =
-Idea, first version and german translation by [Frank B&uuml;ltge](http://bueltge.de "bueltge.de"), Italian translation by [Gianni Diurno](http://gidibao.net/ "gidibao.net"), Polish translation by Michal Maciejewski, Belorussian file by [Fat Cow](http://www.fatcow.com/ "www.fatcow.com"), Ukrainian translation by [AzzePis](http://wordpress.co.ua/plugins/ "wordpress.co.ua/plugins/"), Russian language by [Dmitriy Donchenko](http://blogproblog.com/ "blogproblog.com"), Hungarian language files by [K&ouml;rmendi P&eacute;ter](http://www.seo-hungary.com/ "www.seo-hungary.com"), Danish language files by [GeorgWP](http://wordpress.blogos.dk/s%C3%B8g-efter-downloads/?did=175 "S&oslash;g efter downloads")m Spanish language files by [Pablo Jim&eacute;nez](http://www.ministeriosccc.org "www.ministeriosccc.org"), Chinese language (zh_CN) by [tanghaiwei](http://dd54.net), French translation files by [Jez007](http://forum.gmstemple.com/ "forum.gmstemple.com"), Japanese translation by [Fumito Mizuno](http://ounziw.com/ "Standing on the Shoulder of Linus"), Dutch translation by [Rene](http://wpwebshop.com "wpwebshop.com"), Persian language files by [ALiRezaCH](http://alirezach.co.cc), Romanian translation by [ Selco Resita]( http://www.selco-computers.ro "selco-computers.ro") and Arabic language files by [مدونة](http://www.r-sn.com/wp), Turkish translation by [Nightmare17] (http://sanalespri.com). WebsiteDefender would like to thank everyone that worked on making Secure WordPress a success.
+For more information on the Acunetix WP Security plug-in and other WordPress security news, visit the
+<a href="http://www.acunetix.com/blog/" target="_blank">Acunetix Blog</a> and join
+our <a href="http://www.facebook.com/Acunetix" target="_blank">Facebook</a> page. Post any questions or feedback
+on the <a href="http://wordpress.org/support/plugin/secure-wordpress" target="_blank">Acunetix Secure WordPress plug-in forum</a>.
+
+
+= Key security features: =
+
+* Easy backup of WordPress database for disaster recovery
+* Removal of error-information on login-page
+* Addition of index.php to the wp-content, wp-content/plugins, wp-content/themes and wp-content/uploads directories to prevent directory listings
+* Removal of wp-version, except in admin-area
+* Removal of Really Simple Discovery meta tag
+* Removal of Windows Live Writer meta tag
+* Removal of core update information for non-admins
+* Removal of plugin-update information for non-admins
+* Removal of theme-update information for non-admins (only WP 2.8 and higher)
+* Hiding of wp-version in backend-dashboard for non-admins
+* Removal of version in URLs from scripts and stylesheets only on frontend
+* Reporting of security overview after WordPress blog is scanned
+* Reporting of file permissions following security checks
+* Live traffic tool to monitor your website activity in real time
+* Integrated tool to change the database prefix
+* Disabling of database error reporting (if enabled)
+* Disabling of PHP error reporting
+
+For more information on the Acunetix Secure WordPress plug-in and other WordPress security news, visit the
+<a href="http://www.acunetix.com/blog/" target="_blank">Acunetix Blog</a> and join
+our <a href="http://www.facebook.com/Acunetix" target="_blank">Facebook</a> page. Post any questions or feedback
+on the <a href="http://wordpress.org/support/plugin/secure-wordpress" target="_blank">Acunetix Secure WordPress plug-in forum</a>.
+
+
 
 == Installation ==
-1. Make a backup of your current installation
-1. Unpack the download-package
-1. Upload the extracted files to the /wp-content/plugins/ directory
-1. Configure the desired options and activate the plugin from the 'Plugins' menu in WordPress
 
-If you do encounter any bugs, or have comments or suggestions, please contact the WebsiteDefender team on support@websitedefender.com
+* Make a backup of your current installation
+* Unpack the downloaded package
+* Upload the extracted files to the /wp-content/plugins/ directory
+* Activate the plugin through the 'Plugins' menu in WordPress
+
+If you encounter any bugs, or have comments or suggestions, please post them on the
+<a href="http://wordpress.org/support/plugin/secure-wordpress" target="_blank">Acunetix Secure WordPress plug-in forum</a>.
+
+For more information on the Acunetix Secure WordPress plug-in and other WordPress security news, visit the
+<a href="http://www.acunetix.com/blog/" target="_blank">Acunetix Blog</a> and join
+our <a href="http://www.facebook.com/Acunetix" target="_blank">Facebook</a> page. Post any questions or feedback
+on the <a href="http://wordpress.org/support/plugin/secure-wordpress" target="_blank">Acunetix Secure WordPress plug-in forum</a>.
+
+== WordPress Security ==
+
+Security Scanner:
+
+1. Scans Wordpress installation for file/directory permissions vulnerabilites
+2. Recommends corrective actions
+3. Scans for general security vulnerabilities
+
+
+For more information on the Acunetix Secure WordPress plug-in and other WordPress security news, visit the
+<a href="http://www.acunetix.com/blog/" target="_blank">Acunetix Blog</a> and join
+our <a href="http://www.facebook.com/Acunetix" target="_blank">Facebook</a> page. Post any questions or feedback
+on the <a href="http://wordpress.org/support/plugin/secure-wordpress" target="_blank">Acunetix Secure WordPress plug-in forum</a>.
+
+
+== Frequently Asked Questions ==
+
+= Can I deactivate Acunetix Secure WordPress once I've run it once? =
+
+No.  Acunetix Secure WordPress needs to be left activated to work.  Version hiding,
+turning off DB errors, removing WP ID META tag from HTML output, and other
+functionality will cease if you deactivate the plugin.
+
+= How do I change the file permissions on my WordPress installation?  =
+
+From the Linux command line (for advanced users):
+    chmod xxx filename.ext
+    (replace xxx with with the permissions settings for the file or folder).
+
+From your FTP client:
+    Most FTP clients, such as FileZilla, etc, allow for changing file
+permissions.  Please consult your client's documentation for your specific
+directions.
+
+For more information, please visit http://codex.wordpress.org/Changing_File_Permissions
+
+= Why do I need to hide my version of WordPress?  =
+
+Many attackers and automated tools will try and determine software versions
+before launching exploit code. Removing your WordPress blog version may
+discourage some attackers and certainly will mitigate virus and malware programs
+that rely on software versions.
+
+For more information on the Acunetix Secure WordPress plug-in and other WordPress security news, visit the
+<a href="http://www.acunetix.com/blog/" target="_blank">Acunetix Blog</a> and join
+our <a href="http://www.facebook.com/Acunetix" target="_blank">Facebook</a> page. Post any questions or feedback
+on the <a href="http://wordpress.org/support/plugin/secure-wordpress" target="_blank">Acunetix Secure WordPress plug-in forum</a>.
+
 
 == Screenshots ==
-1. options-area (WordPress 3.1)
+
+1. The File Scan Report
+2. The Settings page, displaying all configurable options
+3. The Live Traffic page
+4. The new Dashboard page
 
 
 == Other Notes ==
 = License =
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog.
 
-= Translations =
-The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the .pot file which contains all defintions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) or the very fine plugin [CodeStyling Localization](http://www.code-styling.de/english/development/wordpress-plugin-codestyling-localization-en "Codestyling Localization") for WordPresss.
+For more information on the Acunetix Secure WordPress plug-in and other WordPress security news, visit the
+<a href="http://www.acunetix.com/blog/" target="_blank">Acunetix Blog</a> and join
+our <a href="http://www.facebook.com/Acunetix" target="_blank">Facebook</a> page. Post any questions or feedback
+on the <a href="http://wordpress.org/support/plugin/secure-wordpress" target="_blank">Acunetix Secure WordPress plug-in forum</a>.
+
 
 
 == Changelog ==
+
+= 3.0.0 =
+* Complete core update
+* Added live traffic functionality
+* Added check for the wp-config.php file one level above if not found in the install directory
+* Fixed broken functionalities
+* Security settings are now configurable
+* Removed all languages
+
 
 = v2.0.8 =
 * Removed the registration requirement
@@ -69,7 +172,7 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 * Update: Minor internal updates
 
 = v2.0.4 =
-* Feature: The WebsiteDefender RSS widget added to the admin dashboard
+* Feature: The Acunetix RSS widget added to the admin dashboard
 * Update: The plug-in has been made compatible with WP Security Scan and WebsiteDefender WordPress Security
 * Feature: Turkish language files added.
 
@@ -105,7 +208,7 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 = v1.0.3 (10/06/2010) =
 * Bugfix: include JS for remove version in backend for Non-Admins
 * Bugfix: change for php-warning at update options
-* Maintenance: update italien language files
+* Maintenance: update italian language files
 * Maintenance: update german language files
 * Maintenance: update pot file
 
@@ -118,7 +221,7 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 * add more hooks to remove WordPress Version; was change with WP3.0
 
 = v1.0 (07/09/2010) =
-* relese stable version
+* release stable version
 * small changes on the source
 * change owner of the plugin
 
@@ -130,7 +233,7 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 * add free malware and vulnerabilities scan for test this; the scan has most interested informations and scan all of the server
 
 = v0.8.4 (05/05/2010) =
-* add methode for use the plugin also on ssl-installs
+* add method for use the plugin also on ssl-installs
 * change uninstall method
 
 = v0.8.3 (04/14/2010) =
@@ -141,7 +244,7 @@ The plugin comes with various translations, please refer to the [WordPress Codex
 * add french language files
 
 = v0.8.1 (03/08/2010) =
-* remove versions-informations on backend with javascript
+* remove versions-information on backend with javascript
 * small changes
 
 = v0.8 (03/04/2010) =

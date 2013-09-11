@@ -146,6 +146,10 @@ on the <a href="http://wordpress.org/support/plugin/secure-wordpress" target="_b
 
 == Changelog ==
 
+= 3.0.1 =
+* Added the missing files
+
+
 = 3.0.0 =
 * Complete core update
 * Added live traffic functionality

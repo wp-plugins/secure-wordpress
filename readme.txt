@@ -4,7 +4,7 @@ Contributors: Acunetix
 Tags: security, securityscan, chmod, permissions, admin, administration, authentication, database, dashboard, post, notification, password, plugin, posts,
 plugins, private, protection, tracking, wordpress
 Requires at least: 3.0
-Tested up to: 3.6
+Tested up to: 4.0
 Stable tag: trunk
 
 Scans your WordPress installation for security vulnerabilities.
@@ -146,9 +146,11 @@ on the <a href="http://wordpress.org/support/plugin/secure-wordpress" target="_b
 
 == Changelog ==
 
+= 3.0.2 =
+* Add support for WordPress 4.0
+
 = 3.0.1 =
 * Added the missing files
-
 
 = 3.0.0 =
 * Complete core update
@@ -157,7 +159,6 @@ on the <a href="http://wordpress.org/support/plugin/secure-wordpress" target="_b
 * Fixed broken functionalities
 * Security settings are now configurable
 * Removed all languages
-
 
 = v2.0.8 =
 * Removed the registration requirement

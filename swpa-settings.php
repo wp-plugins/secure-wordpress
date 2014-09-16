@@ -37,7 +37,7 @@ define('SWPA_PLUGIN_SETTINGS_OPTION_NAME', 'wsdplugin_settings');
 /**
  * Set the path to the WebsiteDefender.com feed
  */
-define('SWPA_PLUGIN_BLOG_FEED','http://www.acunetix.com/blog/');
+define('SWPA_PLUGIN_BLOG_FEED','http://feeds.acunetix.com/acunetixwebapplicationsecurityblog');
 
 /**
  * Sets the list of files to check for permissions

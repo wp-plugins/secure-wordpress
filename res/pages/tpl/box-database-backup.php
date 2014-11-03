@@ -24,7 +24,9 @@ if (is_dir($wsd_bckDirPath) && is_writable($wsd_bckDirPath)) :
     {
         if (isset($_POST['wsd_db_backup']))
         {
-
+            if (function_exists('wp_nonce_field')) {
+                check_admin_referer('swp-backup-database-nonce');
+            }
             if ('' <> ($fname = SwpaUtil::backupDatabase())) {
                 echo '<p class="acx-info-box">';
 					echo '<span>',__('Database successfully backed up!'),'</span>';
@@ -43,6 +45,7 @@ if (is_dir($wsd_bckDirPath) && is_writable($wsd_bckDirPath)) :
 ?>
 <div class="acx-section-box">
     <form action="#bckdb" method="post">
+        <?php if (function_exists('wp_nonce_field')) { wp_nonce_field('swp-backup-database-nonce'); } ?>
         <input type="hidden" name="wsd_db_backup"/>
         <input type="submit" class="button-primary" name="backupDatabaseButton" value="<?php echo __('Backup now!');?>"/>
     </form>

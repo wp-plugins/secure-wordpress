@@ -146,6 +146,9 @@ on the <a href="http://wordpress.org/support/plugin/secure-wordpress" target="_b
 
 == Changelog ==
 
+= 3.0.3 =
+* Added CSRF prevention mechanism
+
 = 3.0.2 =
 * Add support for WordPress 4.0
 

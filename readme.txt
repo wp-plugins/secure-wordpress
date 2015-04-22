@@ -4,7 +4,7 @@ Contributors: Acunetix
 Tags: security, securityscan, chmod, permissions, admin, administration, authentication, database, dashboard, post, notification, password, plugin, posts,
 plugins, private, protection, tracking, wordpress
 Requires at least: 3.0
-Tested up to: 4.0
+Tested up to: 4.2
 Stable tag: trunk
 
 Scans your WordPress installation for security vulnerabilities.
